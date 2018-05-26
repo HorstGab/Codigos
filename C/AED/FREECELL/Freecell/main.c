@@ -102,33 +102,34 @@ Pilha* insere_carta(Pilha* pilha, Carta* carta){
 void imput_cmd(Mesa *mesa){
     char cmd[MAX], cmd_tipo;
     char coluna_origem = 0, coluna_destino = 0;
+    int qnt_cartas = 0;
 
     comandos_possiveis(cmd_tipo);
 
     switch(cmd_tipo){
     case 1:
-        ler_cmd1(cmd, &coluna_origem);
+        cmd_fundacao(cmd, &coluna_origem);
         insere_fundacoes(mesa, coluna_origem);
         break;
     case 2:
-        ler_cmd2(cmd, &coluna_origem, &coluna_destino);
-        insere_celulas(mesa, coluna_origem);
+        cmd_insere_cel(cmd, &coluna_origem, &coluna_destino);
+        insere_celulas(mesa, coluna_origem, coluna_destino);
         break;
     case 3:
-       // ler_cmd3(cmd);
-        remove_celula(mesa, coluna_destino);
+        cmd_remove_cel(cmd, &coluna_origem, &coluna_destino);
+        remove_celula(mesa, coluna_origem, coluna_destino);
         break;
     case 4:
-        //ler_cmd4(cmd);
-        move_coluna(mesa, coluna_origem, coluna_destino);
+        cmd_colunas(cmd, &coluna_origem, &qnt_cartas, &coluna_destino);
+        move_coluna(mesa, coluna_origem, qnt_cartas, coluna_destino);
         break;
     case 5:
-        ler_cmd5();
-        salvar_jogo();
+        /*ler_cmd5();
+        salvar_jogo();*/
         break;
     case 6:
-        ler_cmd6();
-        carregar_jogo();
+        /*ler_cmd6();
+        carregar_jogo();*/
         break;
     case 7:
         sair();
@@ -154,7 +155,7 @@ int comandos_possiveis(char cmd_tipo){
     return cmd_tipo;
 }
 
-void ler_cmd1(char cmd[], char *coluna_origem){
+void cmd_fundacao(char cmd[], char* coluna_origem){
     sscanf(cmd, "*%c", coluna_origem);
     *coluna_origem = toupper(*coluna_origem);
 }
@@ -164,12 +165,12 @@ void insere_fundacoes(Mesa *mesa, char *coluna_origem){
     No* no = NULL;
     int indice_coluna = coluna_origem - 'A';
 
-    if(!(toupper(coluna_origem) >= 'A' && toupper(coluna_origem) <= 'H')) break;
+    if(!(toupper(coluna_origem) >= 'A' && toupper(coluna_origem) <= 'H')) return;
 
     printf("Coluna de origem: %c\n", colula_origem);
 
     if(indice_coluna >= 0 && indice_coluna < 8){
-//entender os if's
+
         if(mesa->pilhas[indice_coluna]->inicio){
             carta = mesa->pilhas[indice_coluna]->inicio->carta;
 
@@ -191,7 +192,134 @@ void insere_fundacoes(Mesa *mesa, char *coluna_origem){
     }
 }
 
-void ler_cmd2(char cmd[], char *coluna_origem){
-    sscanf(cmd, "^%c", coluna_origem);
+void cmd_insere_cel(char cmd[], char* coluna_origem, char* coluna_destino){
+    sscanf(cmd, "^%c >%c", coluna_origem);
     *coluna_origem = toupper(*coluna_origem);
+    *coluna_destino = toupper(*coluna_destino);
+}
+
+void insere_celulas(Mesa *mesa, char *coluna_origem, char *coluna_destino){
+    Carta* carta = NULL;
+    No* no = NULL;
+    int indice_coluna_o = coluna_origem - 'A';
+    int indice_coluna_d = coluna_destino - 'A';
+
+    if(toupper(coluna_origem) >= 'A' && toupper(coluna_origem) <= 'H'){
+        if(!coluna_destino || (coluna_destino >= 'A' && coluna_destino <= 'D')){
+                printf("Coluna de origem: %c \n", coluna_origem);
+                printf("Celula de destino: %c \n", coluna_destino);
+        }
+
+    }else{
+            return;
+    }
+
+    if(mesa->celula_livre > 0){
+        if(mesa->pilhas[indice_coluna_o]->inicio){
+            if(indice_coluna_d < 0 || indice_coluna_d >= 4){
+                for(indice_coluna_d = 0; indice_coluna_d < 4 && mesa->celulas[indice_coluna_d]; indice_coluna_d ++);
+            }
+            if(!(mesa->celulas[indice_coluna_d])){
+                no = pop(mesa->pilhas[indice_coluna_o]);
+                carta = no->carta;
+                mesa->celulas[indice_coluna_d] = carta;
+
+                mesa->celula_livre--;
+                mesa->qnt_pilha_livre += (!mesa->pilhas[indice_coluna_o]);
+                free(no);
+            }else{
+                printf("JA EXISTE CARTA NESSE PONTO!\n");
+            }
+        }else{
+            printf("COLUNA (%d) NAO POSSUI NENHUMA CARTA!\n");
+        }
+    }else{
+        printf("NAO EXISTE ESPACO LIVRE! \n");
+    }
+}
+
+void cmd_remove_cel(char cmd[], char* coluna_origem, char* coluna_destino){
+    sscanf(cmd, "v%c >%c", coluna_origem);
+    *coluna_origem = toupper(*coluna_origem);
+    *coluna_destino = toupper(*coluna_destino);
+}
+
+void remove_celula(Mesa *mesa, char *coluna_origem, char *coluna_destino){
+    Carta* carta_o = NULL, *carta_d = NULL;
+    No* no = NULL;
+    int indice_coluna_o = coluna_origem - 'A';
+    int indice_coluna_d = coluna_destino - 'A';
+
+    if(toupper(coluna_origem) >= 'A' && toupper(coluna_origem) <= 'H') {
+        if(!colTo || (colTo >= 'A' && colTo <= 'D')){
+            printf("Celula de origem: %c \n", coluna_origem);
+            printf("Coluna de destino: %c \n", coluna_destino);
+        }
+    }else{
+        return;
+    }
+
+    if(mesa->celulas[indice_coluna_o]){
+        carta_o = mesa->celulas[indice_coluna_o];
+        no = mesa->pilhas[indice_coluna_d]->inicio;
+        carta_d = no->carta;
+
+        if(!node || carta_o->naipe%2 != carta_d->naipe%2){
+            if(!node || carta_o->valor - carta_d->valor == -1){
+                mesa->pilhas[indice_coluna_d] = insere_carta(mesa->pilhas[indice_coluna_d], carta_o);
+                mesa->celulas[indice_coluna_o] = NULL;
+
+                mesa->celula_livre++;
+                mesa->celulas -= (!no);
+            }else{
+                printf("MOVIMENTO INVALIDO!\n");
+                printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", getNaipe(carta_o->naipe), getValor(carta_o->valor))
+            }
+        }else{
+            printf("MOVIMENTO INVALIDO!\n");
+            printf("AS CORES PRECISAM SER ALTERNADAS! \n");
+        }
+    }else{
+        printf("MOVIMENTO INVALIDO!\n");
+        printf("A CELULA NAO POSSUI CARTA! \n");
+    }
+}
+
+void cmd_colunas(char cmd[],char* coluna_origem, int* qnt_cartas, char* coluna_destino){
+    int i = 0, j = 0;
+    sscanf(cmd, "%c%n", coluna_origem, &i);
+    sscanf(cmd+i, "%d%n", qnt_cartas, &j);
+    sscanf(cmd+i+j, ">%c", coluna_destino);
+}
+
+void move_coluna(Mesa* mesa, char* coluna_origem, int qnt_cartas, char* coluna_destino){
+    no *no_o = NULL;
+    int indice_coluna_o = coluna_origem - 'A';
+    int indice_coluna_d = coluna_destino - 'A';
+    int i, aux;
+
+    if(mesa->pilhas[indice_coluna_o]->inicio){
+        if(qnt_cartas <= (mesa->celulas+1) * pow(2, mesa->qnt_pilha_livre)){
+            no_o = mesa->pilhas[indice_coluna_o]->inicio;
+
+            if(!qnt_cartas) return;
+
+            for( i = aux = 1; i < qnt_cartas && aux; ++i){
+                if(no_o && no_o->prox){
+                    if(no_o->carta->naipe%2 == no_o->prox->carta->naipe%2){
+                        aux = 1;
+                        printf("AS CORES PRECISAM SER ALTERNADAS! \n");
+                    }
+                    if(no_o->carta->valor - no_o->prox->carta->valor != -1){
+                        aux = 1;
+                        printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", getNaipe(carta_o->naipe), getValor(carta_o->valor));
+                    }
+                }else{
+                    aux = 1;
+                    printf("NAO HA %d CARTA(S) PARA SER MOVIMENTADA\n", qnt_cartas);
+                }
+                no_o = no_o->prox;
+            }
+        }
+    }
 }

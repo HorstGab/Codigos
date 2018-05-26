@@ -68,13 +68,22 @@ void imput_comandos(Mesa* mesa);
 int comandos_possiveis(cmd_tipo);
 
 //le o comando para enviar para as fundacoes
-void ler_cmd1(char cmd[], char* coluna_origem);
+void cmd_fundacao(char cmd[], char* coluna_origem);
 
 //movimenta a carta para a fundacão
 void insere_fundacoes(Mesa* mesa, char* coluna_origem);
 
 //le o comando para enviar carta para as celulas
-void ler_cmd2(char cmd[], char* coluna_origem);
+void cmd_insere_cel(char cmd[], char* coluna_origem, char* coluna_destino);
+
+//insere cartas nas celulas livres
+void insere_celulas(Mesa* mesa, char* coluna_origem, char* coluna_destino);
+
+//le o comando para retirar carta das celulas
+void cmd_remove_cel(char cmd[], char* coluna_origem, char* coluna_destino);
+
+//retira cartas das celulas
+void remove_celula(Mesa* mesa, char* coluna_origem, char* coluna_destino);
 
 
 #endif // CARTAS_H
