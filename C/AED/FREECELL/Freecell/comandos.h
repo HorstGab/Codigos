@@ -39,6 +39,7 @@ void remove_celula(Mesa* mesa, char coluna_origem, char coluna_destino);
 //move uma ou mais cartas de uma coluna para outra
 void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_destino);
 
+char getNaipe(char str);
 
 #endif // COMANDOS
 
