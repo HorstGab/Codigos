@@ -1,6 +1,6 @@
 #include "comandos.h"
 
-int comandos_possiveis(char cmd_tipo){
+int comandos_possiveis(int cmd_tipo){
 
     printf("escolha a carta: ");
 
@@ -19,7 +19,8 @@ int comandos_possiveis(char cmd_tipo){
 }
 
 void imput_cmd(Mesa *mesa){
-    char cmd[MAX], cmd_tipo;
+    char cmd[MAX];
+    int cmd_tipo;
     char coluna_origem = 0, coluna_destino = 0;
     int qnt_cartas = 0;
 
@@ -159,7 +160,7 @@ void remove_celula(Mesa *mesa, char *coluna_origem, char *coluna_destino){
     int indice_coluna_d = coluna_destino - 'A';
 
     if(toupper(coluna_origem) >= 'A' && toupper(coluna_origem) <= 'H') {
-        if(!colTo || (colTo >= 'A' && colTo <= 'D')){
+        if(!coluna_destino || (coluna_destino >= 'A' && coluna_destino <= 'D')){
             printf("Celula de origem: %c \n", coluna_origem);
             printf("Coluna de destino: %c \n", coluna_destino);
         }
