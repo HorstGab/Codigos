@@ -43,7 +43,7 @@ void iniciar_jogo(Mesa* mesa){
     Embaralhar(cartas);
 
     for(i = 0; i < 52; i++){
-        mesa->pilha[i%8] = insere_carta(mesa->pilhas[i%8], cartas[i]);
+        mesa->pilhas[i%8] = insere_carta(mesa->pilhas[i%8], cartas[i]);
     }
     mesa->qnt_pilha_livre = 0;
 }

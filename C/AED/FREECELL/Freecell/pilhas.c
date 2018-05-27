@@ -52,3 +52,30 @@ No* pop(Pilha *pilha){
     }
     return aux;
 }
+
+
+void inverte_pilha(Pilha* pilha[], No* pilha_reversa[], int *andares){
+    int i;
+
+    for(i = *andares = 0; i < 8; i++){
+        if(pilha[i]){
+            if(pilha[i]->tamanho > *andares){
+                *andares = pilha[i]->tamanho;
+            }
+            pilha_reversa[i] = inverte_lista(pilha[i]->inicio);
+        }
+    }
+}
+
+No* inverte_lista(No* no){
+    if(!no)return NULL;
+
+    return insere_no_cauda(inverte_lista(no->prox), no->carta);
+}
+
+No* insere_no_cauda(No* lista, Carta* carta){
+    if(!lista) return criar_no(carta);
+    lista->prox = insere_no_cauda(lista->prox, carta);
+
+    return lista;
+}

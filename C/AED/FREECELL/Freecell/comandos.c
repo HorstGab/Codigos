@@ -1,6 +1,7 @@
 #include "comandos.h"
 
-int comandos_possiveis(char cmd_tipo){
+int comandos_possiveis(){
+    int cmd_tipo;
 
     printf("escolha a carta: ");
 
@@ -19,11 +20,11 @@ int comandos_possiveis(char cmd_tipo){
 }
 
 void imput_cmd(Mesa *mesa){
-    char cmd[MAX], cmd_tipo;
+    char cmd[MAXSTR], cmd_tipo;
     char coluna_origem = 0, coluna_destino = 0;
     int qnt_cartas = 0;
 
-    comandos_possiveis(cmd_tipo);
+    cmd_tipo = comandos_possiveis();
 
     switch(cmd_tipo){
     case 1:
@@ -80,14 +81,14 @@ void cmd_colunas(char cmd[],char* coluna_origem, int* qnt_cartas, char* coluna_d
     sscanf(cmd+i+j, ">%c", coluna_destino);
 }
 
-void insere_fundacoes(Mesa *mesa, char *coluna_origem){
+void insere_fundacoes(Mesa *mesa, char coluna_origem){
     Carta* carta = NULL;
     No* no = NULL;
     int indice_coluna = coluna_origem - 'A';
 
     if(!(toupper(coluna_origem) >= 'A' && toupper(coluna_origem) <= 'H')) return;
 
-    printf("Coluna de origem: %c\n", colula_origem);
+    printf("Coluna de origem: %c\n", coluna_origem);
 
     if(indice_coluna >= 0 && indice_coluna < 8){
 
@@ -112,7 +113,7 @@ void insere_fundacoes(Mesa *mesa, char *coluna_origem){
     }
 }
 
-void insere_celulas(Mesa *mesa, char *coluna_origem, char *coluna_destino){
+void insere_celulas(Mesa *mesa, char coluna_origem, char coluna_destino){
     Carta* carta = NULL;
     No* no = NULL;
     int indice_coluna_o = coluna_origem - 'A';
@@ -152,14 +153,14 @@ void insere_celulas(Mesa *mesa, char *coluna_origem, char *coluna_destino){
     }
 }
 
-void remove_celula(Mesa *mesa, char *coluna_origem, char *coluna_destino){
+void remove_celula(Mesa *mesa, char coluna_origem, char coluna_destino){
     Carta* carta_o = NULL, *carta_d = NULL;
     No* no = NULL;
     int indice_coluna_o = coluna_origem - 'A';
     int indice_coluna_d = coluna_destino - 'A';
 
     if(toupper(coluna_origem) >= 'A' && toupper(coluna_origem) <= 'H') {
-        if(!colTo || (colTo >= 'A' && colTo <= 'D')){
+        if(!coluna_destino || (coluna_destino >= 'A' && coluna_destino <= 'D')){
             printf("Celula de origem: %c \n", coluna_origem);
             printf("Coluna de destino: %c \n", coluna_destino);
         }
@@ -172,16 +173,16 @@ void remove_celula(Mesa *mesa, char *coluna_origem, char *coluna_destino){
         no = mesa->pilhas[indice_coluna_d]->inicio;
         carta_d = no->carta;
 
-        if(!node || carta_o->naipe%2 != carta_d->naipe%2){
-            if(!node || carta_o->valor - carta_d->valor == -1){
+        if(!no || carta_o->naipe%2 != carta_d->naipe%2){
+            if(!no || carta_o->valor - carta_d->valor == -1){
                 mesa->pilhas[indice_coluna_d] = insere_carta(mesa->pilhas[indice_coluna_d], carta_o);
                 mesa->celulas[indice_coluna_o] = NULL;
 
                 mesa->celula_livre++;
-                mesa->celulas -= (!no);
+                mesa->celula_livre -= (!no);
             }else{
                 printf("MOVIMENTO INVALIDO!\n");
-                printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", getNaipe(carta_o->naipe), getValor(carta_o->valor))
+                printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", getNaipe(carta_o->naipe), getValor(carta_o->valor));
             }
         }else{
             printf("MOVIMENTO INVALIDO!\n");
@@ -193,7 +194,7 @@ void remove_celula(Mesa *mesa, char *coluna_origem, char *coluna_destino){
     }
 }
 
-void move_coluna(Mesa* mesa, char* coluna_origem, int qnt_cartas, char* coluna_destino){
+void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_destino){
     No *no_o = NULL, *no_d = NULL;
     Carta *carta_o = NULL, *carta_d = NULL;
     Pilha *pilha;
@@ -213,13 +214,13 @@ void move_coluna(Mesa* mesa, char* coluna_origem, int qnt_cartas, char* coluna_d
     }
 
     if(mesa->pilhas[indice_coluna_o]->inicio){
-        if(qnt_cartas <= (mesa->celulas+1) * pow(2, mesa->qnt_pilha_livre)){
+        if(qnt_cartas <= (mesa->celula_livre+1) * pow(2, mesa->qnt_pilha_livre)){
             no_o = mesa->pilhas[indice_coluna_o]->inicio;
 
 
             if(!qnt_cartas) return;
 
-            for( i = aux = 1; i < qnt_cartas && aux; ++i){
+            for(i = aux = 1; i < qnt_cartas && aux; ++i){
                 if(no_o && no_o->prox){
                     if(no_o->carta->naipe%2 == no_o->prox->carta->naipe%2){
                         aux = 1;
@@ -238,8 +239,8 @@ void move_coluna(Mesa* mesa, char* coluna_origem, int qnt_cartas, char* coluna_d
 
             if(aux){
                 carta_o = no_o->carta;
-                no_d = mesa->pilha[indice_coluna_d]->inicio;
-                carta_d = mesa->pilha[indice_coluna_d]->inicio->carta;
+                no_d = mesa->pilhas[indice_coluna_d]->inicio;
+                carta_d = mesa->pilhas[indice_coluna_d]->inicio->carta;
 
                 if(!no_d || carta_o->naipe%2 != carta_d->naipe%2){
 

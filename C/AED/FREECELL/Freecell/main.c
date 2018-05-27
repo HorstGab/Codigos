@@ -57,62 +57,37 @@ void mostrar_carta(Carta* carta){
 }
 
 void mostrar_celulas(Mesa* mesa){
-     int i;
-
-     frintf("-> ");
-     for(i = 0; i < 4; i++){
-         mostrar_carta(mesa->celulas[i]);
-     }
-     printf("\t ");
- }
-
-void mostrar_fundacao(Mesa* mesa){
-     int i;
-
-     for(i = 0; i < 4; i++){
-         if(mesa->fundacoes[i]){
-             mostrar_carta(mesa->fundacoes[i]->inicio->carta);
-         }
-     }
-     printf("\n");
- }
-
-void mostrar_marcas(){
-     int i;
-
-     for(i = 0; i < 4; i++){
-         printf(" %c ", 'A' + i);
-     }
-
-     printf("\t");
-
-     for(i = 0; i < 4; i++){
-         printf(" %c ", getNaipe(i));
-     }
- }
-
-void inverte_pilha(Pilha* pilha[], No* pilha_reversa[], int *andares){
     int i;
 
-    for(i = *andares = 0; i < 8; i++){
-        if(pilha[i]){
-            if(pilha[i]->tamanho > *andares){
-                *andares = pilha[i]->tamanho;
-            }
-            pilha_reversa[i] = inverte_lista(pilha[i]->inicio);
+    printf("-> ");
+    for(i = 0; i < 4; i++){
+        mostrar_carta(mesa->celulas[i]);
+    }
+    printf("\t ");
+}
+
+void mostrar_fundacao(Mesa* mesa){
+    int i;
+
+    for(i = 0; i < 4; i++){
+        if(mesa->fundacoes[i]){
+            mostrar_carta(mesa->fundacoes[i]->inicio->carta);
         }
+    }
+    printf("\n");
+}
+
+void mostrar_marcas(){
+    int i;
+
+    for(i = 0; i < 4; i++){
+        printf(" %c ", 'A' + i);
+    }
+
+    printf("\t");
+
+    for(i = 0; i < 4; i++){
+        printf(" %c ", getNaipe(i));
     }
 }
 
-No* inverte_lista(No* no){
-    if(!no)return NULL;
-
-    return insere_no_cauda(inverte_lista(no->prox), no->carta);
-}
-
-No* insere_no_cauda(No* lista, Carta* carta){
-    if(!lista) return criar_no(carta);
-    lista->prox = insere_no_cauda(lista->prox, carta);
-
-    return lista;
-}

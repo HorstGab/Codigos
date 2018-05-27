@@ -1,10 +1,15 @@
 #ifndef COMANDOS
 #define COMANDOS
 
-#include "main.h"
+#define MAXSTR 512
+
+#include <stdio.h>
+#include <math.h>
+
+#include "pilhas.h"
 
 //mostra os comandos aceitos
-int comandos_possiveis(char* cmd_tipo);
+int comandos_possiveis();
 
 //le os comandos
 void imput_comandos(Mesa* mesa);
@@ -22,16 +27,16 @@ void cmd_remove_cel(char cmd[], char* coluna_origem, char* coluna_destino);
 void cmd_colunas(char cmd[],char* coluna_origem, int* qnt_cartas, char* coluna_destino);
 
 //movimenta a carta para a fundacão
-void insere_fundacoes(Mesa* mesa, char* coluna_origem);
+void insere_fundacoes(Mesa* mesa, char coluna_origem);
 
 //insere cartas nas celulas livres
-void insere_celulas(Mesa* mesa, char* coluna_origem, char* coluna_destino);
+void insere_celulas(Mesa* mesa, char coluna_origem, char coluna_destino);
 
 //retira cartas das celulas
-void remove_celula(Mesa* mesa, char* coluna_origem, char* coluna_destino);
+void remove_celula(Mesa* mesa, char coluna_origem, char coluna_destino);
 
 //move uma ou mais cartas de uma coluna para outra
-void move_coluna(Mesa* mesa, char* coluna_origem, int qnt_cartas, char* coluna_destino);
+void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_destino);
 
 //retorna o naipe da carta
 char getNaipe(char str);
