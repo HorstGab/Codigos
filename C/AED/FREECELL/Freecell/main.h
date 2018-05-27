@@ -5,20 +5,24 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#include "start.h"
+#include "comandos.h"
+#include "pilhas.h"
+
 #define MAX 100
 
 //estrutura para a carta
-typedef struct carta{
+typedef struct _carta{
     int naipe;
     int valor;
 }Carta;
 
-typedef struct no{
+typedef struct _no{
     Carta* carta;
     struct no* prox;
 }No;
 
-typedef struct pilha{
+typedef struct _pilha{
     int tamanho;
     No* inicio;
     No* fim;
@@ -32,58 +36,6 @@ typedef struct _mesa{
     Carta* celulas[4];//vetor de cartas freecell
     Pilha* pilhas[8];//vetor de pilhas tableau
 }Mesa;
-
-
-
-//cria uma pilha vazia
-Pilha* criar_pilha();
-
-// cria um novo no
-No* criar_no(Carta* carta);
-
-//cria a mesa do jogo sem o baralho na mesa, todos os campos vazios
-Mesa* Criar_Mesa();
-
-//chama as funcões que inicializa o jogo
-void iniciar_jogo();
-
-//cria o vetor com todas as cartas
-void Criar_Baralho(Carta* cartas[]);
-
-//cria cada carta do baralho
-Carta* Criar_Carta(int naipe, int valor);
-
-//embaralha as cartas de posicões dentro do vetor
-void Embaralhar(Carta* cartas[]);
-
-//insere as cartas na mesa
-Pilha* insere_carta(Pilha* pilha, Carta* carta);
-
-//COMANDOS
-
-//le os comandos
-void imput_comandos(Mesa* mesa);
-
-//mostra os comandos aceitos
-int comandos_possiveis(cmd_tipo);
-
-//le o comando para enviar para as fundacoes
-void cmd_fundacao(char cmd[], char* coluna_origem);
-
-//movimenta a carta para a fundacão
-void insere_fundacoes(Mesa* mesa, char* coluna_origem);
-
-//le o comando para enviar carta para as celulas
-void cmd_insere_cel(char cmd[], char* coluna_origem, char* coluna_destino);
-
-//insere cartas nas celulas livres
-void insere_celulas(Mesa* mesa, char* coluna_origem, char* coluna_destino);
-
-//le o comando para retirar carta das celulas
-void cmd_remove_cel(char cmd[], char* coluna_origem, char* coluna_destino);
-
-//retira cartas das celulas
-void remove_celula(Mesa* mesa, char* coluna_origem, char* coluna_destino);
 
 
 #endif // CARTAS_H

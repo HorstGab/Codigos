@@ -3,11 +3,19 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.c
+SOURCES += main.c \
+    start.c \
+    comandos.c \
+    pilhas.c \
+    arquivo_binario.c
 
 include(deployment.pri)
 qtcAddDeployment()
 
 HEADERS += \
-    main.h
+    main.h \
+    start.h \
+    comandos.h \
+    pilhas.h \
+    arquivo_binario.h
 
