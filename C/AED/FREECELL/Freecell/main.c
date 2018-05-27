@@ -4,6 +4,7 @@ int main(void){
     Mesa* mesa = Criar_Mesa();
 
         iniciar_jogo(mesa);
+        printf("JOGO INICIADO \n");
 
         while(1){
             mostrar_mesa(mesa);
@@ -19,7 +20,7 @@ void mostrar_mesa(Mesa* mesa){
 
     mostrar_marcas();
     mostrar_celulas(mesa);
-    mostrar_fundacao(mesa);
+    //mostrar_fundacao(mesa);
 
     inverte_pilha(mesa->pilhas, pilha_reversa, &andares);
 
@@ -54,7 +55,7 @@ void mostrar_carta(Carta* carta){
     if(carta){
         naipe = carta->naipe;
         valor = carta->valor;
-        printf("%c%c,%c%c \t", (naipe%2) ? '(' : '[', naipe, valor, (naipe%2) ? ')' : ']');
+        printf("%c%c,%c%c \t", (naipe%2) ? '(' : '[', getNaipe(naipe), getValor(valor), (naipe%2) ? ')' : ']');
     }else{
         printf(" x \t");
     }

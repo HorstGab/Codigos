@@ -1,6 +1,7 @@
 #include "comandos.h"
 
 char naipe[4] = {'O','E','C','P'};
+char valor[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'};
 
 int comandos_possiveis(){
     int cmd_tipo;
@@ -280,4 +281,8 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 
 char getNaipe(char str){
     return naipe[str];
+}
+
+char getValor(char str){
+    return valor[str];
 }

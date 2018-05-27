@@ -25,9 +25,9 @@ typedef struct _pilha{
 typedef struct _mesa{
     int celula_livre;
     int qnt_pilha_livre;
-    Pilha* fundacoes[4];//vetor de pilhas homecell
-    Carta* celulas[4];//vetor de cartas freecell
-    Pilha* pilhas[8];//vetor de pilhas tableau
+    Pilha* fundacoes[4];//vetor de pilhas
+    Carta* celulas[4];//vetor de cartas
+    Pilha* pilhas[8];//vetor de pilhas
 } Mesa;
 
 

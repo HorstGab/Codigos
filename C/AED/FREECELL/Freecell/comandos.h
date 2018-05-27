@@ -41,5 +41,7 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 
 char getNaipe(char str);
 
+char getValor(char str);
+
 #endif // COMANDOS
 
