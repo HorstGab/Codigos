@@ -57,7 +57,6 @@ void mostrar_carta(Carta* carta){
         printf("%c%c,%c%c \t", (naipe%2) ? '(' : '[', naipe, valor, (naipe%2) ? ')' : ']');
     }else{
         printf(" x \t");
-
     }
 }
 
@@ -76,6 +75,7 @@ void mostrar_fundacao(Mesa* mesa){
     for(i = 0; i < 4; i++){
         mostrar_carta(mesa->fundacoes[i]->inicio->carta);
     }
+    printf("\n\n");
 }
 
 void mostrar_marcas(){
