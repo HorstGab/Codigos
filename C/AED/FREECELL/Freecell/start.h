@@ -6,7 +6,7 @@
 #include "pilhas.h"
 
 //cria a mesa
-Mesa* criar_Mesa();
+Mesa* Criar_Mesa();
 
 //cria cada carta do baralho
 Carta* Criar_Carta(int naipe, int valor);

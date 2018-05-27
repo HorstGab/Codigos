@@ -19,7 +19,7 @@ int comandos_possiveis(){
     return cmd_tipo;
 }
 
-void imput_cmd(Mesa *mesa){
+void imput_comandos(Mesa *mesa){
     char cmd[MAXSTR];
     int cmd_tipo;
     char coluna_origem = 0, coluna_destino = 0;
@@ -52,8 +52,8 @@ void imput_cmd(Mesa *mesa){
         /*ler_cmd6();
         carregar_jogo();*/
         break;
-    case 7:
-        sair();
+   // case 7:
+     //   sair();
     }
     getchar();
 }
@@ -64,13 +64,13 @@ void cmd_fundacao(char cmd[], char* coluna_origem){
 }
 
 void cmd_insere_cel(char cmd[], char* coluna_origem, char* coluna_destino){
-    sscanf(cmd, "^%c >%c", coluna_origem);
+    sscanf(cmd, "^%c >%c", coluna_origem, coluna_destino);
     *coluna_origem = toupper(*coluna_origem);
     *coluna_destino = toupper(*coluna_destino);
 }
 
 void cmd_remove_cel(char cmd[], char* coluna_origem, char* coluna_destino){
-    sscanf(cmd, "v%c >%c", coluna_origem);
+    sscanf(cmd, "v%c >%c", coluna_origem, coluna_destino);
     *coluna_origem = toupper(*coluna_origem);
     *coluna_destino = toupper(*coluna_destino);
 }
@@ -106,7 +106,7 @@ void insere_fundacoes(Mesa *mesa, char coluna_origem){
                 mesa->qnt_pilha_livre += (!mesa->pilhas[indice_coluna]->tamanho);
                 free(no);
             }else{
-                printf("A CARTA [%d, %d] NAO PODE SER FINALIZADA! \n", getNaipe(carta->naipe), getValor(carta->valor));
+                printf("A CARTA [%d, %d] NAO PODE SER FINALIZADA! \n", carta->naipe, carta->valor);
             }
         }else{
             printf("A COLUNA (%d) NAO POSSUI CARTAS \n", coluna_origem);
@@ -183,7 +183,7 @@ void remove_celula(Mesa *mesa, char coluna_origem, char coluna_destino){
                 mesa->celula_livre -= (!no);
             }else{
                 printf("MOVIMENTO INVALIDO!\n");
-                printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", getNaipe(carta_o->naipe), getValor(carta_o->valor));
+                printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", carta_o->naipe, carta_o->valor);
             }
         }else{
             printf("MOVIMENTO INVALIDO!\n");
@@ -229,7 +229,7 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
                     }
                     if(no_o->carta->valor - no_o->prox->carta->valor != -1){
                         aux = 1;
-                        printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", getNaipe(carta_o->naipe), getValor(carta_o->valor));
+                        printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", carta_o->naipe, carta_o->valor);
                     }
                 }else{
                     aux = 1;
@@ -262,7 +262,7 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 
                         free(pilha);
                     }else{
-                        printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", getNaipe(carta_o->naipe), getValor(carta_o->valor));
+                        printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", carta_o->naipe, carta_o->valor);
                     }
                 }else{
                     printf("AS CORES PRECISAM SER ALTERNADAS! \n");

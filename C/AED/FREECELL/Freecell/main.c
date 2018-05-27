@@ -1,7 +1,14 @@
 #include "main.h"
 
 int main(void){
+    Mesa* mesa = Criar_Mesa();
 
+        iniciar_jogo(mesa);
+
+        while(1){
+            mostrar_mesa(mesa);
+            imput_comandos(mesa);
+        }
     return 0;
 }
 
@@ -10,9 +17,7 @@ void mostrar_mesa(Mesa* mesa){
     No *pilha_aux[8] = {NULL};
     No *pilha_reversa[8] = {NULL};
 
-    system("CLS");
-
-    mostrar_marcas();
+    //mostrar_marcas();
     mostrar_celulas(mesa);
     mostrar_fundacao(mesa);
 
@@ -50,7 +55,7 @@ void mostrar_carta(Carta* carta){
         naipe = carta->naipe;
         valor = carta->valor;
 
-        printf("%c%c,%c%c", (naipe%2) ? '(' : '[', getNaipe(naipe), getValor(valor), (naipe%2) ? '(' : '[');
+        printf("%c%c,%c%c", (naipe%2) ? '(' : '[', naipe, valor, (naipe%2) ? '(' : '[');
     }else{
         return;
     }
@@ -59,7 +64,6 @@ void mostrar_carta(Carta* carta){
 void mostrar_celulas(Mesa* mesa){
     int i;
 
-    printf("-> ");
     for(i = 0; i < 4; i++){
         mostrar_carta(mesa->celulas[i]);
     }
@@ -85,9 +89,5 @@ void mostrar_marcas(){
     }
 
     printf("\t");
-
-    for(i = 0; i < 4; i++){
-        printf(" %c ", getNaipe(i));
-    }
 }
 

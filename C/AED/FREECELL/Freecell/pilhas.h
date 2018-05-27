@@ -2,6 +2,7 @@
 #define PILHAS_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
 //estrutura para a carta
 typedef struct _carta{
