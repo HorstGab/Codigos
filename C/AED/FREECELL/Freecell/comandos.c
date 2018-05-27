@@ -1,7 +1,11 @@
 #include "comandos.h"
 
+<<<<<<< HEAD
 int comandos_possiveis(){
     int cmd_tipo;
+=======
+int comandos_possiveis(int cmd_tipo){
+>>>>>>> e1d41bb012f4a34e9453da810b65f0f79ac86944
 
     printf("escolha a carta: ");
 
@@ -20,7 +24,12 @@ int comandos_possiveis(){
 }
 
 void imput_cmd(Mesa *mesa){
+<<<<<<< HEAD
     char cmd[MAXSTR], cmd_tipo;
+=======
+    char cmd[MAX];
+    int cmd_tipo;
+>>>>>>> e1d41bb012f4a34e9453da810b65f0f79ac86944
     char coluna_origem = 0, coluna_destino = 0;
     int qnt_cartas = 0;
 
