@@ -16,7 +16,7 @@ int comandos_possiveis();
 void imput_comandos(Mesa* mesa);
 
 //le o comando para enviar para as fundacoes
-void cmd_fundacao(char cmd[], char* coluna_origem);
+void cmd_fundacao(char* coluna_origem);
 
 //le o comando para enviar carta para as celulas
 void cmd_insere_cel(char cmd[], char* coluna_origem, char* coluna_destino);
@@ -39,9 +39,9 @@ void remove_celula(Mesa* mesa, char coluna_origem, char coluna_destino);
 //move uma ou mais cartas de uma coluna para outra
 void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_destino);
 
-char getNaipe(char str);
+char getNaipe(unsigned char str);
 
-char getValor(char str);
+char getValor(unsigned char str);
 
 #endif // COMANDOS
 

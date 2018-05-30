@@ -1,26 +1,8 @@
 #include "comandos.h"
 
 char naipe[4] = {'O','E','C','P'};
-char valor[13] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'};
+char valor[13] = {'A','2','3','4','5','6','7','8','9','1','J','Q','K'};
 
-int comandos_possiveis(){
-    int cmd_tipo;
-
-    printf("escolha a carta: ");
-
-    printf("comandos possiveis: \n");
-    printf("1: MOVER PARA AS FUNDACOES \n");
-    printf("2. MOVER PARA O CAMPO VAZIO \n");
-    printf("3. RETIRAR DO CAMPO VAZIO \n");
-    printf("4. MOVER PARA OUTRA COLUNA \n");
-    printf("5. SALVAR JOGO \n");
-    printf("6. CARREGAR JOGO \n");
-    printf("7. SAIR \n");
-
-    scanf("%d", &cmd_tipo);
-
-    return cmd_tipo;
-}
 
 void imput_comandos(Mesa *mesa){
     char cmd[MAXSTR];
@@ -30,9 +12,13 @@ void imput_comandos(Mesa *mesa){
 
     cmd_tipo = comandos_possiveis();
 
+    if(cmd_tipo)printf("ok\n");
+
     switch(cmd_tipo){
     case 1:
-        cmd_fundacao(cmd, &coluna_origem);
+        printf("case 1\n");
+        cmd_fundacao(&coluna_origem);
+        printf("Coluna de origem: %c\n", coluna_origem);
         insere_fundacoes(mesa, coluna_origem);
         break;
     case 2:
@@ -61,9 +47,30 @@ void imput_comandos(Mesa *mesa){
     getchar();
 }
 
-void cmd_fundacao(char cmd[], char* coluna_origem){
-    sscanf(cmd, "*%c", coluna_origem);
-    *coluna_origem = toupper(*coluna_origem);
+int comandos_possiveis(){
+    int cmd_tipo;
+
+    printf("comandos possiveis: \n");
+    printf("1: MOVER PARA AS FUNDACOES \n");
+    printf("2. MOVER PARA O CAMPO VAZIO \n");
+    printf("3. RETIRAR DO CAMPO VAZIO \n");
+    printf("4. MOVER PARA OUTRA COLUNA \n");
+    printf("5. SALVAR JOGO \n");
+    printf("6. CARREGAR JOGO \n");
+    printf("7. SAIR \n");
+
+    printf("escolha a operacao: ");
+    scanf("%d", &cmd_tipo);
+    printf("\n");
+
+    return cmd_tipo;
+}
+
+void cmd_fundacao(char* coluna_origem){
+    printf("Escolha a coluna: ");
+    scanf("%c ", coluna_origem);
+    *coluna_origem = toupper(*coluna_origem);   
+    getchar();
 }
 
 void cmd_insere_cel(char cmd[], char* coluna_origem, char* coluna_destino){
@@ -90,9 +97,8 @@ void insere_fundacoes(Mesa *mesa, char coluna_origem){
     No* no = NULL;
     int indice_coluna = coluna_origem - 'A';
 
-    if(!(toupper(coluna_origem) >= 'A' && toupper(coluna_origem) <= 'H')) return;
+    if(coluna_origem >= 'A' && coluna_origem <= 'H') return;
 
-    printf("Coluna de origem: %c\n", coluna_origem);
 
     if(indice_coluna >= 0 && indice_coluna < 8){
 
@@ -279,10 +285,10 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
     }
 }
 
-char getNaipe(char str){
+char getNaipe(unsigned char str){
     return naipe[str];
 }
 
-char getValor(char str){
+char getValor(unsigned char str){
     return valor[str];
 }

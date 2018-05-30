@@ -28,8 +28,8 @@ Carta* Criar_Carta(int naipe, int valor){
 void Criar_Baralho(Carta* cartas[]){
     int naipe, valor;
 
-    for(naipe = 0; naipe < 3; naipe++){
-        for(valor = 0; valor < 12; valor++){
+    for(naipe = 0; naipe < 4; naipe++){
+        for(valor = 0; valor < 13; valor++){
             cartas[naipe*13 + valor] = Criar_Carta(naipe, valor);
         }
     }

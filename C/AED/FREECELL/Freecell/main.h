@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+
 #include "start.h"
 #include "comandos.h"
 #include "pilhas.h"

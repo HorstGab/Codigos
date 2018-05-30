@@ -18,7 +18,9 @@ Pilha* insere_carta(Pilha* pilha, Carta* carta){
         nova_pilha->tamanho++;
         nova_pilha->inicio = criar_no(carta);
         nova_pilha->fim = nova_pilha->inicio;
+        return nova_pilha;
     }
+
     aux = pilha->inicio;
     pilha->inicio = criar_no(carta);
     pilha->inicio->prox = aux;

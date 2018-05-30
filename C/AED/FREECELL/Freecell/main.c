@@ -20,7 +20,13 @@ void mostrar_mesa(Mesa* mesa){
 
     mostrar_marcas();
     mostrar_celulas(mesa);
-    //mostrar_fundacao(mesa);
+    mostrar_fundacao(mesa);
+
+
+    for(i = 0; i < 8; i++){
+        printf(" %c \t", 'A' + i);
+    }
+    printf("\n");
 
     inverte_pilha(mesa->pilhas, pilha_reversa, &andares);
 
@@ -44,7 +50,6 @@ void mostrar_mesa(Mesa* mesa){
     for(i = 0; i < 8; i++){
         free(pilha_aux[i]);
         free(pilha_reversa[i]);
-        printf(" %c \n", 'A'+ i);
     }
     printf("\n ");
 }
@@ -52,20 +57,20 @@ void mostrar_mesa(Mesa* mesa){
 void mostrar_carta(Carta* carta){
     char valor, naipe;
 
-    if(carta){
-        naipe = carta->naipe;
-        valor = carta->valor;
-        printf("%c%c,%c%c \t", (naipe%2) ? '(' : '[', getNaipe(naipe), getValor(valor), (naipe%2) ? ')' : ']');
-    }else{
-        printf(" x \t");
-    }
+    naipe = carta->naipe;
+    valor = carta->valor;
+    printf("%c,%c\t", getNaipe(naipe), getValor(valor));
 }
 
 void mostrar_celulas(Mesa* mesa){
     int i;
 
     for(i = 0; i < 4; i++){
-        mostrar_carta(mesa->celulas[i]);
+        if(mesa->celulas[i]){
+            mostrar_carta(mesa->celulas[i]);
+        }else{
+            printf(" x \t");
+        }
     }
     printf("\t ");
 }
@@ -74,7 +79,11 @@ void mostrar_fundacao(Mesa* mesa){
     int i;
 
     for(i = 0; i < 4; i++){
-        mostrar_carta(mesa->fundacoes[i]->inicio->carta);
+        if(mesa->fundacoes[i]->inicio){
+            mostrar_carta(mesa->fundacoes[i]->inicio->carta);
+        }else{
+            printf(" x \t");
+        }
     }
     printf("\n\n");
 }
@@ -89,7 +98,7 @@ void mostrar_marcas(){
     printf("\t");
 
     for(i = 0; i < 4; i++){
-        printf(" %c \t", getNaipe(i));
+       printf(" %c \t", getNaipe(i));
     }
     printf("\n");
 }
