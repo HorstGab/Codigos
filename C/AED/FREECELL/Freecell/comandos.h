@@ -22,7 +22,7 @@ void cmd_fundacao(char *coluna_origem);
 void cmd_insere_cel(char* coluna_origem);
 
 //le o comando para retirar carta das celulas
-void cmd_remove_cel(char cmd[], char* coluna_origem, char* coluna_destino);
+void cmd_remove_cel(char* coluna_origem, char* coluna_destino);
 
 //le o comando que muda uma ou mais carta de uma coluna para outra
 void cmd_colunas(char cmd[],char* coluna_origem, int* qnt_cartas, char* coluna_destino);
@@ -31,7 +31,7 @@ void cmd_colunas(char cmd[],char* coluna_origem, int* qnt_cartas, char* coluna_d
 void insere_fundacoes(Mesa* mesa, char coluna_origem);
 
 //insere cartas nas celulas livres
-void insere_celulas(Mesa* mesa, char coluna_origem, char coluna_destino);
+void insere_celulas(Mesa* mesa, char coluna_origem);
 
 //retira cartas das celulas
 void remove_celula(Mesa* mesa, char coluna_origem, char coluna_destino);
