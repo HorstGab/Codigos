@@ -88,11 +88,12 @@ void cmd_insere_cel(char* coluna_origem){
 
 void cmd_remove_cel(char* coluna_origem, char* coluna_destino){
     printf("Escolha a celula a retirar a carta: ");
-    scanf("%c ", coluna_origem);
+    scanf("%c", coluna_origem);
     *coluna_origem = toupper(*coluna_origem);
+    getchar();
 
     printf("Escolha a coluna a inserir a carta: ");
-    scanf("%c ", coluna_destino);
+    scanf("%c", coluna_destino);
     *coluna_destino = toupper(*coluna_destino);
 }
 
