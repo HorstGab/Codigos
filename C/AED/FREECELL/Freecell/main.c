@@ -7,6 +7,7 @@ int main(void){
         printf("JOGO INICIADO \n");
 
         while(1){
+            fflush(stdin);
             mostrar_mesa(mesa);
             imput_comandos(mesa);
         }

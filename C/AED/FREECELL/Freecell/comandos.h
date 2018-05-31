@@ -16,10 +16,10 @@ int comandos_possiveis();
 void imput_comandos(Mesa* mesa);
 
 //le o comando para enviar para as fundacoes
-void cmd_fundacao(char* coluna_origem);
+void cmd_fundacao(char *coluna_origem);
 
 //le o comando para enviar carta para as celulas
-void cmd_insere_cel(char cmd[], char* coluna_origem, char* coluna_destino);
+void cmd_insere_cel(char* coluna_origem);
 
 //le o comando para retirar carta das celulas
 void cmd_remove_cel(char cmd[], char* coluna_origem, char* coluna_destino);

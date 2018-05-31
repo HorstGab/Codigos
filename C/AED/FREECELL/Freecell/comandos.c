@@ -16,13 +16,14 @@ void imput_comandos(Mesa *mesa){
 
     switch(cmd_tipo){
     case 1:
-        printf("case 1\n");
         cmd_fundacao(&coluna_origem);
         printf("Coluna de origem: %c\n", coluna_origem);
         insere_fundacoes(mesa, coluna_origem);
-        break;
+        printf("\n\n --------//-------------------//-----------------\n\n");
+    break;
     case 2:
-        cmd_insere_cel(cmd, &coluna_origem, &coluna_destino);
+        cmd_insere_cel(&coluna_origem);
+
         insere_celulas(mesa, coluna_origem, coluna_destino);
         break;
     case 3:
@@ -33,16 +34,20 @@ void imput_comandos(Mesa *mesa){
         cmd_colunas(cmd, &coluna_origem, &qnt_cartas, &coluna_destino);
         move_coluna(mesa, coluna_origem, qnt_cartas, coluna_destino);
         break;
-    case 5:
+   // case 5:
         /*ler_cmd5();
         salvar_jogo();*/
-        break;
-    case 6:
+        //break;
+   // case 6:
         /*ler_cmd6();
         carregar_jogo();*/
         break;
    // case 7:
      //   sair();
+        //break;
+    default:
+        printf("comando invalido\n");
+    break;
     }
     getchar();
 }
@@ -61,22 +66,21 @@ int comandos_possiveis(){
 
     printf("escolha a operacao: ");
     scanf("%d", &cmd_tipo);
-    printf("\n");
+    fflush(stdin);
 
     return cmd_tipo;
 }
 
-void cmd_fundacao(char* coluna_origem){
+void cmd_fundacao(char *coluna_origem){
     printf("Escolha a coluna: ");
-    scanf("%c ", coluna_origem);
-    *coluna_origem = toupper(*coluna_origem);   
-    getchar();
+    scanf("%c", coluna_origem);
+    *coluna_origem = toupper(*coluna_origem);
 }
 
-void cmd_insere_cel(char cmd[], char* coluna_origem, char* coluna_destino){
-    sscanf(cmd, "^%c >%c", coluna_origem, coluna_destino);
+void cmd_insere_cel(char* coluna_origem){
+    printf("Escolha a coluna a ser enviada para o campo de reserva: ");
+    scanf("%c", coluna_origem);
     *coluna_origem = toupper(*coluna_origem);
-    *coluna_destino = toupper(*coluna_destino);
 }
 
 void cmd_remove_cel(char cmd[], char* coluna_origem, char* coluna_destino){
@@ -97,29 +101,25 @@ void insere_fundacoes(Mesa *mesa, char coluna_origem){
     No* no = NULL;
     int indice_coluna = coluna_origem - 'A';
 
-    if(coluna_origem >= 'A' && coluna_origem <= 'H') return;
-
-
-    if(indice_coluna >= 0 && indice_coluna < 8){
-
+    if(coluna_origem >= 'A' && coluna_origem <= 'H'){
         if(mesa->pilhas[indice_coluna]->inicio){
             carta = mesa->pilhas[indice_coluna]->inicio->carta;
-
             if(mesa->fundacoes[carta->naipe]){
                 no = mesa->fundacoes[carta->naipe]->inicio;
             }
-
             if(!carta->valor || (no && no->carta->valor == carta->valor - 1)){
                 no = pop(mesa->pilhas[indice_coluna]);
                 mesa->fundacoes[carta->naipe] = insere_carta(mesa->fundacoes[carta->naipe], no->carta);
                 mesa->qnt_pilha_livre += (!mesa->pilhas[indice_coluna]->tamanho);
                 free(no);
             }else{
-                printf("A CARTA [%d, %d] NAO PODE SER FINALIZADA! \n", carta->naipe, carta->valor);
+                printf("A CARTA [%c,%c] NAO PODE SER FINALIZADA! \n", getNaipe(carta->naipe), getValor(carta->valor));
             }
         }else{
-            printf("A COLUNA (%d) NAO POSSUI CARTAS \n", coluna_origem);
+            printf("A COLUNA (%c) NAO POSSUI CARTAS \n", coluna_origem);
         }
+    }else{
+        printf("COLUNA INVALIDA \n");
     }
 }
 
