@@ -25,7 +25,7 @@ void cmd_insere_cel(char* coluna_origem);
 void cmd_remove_cel(char* coluna_origem, char* coluna_destino);
 
 //le o comando que muda uma ou mais carta de uma coluna para outra
-void cmd_colunas(char cmd[],char* coluna_origem, int* qnt_cartas, char* coluna_destino);
+void cmd_colunas(char* coluna_origem, int* qnt_cartas, char* coluna_destino);
 
 //movimenta a carta para a fundacão
 void insere_fundacoes(Mesa* mesa, char coluna_origem);

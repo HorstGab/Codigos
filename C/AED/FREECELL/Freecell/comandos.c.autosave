@@ -218,12 +218,10 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
         if(coluna_destino >= 'A' && coluna_destino <= 'H'){
-
             if(mesa->pilhas[indice_coluna_o]->inicio){
                 if(qnt_cartas <= (mesa->celula_livre+1) * pow(2, mesa->qnt_pilha_livre)){
                     no_o = mesa->pilhas[indice_coluna_o]->inicio;
-
-
+                    
                     if(!qnt_cartas) return;
 
                     for(i = aux = 1; i < qnt_cartas && aux; ++i){
