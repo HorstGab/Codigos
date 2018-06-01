@@ -4,7 +4,6 @@ int main(void){
     Mesa* mesa = Criar_Mesa();
 
         iniciar_jogo(mesa);
-        printf("JOGO INICIADO \n");
 
         while(1){
             fflush(stdin);
@@ -19,6 +18,7 @@ void mostrar_mesa(Mesa* mesa){
     No *pilha_aux[8] = {NULL};
     No *pilha_reversa[8] = {NULL};
 
+    printf("\n P - Paus; C - Copas; E - Espadas; O - Ouro \n\n");
     mostrar_marcas();
     mostrar_celulas(mesa);
     mostrar_fundacao(mesa);
@@ -41,12 +41,12 @@ void mostrar_mesa(Mesa* mesa){
                 mostrar_carta(pilha_aux[i]->carta);
                 pilha_aux[i] = pilha_aux[i]->prox;
             }else{
-                printf("   ");
+                printf("\t");
             }
         }
-        printf("\n ");
+        printf("\n");
     }
-    printf("   ");
+    printf("\t");
 
     for(i = 0; i < 8; i++){
         free(pilha_aux[i]);

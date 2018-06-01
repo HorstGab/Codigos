@@ -11,35 +11,26 @@ void imput_comandos(Mesa *mesa){
 
     cmd_tipo = comandos_possiveis();
 
-    if(cmd_tipo)printf("ok\n");
-
     switch(cmd_tipo){
     case 1:
         cmd_fundacao(&coluna_origem);
-        printf("Coluna de origem: %c\n", coluna_origem);
+        system("cls");
         insere_fundacoes(mesa, coluna_origem);
-        printf("\n\n --------//-------------------//-----------------\n\n");
     break;
     case 2:
         cmd_insere_cel(&coluna_origem);
-        printf("Coluna de origem: %c \n", coluna_origem);
+        system("cls");
         insere_celulas(mesa, coluna_origem);
-        printf("\n\n --------//-------------------//-----------------\n\n");
     break;
     case 3:
         cmd_remove_cel(&coluna_origem, &coluna_destino);
-        printf("Celula de origem: %c \n", coluna_origem);
-        printf("Coluna de destino: %c \n", coluna_destino);
+        system("cls");
         remove_celula(mesa, coluna_origem, coluna_destino);
-        printf("\n\n --------//-------------------//-----------------\n\n");
     break;
     case 4:
         cmd_colunas(&coluna_origem, &qnt_cartas, &coluna_destino);
-        printf("Celula de origem: %c \n", coluna_origem);
-        printf("quantidade de cartas: %d \n", qnt_cartas);
-        printf("Coluna de destino: %c \n", coluna_destino);
+        system("cls");
         move_coluna(mesa, coluna_origem, qnt_cartas, coluna_destino);
-        printf("\n\n --------//-------------------//-----------------\n\n");
     break;
    // case 5:
         /*ler_cmd5();
@@ -53,7 +44,7 @@ void imput_comandos(Mesa *mesa){
      //   sair();
         //break;
     default:
-        printf("comando invalido\n");
+        printf("Comando invalido!\n");
     break;
     }
     getchar();
@@ -62,16 +53,16 @@ void imput_comandos(Mesa *mesa){
 int comandos_possiveis(){
     int cmd_tipo;
 
-    printf("comandos possiveis: \n");
-    printf("1: MOVER PARA AS FUNDACOES \n");
-    printf("2. MOVER PARA O CAMPO VAZIO \n");
-    printf("3. RETIRAR DO CAMPO VAZIO \n");
-    printf("4. MOVER PARA OUTRA COLUNA \n");
-    printf("5. SALVAR JOGO \n");
-    printf("6. CARREGAR JOGO \n");
+    printf("Comandos possiveis: \n");
+    printf("1: COLUNA -> FUNDACOES\n");
+    printf("2. COLUNA -> CAMPO VAZIO\n");
+    printf("3. CAMPO VAZIO -> COLUNA\n");
+    printf("4. COLUNA -> COLUNA\n");
+    printf("5. SALVAR JOGO\n");
+    printf("6. CARREGAR JOGO\n");
     printf("7. SAIR \n");
 
-    printf("escolha a operacao: ");
+    printf("Escolha a operacao: ");
     scanf("%d", &cmd_tipo);
     fflush(stdin);
 
@@ -104,8 +95,12 @@ void cmd_remove_cel(char* coluna_origem, char* coluna_destino){
 void cmd_colunas(char* coluna_origem, int* qnt_cartas, char* coluna_destino){
     printf("Escolha a coluna inicial: ");
     scanf("%c", coluna_origem);
+    *coluna_origem = toupper(*coluna_origem);
+    getchar();
     printf("Escolha a coluna de destino: ");
     scanf("%c", coluna_destino);
+    *coluna_destino = toupper(*coluna_destino);
+    getchar();
     printf("Escolha a quantidade de cartas: ");
     scanf("%d", qnt_cartas);
 }
@@ -212,7 +207,7 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
     Pilha *pilha;
     int indice_coluna_o = coluna_origem - 'A';
     int indice_coluna_d = coluna_destino - 'A';
-    int i, aux;
+    int i;
 
 
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
@@ -223,24 +218,8 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 
                     if(!qnt_cartas) return;
 
-                    for(i = aux = 1; i < qnt_cartas && aux; ++i){
-                        if(no_o && no_o->prox){
-                            if(no_o->carta->naipe%2 == no_o->prox->carta->naipe%2){
-                                aux = 1;
-                                printf("AS CORES PRECISAM SER ALTERNADAS! \n");
-                            }
-                            if(no_o->carta->valor - no_o->prox->carta->valor != -1){
-                                aux = 1;
-                                printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", carta_o->naipe, carta_o->valor);
-                            }
-                        }else{
-                            aux = 1;
-                            printf("NAO HA %d CARTA(S) PARA SER MOVIMENTADA\n", qnt_cartas);
-                        }
-                        no_o = no_o->prox;
-                    }
-
-                    if(aux){
+                    if(validacao_coluna(no_o, qnt_cartas)){
+                        printf("ok\n");
                         carta_o = no_o->carta;
                         no_d = mesa->pilhas[indice_coluna_d]->inicio;
                         carta_d = mesa->pilhas[indice_coluna_d]->inicio->carta;
@@ -278,6 +257,32 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
             }
         }
     }
+}
+
+int validacao_coluna (No* no, int qnt_cartas){
+    int i, aux = 0;
+
+    for(i = 0; i < qnt_cartas; i++){
+        if(no && no->prox){
+            if(no->carta->naipe%2 == no->prox->carta->naipe%2){
+                if((no->carta->valor+1) != no->prox->carta->valor){
+                    aux = 1;
+                }else{
+                    printf("As cartas nao possuem ordem valida! \n");
+                    return 0;
+                }
+            }else{
+                printf("Os naipes das cartas precisam ser alternados! \n");
+                return 0;
+            }
+        }else{
+            printf("Quantidade de cartas inexistente! \n");
+            return 0;
+        }
+        no = no->prox;
+    }
+
+    return aux;
 }
 
 char getNaipe(unsigned char str){

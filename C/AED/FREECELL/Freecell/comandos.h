@@ -39,6 +39,8 @@ void remove_celula(Mesa* mesa, char coluna_origem, char coluna_destino);
 //move uma ou mais cartas de uma coluna para outra
 void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_destino);
 
+int validacao_coluna (No* no, int qnt_cartas);
+
 char getNaipe(unsigned char str);
 
 char getValor(unsigned char str);

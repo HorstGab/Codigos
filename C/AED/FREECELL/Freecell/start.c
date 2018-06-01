@@ -40,15 +40,12 @@ void iniciar_jogo(Mesa* mesa){
     int i;
 
     Criar_Baralho(cartas);
-    printf("baralho criado\n");
     Embaralhar(cartas);
-    printf("baralho embaralhado\n");
 
     for(i = 0; i < 52; i++){
         mesa->pilhas[i%8] = insere_carta(mesa->pilhas[i%8], cartas[i]);
     }
     mesa->qnt_pilha_livre = 0;
-    printf("cartas inseridas na mesa\n");
 }
 
 void Embaralhar(Carta* cartas[]){
