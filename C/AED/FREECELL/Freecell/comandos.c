@@ -5,7 +5,6 @@ char valor[13] = {'A','2','3','4','5','6','7','8','9','1','J','Q','K'};
 
 
 void imput_comandos(Mesa *mesa){
-    char cmd[MAXSTR];
     int cmd_tipo;
     char coluna_origem = 0, coluna_destino = 0;
     int qnt_cartas = 0;
@@ -218,11 +217,9 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
         if(coluna_destino >= 'A' && coluna_destino <= 'H'){
-
             if(mesa->pilhas[indice_coluna_o]->inicio){
                 if(qnt_cartas <= (mesa->celula_livre+1) * pow(2, mesa->qnt_pilha_livre)){
                     no_o = mesa->pilhas[indice_coluna_o]->inicio;
-
 
                     if(!qnt_cartas) return;
 
