@@ -51,6 +51,7 @@ void iniciar_jogo(Mesa* mesa){
 void Embaralhar(Carta* cartas[]){
     Carta* aux = NULL;
     int i, ind;
+    srand(time(NULL));
 
     for(i = 0; i < 52; i++){
         ind = rand() % 52;

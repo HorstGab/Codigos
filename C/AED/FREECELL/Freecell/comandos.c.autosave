@@ -268,7 +268,7 @@ int validacao_coluna (No* no, int qnt_cartas){
     for(i = 0; i < qnt_cartas; i++){
         if(no && no->prox){
             if(no->carta->naipe%2 != no->prox->carta->naipe%2){
-                if(no->carta->valor == (no->prox->carta->valor+1)){
+                if((no->carta->valor+1) == no->prox->carta->valor){
                     aux = 1;
                 }else{
                     printf("As cartas nao possuem ordem valida! \n");
