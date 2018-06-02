@@ -210,7 +210,7 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
     Pilha *pilha;
     int indice_coluna_o = coluna_origem - 'A';
     int indice_coluna_d = coluna_destino - 'A';
-    int i;
+    int i, aux = 1;
 
 
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
@@ -220,9 +220,11 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
                     no_o = mesa->pilhas[indice_coluna_o]->inicio;
 
                     if(!qnt_cartas) return;
+                    if(qnt_cartas > 2){
+                        aux = validacao_coluna(no_o, qnt_cartas);
+                    }
 
-                    if(validacao_coluna(no_o, qnt_cartas)){
-                        printf("ok\n");
+                    if(aux){
                         carta_o = no_o->carta;
                         no_d = mesa->pilhas[indice_coluna_d]->inicio;
                         carta_d = mesa->pilhas[indice_coluna_d]->inicio->carta;
@@ -246,7 +248,7 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 
                                 free(pilha);
                             }else{
-                                printf("CARTA [%d, %d] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", carta_o->naipe, carta_o->valor);
+                                printf("CARTA PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n");
                             }
                         }else{
                             printf("AS CORES PRECISAM SER ALTERNADAS! \n");
@@ -267,7 +269,7 @@ int validacao_coluna (No* no, int qnt_cartas){
 
     for(i = 0; i < qnt_cartas; i++){
         if(no && no->prox){
-            if(no->carta->naipe%2 != no->prox->carta->naipe%2){
+            if(no->carta->naipe%2 == no->prox->carta->naipe%2){
                 if((no->carta->valor+1) == no->prox->carta->valor){
                     aux = 1;
                 }else{
