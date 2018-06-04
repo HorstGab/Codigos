@@ -10,39 +10,47 @@ void imput_comandos(Mesa *mesa){
     int qnt_cartas = 0;
 
     cmd_tipo = comandos_possiveis();
-
+    //para cada caso le um comando e o executa
     switch(cmd_tipo){
     case 1:
+        //enviar para as fundacoes
         cmd_fundacao(&coluna_origem);
         system("cls");
         insere_fundacoes(mesa, coluna_origem);
         break;
     case 2:
+        //inserir nas celulas
         cmd_insere_cel(&coluna_origem);
         system("cls");
         insere_celulas(mesa, coluna_origem);
         break;
     case 3:
+        //remover das celulas e inserir nas colunas
         cmd_remove_cel(&coluna_origem, &coluna_destino);
         system("cls");
         remove_celula(mesa, coluna_origem, coluna_destino);
         break;
     case 4:
-
-    case 5:
-        cmd_colunas(&coluna_origem, &qnt_cartas, &coluna_destino);
+        //remover das celulas e inserir nas fundacoes
+        cmd_cel_fund(&coluna_origem);
         system("cls");
+        cel_fund(mesa, coluna_origem);
+        break;
+    case 5:
+        //mover de uma coluna para outra
+        cmd_colunas(&coluna_origem, &qnt_cartas, &coluna_destino);
+        //system("cls");
         move_coluna(mesa, coluna_origem, qnt_cartas, coluna_destino);
         break;
-
+    case 6:
         /*ler_cmd5();
         salvar_jogo();*/
         //break;
-    case 6:
+    case 7:
         /*ler_cmd6();
         carregar_jogo();*/
         break;
-    case 7:
+    case 8:
         //sair();
         break;
     default:
@@ -74,37 +82,58 @@ int comandos_possiveis(){
 
 void cmd_fundacao(char *coluna_origem){
     printf("Escolha a coluna: ");
+    //le o char que representa a coluna
     scanf("%c", coluna_origem);
+    //transforma em maiuscula
     *coluna_origem = toupper(*coluna_origem);
 }
 
 void cmd_insere_cel(char* coluna_origem){
     printf("Escolha a coluna a ser enviada para o campo de reserva: ");
+    //le o char que representa a coluna
     scanf("%c", coluna_origem);
+    //transforma em maiuscula
     *coluna_origem = toupper(*coluna_origem);
 }
 
 void cmd_remove_cel(char* coluna_origem, char* coluna_destino){
     printf("Escolha a celula a retirar a carta: ");
+    //le o char que representa a celula
     scanf("%c", coluna_origem);
+    //transforma em maiuscula
     *coluna_origem = toupper(*coluna_origem);
     getchar();
 
     printf("Escolha a coluna a inserir a carta: ");
+    //le o char que representa a coluna
     scanf("%c", coluna_destino);
+    //transforma em maiuscula
     *coluna_destino = toupper(*coluna_destino);
+}
+
+void cmd_cel_fund(char *coluna_origem){
+    printf("Escolha a celula a retirar a carta: ");
+    //le o char que representa a celula
+    scanf("%c",coluna_origem);
+    //transforma em maiuscula
+    *coluna_origem = toupper(*coluna_origem);
 }
 
 void cmd_colunas(char* coluna_origem, int* qnt_cartas, char* coluna_destino){
     printf("Escolha a coluna inicial: ");
+    //le o char que representa a coluna de inicio
     scanf("%c", coluna_origem);
+    //transforma em maiuscula
     *coluna_origem = toupper(*coluna_origem);
     getchar();
     printf("Escolha a coluna de destino: ");
+    //le o char que representa a coluna de destino
     scanf("%c", coluna_destino);
+    //transforma em maiuscula
     *coluna_destino = toupper(*coluna_destino);
     getchar();
     printf("Escolha a quantidade de cartas: ");
+    //le a quantidade de cartas a ser movida
     scanf("%d", qnt_cartas);
 }
 
@@ -113,19 +142,29 @@ void insere_fundacoes(Mesa *mesa, char coluna_origem){
     No* no = NULL;
     int indice_coluna = coluna_origem - 'A';
 
+    //confere se a coluna está entre as colunas existentes
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
+        //confere se existe topo
         if(mesa->pilhas[indice_coluna]->inicio){
+            //carta recebe a carta do topo da pilha
             carta = mesa->pilhas[indice_coluna]->inicio->carta;
+            //confere se existe a pilha do respectivo naipe na fundacao
             if(mesa->fundacoes[carta->naipe]){
+                //no recebe o topo da pilha do respectivo naipe na fundacao
                 no = mesa->fundacoes[carta->naipe]->inicio;
             }
-            if(!carta->valor || (no && no->carta->valor == carta->valor - 1)){
+            //condere se é um as ou o no existe e se os valores das cartas e uma unidade menor que a outra
+            if(!carta->valor || (no && (no->carta->valor+1) == carta->valor)){
+                //no recebe o topo da pilha de cartas
                 no = pop(mesa->pilhas[indice_coluna]);
+                //fundacao recebe a carta retirada da pilha
                 mesa->fundacoes[carta->naipe] = insere_carta(mesa->fundacoes[carta->naipe], no->carta);
+                //atualiza o numero de pilhas vazias se foi esvaziada
                 mesa->qnt_pilha_livre += (!mesa->pilhas[indice_coluna]->tamanho);
+                //libera o no
                 free(no);
             }else{
-                printf("A CARTA [%c,%c] NAO PODE SER FINALIZADA! \n", getNaipe(carta->naipe), getValor(carta->valor));
+                printf("A CARTA NAO PODE SER FINALIZADA! \n");
             }
         }else{
             printf("A COLUNA (%c) NAO POSSUI CARTAS! \n", coluna_origem);
@@ -141,17 +180,27 @@ void insere_celulas(Mesa *mesa, char coluna_origem){
     int indice_coluna = coluna_origem - 'A';
     int i;
 
+    //confere se a coluna esta entre as colunas validas
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
+        //confere se possui celulas livres
         if(mesa->celula_livre){
+            //confere se existe carta no topo da pilha de cartas
             if(mesa->pilhas[indice_coluna]->inicio){
                 for(i = 0; i < 4; i++){
+                    //se a celula nao possuir celula
                     if(!mesa->celulas[i]){
+                        //no recebe o topo da pilha de cartas
                         no = pop(mesa->pilhas[indice_coluna]);
+                        //carta recebe a carta do topo da pilha
                         carta = no->carta;
+                        //a celula recebe a carta
                         mesa->celulas[i] = carta;
 
+                        //a quantidade de celula livre eh decrementada
                         mesa->celula_livre--;
+                        //atualiza o numero de pilhas livres se foi esvaziada
                         mesa->qnt_pilha_livre += (!mesa->pilhas[indice_coluna]);
+                        //libera no
                         free(no);
                         break;
                     }
@@ -173,22 +222,35 @@ void remove_celula(Mesa *mesa, char coluna_origem, char coluna_destino){
     int indice_coluna_o = coluna_origem - 'A';
     int indice_coluna_d = coluna_destino - 'A';
 
+
+    //confere se a celula esta entre as colunas validas
     if(coluna_origem >= 'A' && coluna_origem <= 'D') {
+        //confere se a coluna é valida e se esta entre as colunas validas
         if(!coluna_destino || (coluna_destino >= 'A' && coluna_destino <= 'H')){
+            //confere se existe carta para retirar da celula
             if(mesa->celulas[indice_coluna_o]){
+                //carta recebe a carta da celula
                 carta_o = mesa->celulas[indice_coluna_o];
+                //no recebe o topo da pilha
                 no = mesa->pilhas[indice_coluna_d]->inicio;
+                //carta de destino recebe a carta do topo da pilha
                 carta_d = no->carta;
 
+                //se a pilha eh vazia ou se os naipes sao diferentes
                 if(!no || carta_o->naipe%2 != carta_d->naipe%2){
-                    if(!no || carta_o->valor - carta_d->valor == -1){
+                    //se a pilha eh vazia ou se os valores das cartas e uma unidade menor q a outra
+                    if(!no || (carta_o->valor+1) == carta_d->valor){
+                        //pilha recebe a carta da celula
                         mesa->pilhas[indice_coluna_d] = insere_carta(mesa->pilhas[indice_coluna_d], carta_o);
+                        //celula é zerada
                         mesa->celulas[indice_coluna_o] = NULL;
 
+                        //quantidade de celulas livres eh incrementada
                         mesa->celula_livre++;
+                        //diminui a quantidade de pilhas vazias se o no n for vazia
                         mesa->qnt_pilha_livre -= (!no);
                     }else{
-                        printf("CARTA [%c,%c] PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n", getNaipe(carta_o->naipe), getValor(carta_o->valor));
+                        printf("CARTA PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n");
                     }
                 }else{
                     printf("AS CORES PRECISAM SER ALTERNADAS! \n");
@@ -198,6 +260,41 @@ void remove_celula(Mesa *mesa, char coluna_origem, char coluna_destino){
             }
         }else{
             printf("COLUNA INVALIDA! \n");
+        }
+    }else{
+        printf("CELULA INVALIDA! \n");
+    }
+}
+
+void cel_fund(Mesa *mesa, char coluna_origem){
+    Carta* carta = NULL;
+    No* no = NULL;
+    int indice_coluna = coluna_origem - 'A';
+
+    //confere se a celula esta entre as colunas validas
+    if(coluna_origem >= 'A' && coluna_origem <= 'D'){
+        //confere se a celula possui carta
+        if(mesa->celulas[indice_coluna]){
+            //carta recebe a carta da celula
+            carta = mesa->celulas[indice_coluna];
+            //confere se a pilha do vetor de fundacoes possui carta
+            if(mesa->fundacoes[carta->naipe]){
+                //no recebe o no do topo da fundacao
+                no = mesa->fundacoes[carta->naipe]->inicio;
+                //se a pilha eh vazia ou se os valores das cartas e uma unidade menor que a outra
+                if(!carta->valor || (no && (no->carta->valor+1) == carta->valor)){
+                    //a fundacão recebe a carta da celula
+                    mesa->fundacoes[carta->naipe] = insere_carta(mesa->fundacoes[carta->naipe],carta);
+                    //a celula é anulada
+                    mesa->celulas[indice_coluna] = NULL;
+                    //a quantidade de celulas livres é incrementada
+                    mesa->celula_livre++;
+                }else{
+                    printf("A CARTA NAO PODE SER FINALIZADA! \n");
+                }
+            }
+        }else{
+            printf("NAO POSSUI CARTA NA CELULA DE RESERVA! \n");
         }
     }else{
         printf("CELULA INVALIDA! \n");
@@ -219,10 +316,15 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
                 if(qnt_cartas <= (mesa->celula_livre+1) * pow(2, mesa->qnt_pilha_livre)){
                     no_o = mesa->pilhas[indice_coluna_o]->inicio;
 
-                    if(!qnt_cartas) return;
-                    if(qnt_cartas > 2){
-                        aux = validacao_coluna(no_o, qnt_cartas);
+                    if(!qnt_cartas){
+                        return;
+                        if(qnt_cartas > 1){
+                            aux = validacao_coluna(no_o, qnt_cartas);
+                            for(i = 0; i < qnt_cartas; no_o = no_o->prox);
+                                printf("ok\n");
+                        }
                     }
+
 
                     if(aux){
                         carta_o = no_o->carta;
@@ -231,7 +333,7 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 
                         if(!no_d || carta_o->naipe%2 != carta_d->naipe%2){
 
-                            if(!no_d || carta_o->valor - carta_d->valor == -1){
+                            if(!no_d || (carta_o->valor+1) == carta_d->valor){
                                 pilha = criar_pilha();
 
                                 for(i = 0; i < qnt_cartas; i++){
@@ -267,17 +369,18 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 int validacao_coluna (No* no, int qnt_cartas){
     int i, aux = 0;
 
-    for(i = 0; i < qnt_cartas; i++){
+    for(i = 1; i < qnt_cartas; i++){
         if(no && no->prox){
-            if(no->carta->naipe%2 == no->prox->carta->naipe%2){
+            if(no->carta->naipe%2 != no->prox->carta->naipe%2){
                 if((no->carta->valor+1) == no->prox->carta->valor){
                     aux = 1;
+                    printf("ok\n");
                 }else{
                     printf("As cartas nao possuem ordem valida! \n");
                     return 0;
                 }
             }else{
-                printf("Os naipes das cartas precisam ser alternados! \n");
+                printf("Os cores das cartas precisam ser alternados! \n");
                 return 0;
             }
         }else{
@@ -286,7 +389,6 @@ int validacao_coluna (No* no, int qnt_cartas){
         }
         no = no->prox;
     }
-
     return aux;
 }
 
