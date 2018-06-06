@@ -6,8 +6,7 @@ CONFIG -= qt
 SOURCES += main.c \
     start.c \
     comandos.c \
-    pilhas.c \
-    arquivo_binario.c
+    pilhas.c
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -16,6 +15,5 @@ HEADERS += \
     main.h \
     start.h \
     comandos.h \
-    pilhas.h \
-    arquivo_binario.h
+    pilhas.h
 

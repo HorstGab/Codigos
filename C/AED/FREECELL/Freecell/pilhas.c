@@ -1,5 +1,9 @@
 #include "pilhas.h"
 
+/**
+ * @brief criar_pilha
+ * @return
+ */
 Pilha* criar_pilha(){
     Pilha* nova_pilha = (Pilha*)malloc(sizeof(Pilha));
     nova_pilha->tamanho = 0;
@@ -9,6 +13,12 @@ Pilha* criar_pilha(){
     return nova_pilha;
 }
 
+/**
+ * @brief insere_carta
+ * @param pilha
+ * @param carta
+ * @return
+ */
 Pilha* insere_carta(Pilha* pilha, Carta* carta){
     No* aux = NULL;
 
@@ -29,6 +39,11 @@ Pilha* insere_carta(Pilha* pilha, Carta* carta){
     return pilha;
 }
 
+/**
+ * @brief criar_no
+ * @param carta
+ * @return
+ */
 No* criar_no(Carta *carta){
     No* novo_no = (No*)malloc(sizeof(No));
 
@@ -38,6 +53,11 @@ No* criar_no(Carta *carta){
     return novo_no;
 }
 
+/**
+ * @brief pop
+ * @param pilha
+ * @return
+ */
 No* pop(Pilha *pilha){
     No* aux;
 
@@ -55,7 +75,12 @@ No* pop(Pilha *pilha){
     return aux;
 }
 
-
+/**
+ * @brief inverte_pilha
+ * @param pilha
+ * @param pilha_reversa
+ * @param andares
+ */
 void inverte_pilha(Pilha* pilha[], No* pilha_reversa[], int *andares){
     int i;
 
@@ -69,15 +94,27 @@ void inverte_pilha(Pilha* pilha[], No* pilha_reversa[], int *andares){
     }
 }
 
+/**
+ * @brief inverte_lista
+ * @param no
+ * @return
+ */
 No* inverte_lista(No* no){
     if(!no)return NULL;
 
     return insere_no_cauda(inverte_lista(no->prox), no->carta);
 }
 
+/**
+ * @brief insere_no_cauda
+ * @param lista
+ * @param carta
+ * @return
+ */
 No* insere_no_cauda(No* lista, Carta* carta){
     if(!lista) return criar_no(carta);
     lista->prox = insere_no_cauda(lista->prox, carta);
 
     return lista;
 }
+

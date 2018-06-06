@@ -121,26 +121,19 @@ compiler_clean:
 
 debug/main.o: ../Freecell/main.c ../Freecell/main.h \
 		../Freecell/start.h \
-		../Freecell/comandos.h \
-		../Freecell/pilhas.h
+		../Freecell/pilhas.h \
+		../Freecell/comandos.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\main.o ..\Freecell\main.c
 
 debug/start.o: ../Freecell/start.c ../Freecell/start.h \
-		../Freecell/main.h \
-		../Freecell/comandos.h \
 		../Freecell/pilhas.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\start.o ..\Freecell\start.c
 
 debug/comandos.o: ../Freecell/comandos.c ../Freecell/comandos.h \
-		../Freecell/main.h \
-		../Freecell/start.h \
 		../Freecell/pilhas.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\comandos.o ..\Freecell\comandos.c
 
-debug/pilhas.o: ../Freecell/pilhas.c ../Freecell/pilhas.h \
-		../Freecell/main.h \
-		../Freecell/start.h \
-		../Freecell/comandos.h
+debug/pilhas.o: ../Freecell/pilhas.c ../Freecell/pilhas.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\pilhas.o ..\Freecell\pilhas.c
 
 ####### Install

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 //estrutura para a carta
+
 typedef struct _carta{
     int naipe;
     int valor;
@@ -32,21 +33,58 @@ typedef struct _mesa{
 
 
 //cria uma pilha vazia
+/**
+ * @brief criar_pilha
+ * @return
+ */
 Pilha* criar_pilha();
 
 //insere as cartas na mesa
+/**
+ * @brief insere_carta
+ * @param pilha
+ * @param carta
+ * @return
+ */
 Pilha* insere_carta(Pilha* pilha, Carta* carta);
 
 // cria um novo no
+/**
+ * @brief criar_no
+ * @param carta
+ * @return
+ */
 No* criar_no(Carta* carta);
 
 //remove um elemento da pilha
+/**
+ * @brief pop
+ * @param pilha
+ * @return
+ */
 No *pop(Pilha *pilha);
 
+/**
+ * @brief inverte_pilha
+ * @param pilha
+ * @param pilha_reversa
+ * @param andares
+ */
 void inverte_pilha(Pilha* pilha[], No* pilha_reversa[], int *andares);
 
+/**
+ * @brief inverte_lista
+ * @param no
+ * @return
+ */
 No* inverte_lista(No* no);
 
+/**
+ * @brief insere_no_cauda
+ * @param lista
+ * @param carta
+ * @return
+ */
 No* insere_no_cauda(No* lista, Carta* carta);
 
 

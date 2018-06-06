@@ -1,5 +1,9 @@
 #include "start.h"
 
+/**
+ * @brief Criar_Mesa
+ * @return
+ */
 Mesa* Criar_Mesa(){
     Mesa* nova_mesa = (Mesa*)malloc(sizeof(Mesa));
     int i;
@@ -19,6 +23,12 @@ Mesa* Criar_Mesa(){
     return nova_mesa;
 }
 
+/**
+ * @brief Criar_Carta
+ * @param naipe
+ * @param valor
+ * @return
+ */
 Carta* Criar_Carta(int naipe, int valor){
     Carta* nova_carta = (Carta*)malloc(sizeof(Carta));
 
@@ -29,6 +39,10 @@ Carta* Criar_Carta(int naipe, int valor){
     return nova_carta;
 }
 
+/**
+ * @brief Criar_Baralho
+ * @param cartas
+ */
 void Criar_Baralho(Carta* cartas[]){
     int naipe, valor;
 
@@ -40,6 +54,10 @@ void Criar_Baralho(Carta* cartas[]){
     }
 }
 
+/**
+ * @brief iniciar_jogo
+ * @param mesa
+ */
 void iniciar_jogo(Mesa* mesa){
     Carta* cartas[52];
     int i;
@@ -56,6 +74,10 @@ void iniciar_jogo(Mesa* mesa){
     mesa->qnt_pilha_livre = 0;
 }
 
+/**
+ * @brief Embaralhar
+ * @param cartas
+ */
 void Embaralhar(Carta* cartas[]){
     Carta* aux = NULL;
     int i, ind;

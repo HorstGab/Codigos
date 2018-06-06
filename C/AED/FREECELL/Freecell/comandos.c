@@ -3,7 +3,10 @@
 char naipe[4] = {'O','E','C','P'};
 char valor[13] = {'A','2','3','4','5','6','7','8','9','1','J','Q','K'};
 
-
+/**
+ * @brief imput_comandos
+ * @param mesa
+ */
 void imput_comandos(Mesa *mesa){
     int cmd_tipo;
     char coluna_origem = 0, coluna_destino = 0;
@@ -39,19 +42,21 @@ void imput_comandos(Mesa *mesa){
     case 5:
         //mover de uma coluna para outra
         cmd_colunas(&coluna_origem, &qnt_cartas, &coluna_destino);
-        //system("cls");
+        system("cls");
         move_coluna(mesa, coluna_origem, qnt_cartas, coluna_destino);
         break;
     case 6:
-        /*ler_cmd5();
-        salvar_jogo();*/
-        //break;
+        //salva o jogo em um arquivo binario
+        system("cls");
+        salvar(mesa);
+        break;
     case 7:
-        /*ler_cmd6();
-        carregar_jogo();*/
+        //carrega um jogo salvo
+        system("cls");
+        carregar(mesa);
         break;
     case 8:
-        //sair();
+        sair();
         break;
     default:
         printf("Comando invalido!\n");
@@ -60,6 +65,10 @@ void imput_comandos(Mesa *mesa){
     getchar();
 }
 
+/**
+ * @brief comandos_possiveis
+ * @return
+ */
 int comandos_possiveis(){
     int cmd_tipo;
 
@@ -80,6 +89,10 @@ int comandos_possiveis(){
     return cmd_tipo;
 }
 
+/**
+ * @brief cmd_fundacao
+ * @param coluna_origem
+ */
 void cmd_fundacao(char *coluna_origem){
     printf("Escolha a coluna: ");
     //le o char que representa a coluna
@@ -88,6 +101,10 @@ void cmd_fundacao(char *coluna_origem){
     *coluna_origem = toupper(*coluna_origem);
 }
 
+/**
+ * @brief cmd_insere_cel
+ * @param coluna_origem
+ */
 void cmd_insere_cel(char* coluna_origem){
     printf("Escolha a coluna a ser enviada para o campo de reserva: ");
     //le o char que representa a coluna
@@ -96,6 +113,11 @@ void cmd_insere_cel(char* coluna_origem){
     *coluna_origem = toupper(*coluna_origem);
 }
 
+/**
+ * @brief cmd_remove_cel
+ * @param coluna_origem
+ * @param coluna_destino
+ */
 void cmd_remove_cel(char* coluna_origem, char* coluna_destino){
     printf("Escolha a celula a retirar a carta: ");
     //le o char que representa a celula
@@ -111,6 +133,10 @@ void cmd_remove_cel(char* coluna_origem, char* coluna_destino){
     *coluna_destino = toupper(*coluna_destino);
 }
 
+/**
+ * @brief cmd_cel_fund
+ * @param coluna_origem
+ */
 void cmd_cel_fund(char *coluna_origem){
     printf("Escolha a celula a retirar a carta: ");
     //le o char que representa a celula
@@ -119,6 +145,12 @@ void cmd_cel_fund(char *coluna_origem){
     *coluna_origem = toupper(*coluna_origem);
 }
 
+/**
+ * @brief cmd_colunas
+ * @param coluna_origem
+ * @param qnt_cartas
+ * @param coluna_destino
+ */
 void cmd_colunas(char* coluna_origem, int* qnt_cartas, char* coluna_destino){
     printf("Escolha a coluna inicial: ");
     //le o char que representa a coluna de inicio
@@ -137,6 +169,11 @@ void cmd_colunas(char* coluna_origem, int* qnt_cartas, char* coluna_destino){
     scanf("%d", qnt_cartas);
 }
 
+/**
+ * @brief insere_fundacoes
+ * @param mesa
+ * @param coluna_origem
+ */
 void insere_fundacoes(Mesa *mesa, char coluna_origem){
     Carta* carta = NULL;
     No* no = NULL;
@@ -174,6 +211,11 @@ void insere_fundacoes(Mesa *mesa, char coluna_origem){
     }
 }
 
+/**
+ * @brief insere_celulas
+ * @param mesa
+ * @param coluna_origem
+ */
 void insere_celulas(Mesa *mesa, char coluna_origem){
     Carta* carta = NULL;
     No* no = NULL;
@@ -216,6 +258,12 @@ void insere_celulas(Mesa *mesa, char coluna_origem){
     }
 }
 
+/**
+ * @brief remove_celula
+ * @param mesa
+ * @param coluna_origem
+ * @param coluna_destino
+ */
 void remove_celula(Mesa *mesa, char coluna_origem, char coluna_destino){
     Carta* carta_o = NULL, *carta_d = NULL;
     No* no = NULL;
@@ -266,6 +314,11 @@ void remove_celula(Mesa *mesa, char coluna_origem, char coluna_destino){
     }
 }
 
+/**
+ * @brief cel_fund
+ * @param mesa
+ * @param coluna_origem
+ */
 void cel_fund(Mesa *mesa, char coluna_origem){
     Carta* carta = NULL;
     No* no = NULL;
@@ -301,6 +354,13 @@ void cel_fund(Mesa *mesa, char coluna_origem){
     }
 }
 
+/**
+ * @brief move_coluna
+ * @param mesa
+ * @param coluna_origem
+ * @param qnt_cartas
+ * @param coluna_destino
+ */
 void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_destino){
     No *no_o = NULL, *no_d = NULL;
     Carta *carta_o = NULL, *carta_d = NULL;
@@ -318,11 +378,12 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
 
                     if(!qnt_cartas){
                         return;
-                        if(qnt_cartas > 1){
-                            aux = validacao_coluna(no_o, qnt_cartas);
-                            for(i = 0; i < qnt_cartas; no_o = no_o->prox);
-                                printf("ok\n");
-                        }
+                    }
+                    if(qnt_cartas > 1){
+//                        aux = validacao_coluna(no_o, qnt_cartas);
+                        for(i = 0; !no_o && i < qnt_cartas; no_o = no_o->prox)
+                            ;
+                        printf("ok\n");
                     }
 
 
@@ -366,21 +427,27 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
     }
 }
 
+/**
+ * @brief validacao_coluna
+ * @param no
+ * @param qnt_cartas
+ * @return
+ */
 int validacao_coluna (No* no, int qnt_cartas){
-    int i, aux = 0;
+    int i;
 
     for(i = 1; i < qnt_cartas; i++){
         if(no && no->prox){
             if(no->carta->naipe%2 != no->prox->carta->naipe%2){
                 if((no->carta->valor+1) == no->prox->carta->valor){
-                    aux = 1;
+                    return 1;
                     printf("ok\n");
                 }else{
                     printf("As cartas nao possuem ordem valida! \n");
                     return 0;
                 }
             }else{
-                printf("Os cores das cartas precisam ser alternados! \n");
+                printf("As cores das cartas precisam ser alternados! \n");
                 return 0;
             }
         }else{
@@ -389,13 +456,285 @@ int validacao_coluna (No* no, int qnt_cartas){
         }
         no = no->prox;
     }
-    return aux;
+    return 0;
 }
 
+/**
+ * @brief salvar
+ * @param mesa
+ */
+void salvar(Mesa* mesa){
+    int x;
+
+    printf("Salvar jogo? \n");
+    printf("1. SIM \t2.CANCELAR\n");
+
+    scanf("%d", &x);
+    if(x == 1){
+        salvar_jogo(mesa);
+        printf("JOGO SALVO! \n");
+    }else{
+        if(x == 2){
+            return;
+        }else{
+            salvar(mesa);
+        }
+    }
+}
+
+/**
+ * @brief carregar
+ * @param mesa
+ */
+void carregar(Mesa* mesa){
+    int x;
+
+    printf("Carregar jogo? \n");
+    printf("1. SIM \t2.CANCELAR\n");
+
+    scanf("%d", &x);
+    if(x == 1){
+        carregar_jogo(mesa);
+        printf("JOGO CARREGADO! \n");
+    }else{
+        if(x == 2){
+            return;
+        }else{
+            carregar(mesa);
+        }
+    }
+}
+
+/**
+ * @brief getNaipe
+ * @param str
+ * @return
+ */
 char getNaipe(unsigned char str){
     return naipe[str];
 }
 
+/**
+ * @brief getValor
+ * @param str
+ * @return
+ */
 char getValor(unsigned char str){
     return valor[str];
+}
+
+//////////////////////////////////////////////
+
+/**
+ * @brief salvar_jogo
+ * @param mesa
+ */
+void salvar_jogo(Mesa* mesa){
+    FILE* f;
+    char nome_arquivo[15];
+
+    printf("Nome do arquivo: ");
+    scanf("%s", nome_arquivo);
+
+    if((f = fopen(nome_arquivo, "ab")) == NULL){
+        printf("Erro! Arquivo nao pode ser aberto! \n");
+    }else{
+        save_celula(mesa, f);
+        save_fundacao(mesa, f);
+        save_coluna(mesa, f);
+    }
+    fclose(f);
+    system("cls");
+}
+
+/**
+ * @brief save_fundacao
+ * @param mesa
+ * @param f
+ */
+void save_fundacao(Mesa* mesa, FILE* f){
+    int i;
+
+    for(i = 0; i < 4; i++){
+        printf("Salvando fundacao (%d)\n", i);
+        save_pilha(mesa->fundacoes[i]->inicio, f);
+    }
+}
+
+/**
+ * @brief save_carta
+ * @param f
+ * @param carta
+ */
+void save_carta(FILE *f, Carta *carta) {
+    Carta cartaNula; cartaNula.naipe = -1; cartaNula.valor = -1;
+
+    if(carta) {
+        fwrite(carta, sizeof(Carta), 1, f);
+        printf("(%d, %d)\n", carta->naipe, carta->valor);
+    } else {
+        fwrite(&cartaNula, sizeof(Carta), 1, f);
+        printf("NULA\n");
+    }
+
+    getch();
+
+}
+
+/**
+ * @brief save_celula
+ * @param mesa
+ * @param f
+ */
+void save_celula(Mesa* mesa, FILE* f){
+    int i;
+    Carta* carta = NULL;
+
+    for(i = 0; i < 4; i++){
+        printf("Salvando celula (%d)\n", i);
+        carta = mesa->celulas[i];
+        save_carta(f, carta);
+    }
+}
+
+/**
+ * @brief save_coluna
+ * @param mesa
+ * @param f
+ */
+void save_coluna(Mesa* mesa, FILE* f){
+    int i;
+    int andares;
+    No* pilha_reversa[8] = {NULL};
+
+    for(i = 0; i < 8; i++){
+        printf("Salvando coluna (%d)\n", i);
+        inverte_pilha(mesa->pilhas[i], pilha_reversa, &andares);
+        save_pilha(pilha_reversa[i], f);
+    }
+}
+
+/**
+ * @brief save_pilha
+ * @param no
+ * @param f
+ */
+void save_pilha(No* no, FILE* f){
+
+    while(no != NULL){
+        save_carta(f, no->carta);
+        no = no->prox;
+    }
+
+    save_carta(f, NULL);
+}
+
+/**
+ * @brief carregar_jogo
+ * @param mesa
+ */
+void carregar_jogo(Mesa* mesa){
+    FILE* f;
+    char nome_arquivo[15];
+
+    printf("DIGITE O NOME DO JOGO SALVO! \n");
+    getchar();
+    scanf("%[^\n]%*c", nome_arquivo);
+
+    if((f = fopen(nome_arquivo, "rb+")) == NULL){
+        printf("Erro! Arquivo nao pode ser aberto! \n");
+    }else{
+        load_celula(mesa, f);
+        load_fundacao(mesa, f);
+        load_coluna(mesa, f);
+    }
+    fclose(f);
+    system("cls");
+}
+
+/**
+ * @brief load_carta
+ * @param buffer
+ * @param f
+ */
+void load_carta(Carta *buffer, FILE* f) {
+    fread(buffer, sizeof(Carta), 1, f);
+   // printf("(%d, %d)\n", buffer->naipe, buffer->valor);
+    //getch();
+}
+
+/**
+ * @brief load_celula
+ * @param mesa
+ * @param f
+ */
+void load_celula(Mesa* mesa, FILE* f){
+    Carta buffer;
+    int i;
+
+    for(i = 0; i < 4; i++){
+        printf("Carregando celula (%d)\n", i);
+        load_carta(&buffer, f);
+        if(buffer.naipe != -1) {
+            mesa->celulas[i] = Criar_Carta(buffer.naipe, buffer.valor);
+        }
+    }
+}
+
+/**
+ * @brief load_fundacao
+ * @param mesa
+ * @param f
+ */
+void load_fundacao(Mesa* mesa, FILE* f){
+    int i;
+
+    for(i = 0; i < 4; i++){
+        printf("Carregando fundacao (%d)\n", i);
+        load_pilha(mesa->fundacoes[i], f);
+    }
+}
+
+/**
+ * @brief load_coluna
+ * @param mesa
+ * @param f
+ */
+void load_coluna(Mesa* mesa, FILE* f){
+    int i;
+
+    for(i = 0; i < 8; i++){
+        printf("Carregando coluna (%d)\n", i);
+        load_pilha(mesa->pilhas[i], f);
+    }
+}
+
+/**
+ * @brief load_pilha
+ * @param pilha
+ * @param f
+ */
+void load_pilha(Pilha* pilha, FILE* f){
+    Carta buffer;
+
+    load_carta(&buffer, f);
+    while(!feof(f)){
+        if(buffer.naipe == -1) {
+            return;
+        }
+        insere_carta(pilha, Criar_Carta(buffer.naipe, buffer.valor));
+        load_carta(&buffer, f);
+    }
+}
+/**
+ * @brief sair
+ */
+void sair(){
+    int aux;
+
+    printf("Sair sem salvar? \n");
+    printf("1.Sim\t2.Cancelar\n");
+    scanf("%d", &aux);
+
+    if(aux) exit(0);
 }

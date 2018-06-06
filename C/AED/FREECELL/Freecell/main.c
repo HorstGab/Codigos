@@ -1,18 +1,33 @@
 #include "main.h"
 
+/**
+ * @brief main
+ * @return
+ */
 int main(void){
     Mesa* mesa = Criar_Mesa();
+    int aux;
 
+    printf("Carregar jogo salvo? \n");
+    printf("1. Sim\t 2.Cancelar\n");
+    scanf("%d", &aux);
+    if(aux == 1){
+        carregar_jogo(mesa);
+    }else{
         iniciar_jogo(mesa);
-
-        while(1){
-            fflush(stdin);
-            mostrar_mesa(mesa);
-            imput_comandos(mesa);
-        }
+    }
+    while(1){
+        fflush(stdin);
+        mostrar_mesa(mesa);
+        imput_comandos(mesa);
+    }
     return 0;
 }
 
+/**
+ * @brief mostrar_mesa
+ * @param mesa
+ */
 void mostrar_mesa(Mesa* mesa){
     int i, andares;
     No *pilha_aux[8] = {NULL};
@@ -55,6 +70,10 @@ void mostrar_mesa(Mesa* mesa){
     printf("\n ");
 }
 
+/**
+ * @brief mostrar_carta
+ * @param carta
+ */
 void mostrar_carta(Carta* carta){
     char valor, naipe;
 
@@ -63,6 +82,10 @@ void mostrar_carta(Carta* carta){
     printf("%c,%c\t", getNaipe(naipe), getValor(valor));
 }
 
+/**
+ * @brief mostrar_celulas
+ * @param mesa
+ */
 void mostrar_celulas(Mesa* mesa){
     int i;
 
@@ -76,6 +99,10 @@ void mostrar_celulas(Mesa* mesa){
     printf("\t ");
 }
 
+/**
+ * @brief mostrar_fundacao
+ * @param mesa
+ */
 void mostrar_fundacao(Mesa* mesa){
     int i;
 
@@ -89,6 +116,9 @@ void mostrar_fundacao(Mesa* mesa){
     printf("\n\n");
 }
 
+/**
+ * @brief mostrar_marcas
+ */
 void mostrar_marcas(){
     int i;
 
