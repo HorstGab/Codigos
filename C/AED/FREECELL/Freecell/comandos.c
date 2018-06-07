@@ -556,7 +556,6 @@ void save_fundacao(Mesa* mesa, FILE* f){
     int i;
 
     for(i = 0; i < 4; i++){
-        printf("Salvando fundacao (%d)\n", i);
         save_pilha(mesa->fundacoes[i]->inicio, f);
     }
 }
@@ -571,10 +570,8 @@ void save_carta(FILE *f, Carta *carta) {
 
     if(carta) {
         fwrite(carta, sizeof(Carta), 1, f);
-        printf("(%d, %d)\n", carta->naipe, carta->valor);
     } else {
         fwrite(&cartaNula, sizeof(Carta), 1, f);
-        printf("NULA\n");
     }
 
     getch();
@@ -591,7 +588,6 @@ void save_celula(Mesa* mesa, FILE* f){
     Carta* carta = NULL;
 
     for(i = 0; i < 4; i++){
-        printf("Salvando celula (%d)\n", i);
         carta = mesa->celulas[i];
         save_carta(f, carta);
     }
@@ -607,9 +603,8 @@ void save_coluna(Mesa* mesa, FILE* f){
     int andares;
     No* pilha_reversa[8] = {NULL};
 
+    inverte_pilha(mesa->pilhas, pilha_reversa, &andares);
     for(i = 0; i < 8; i++){
-        printf("Salvando coluna (%d)\n", i);
-        inverte_pilha(mesa->pilhas[i], pilha_reversa, &andares);
         save_pilha(pilha_reversa[i], f);
     }
 }
@@ -659,8 +654,6 @@ void carregar_jogo(Mesa* mesa){
  */
 void load_carta(Carta *buffer, FILE* f) {
     fread(buffer, sizeof(Carta), 1, f);
-   // printf("(%d, %d)\n", buffer->naipe, buffer->valor);
-    //getch();
 }
 
 /**
@@ -673,7 +666,6 @@ void load_celula(Mesa* mesa, FILE* f){
     int i;
 
     for(i = 0; i < 4; i++){
-        printf("Carregando celula (%d)\n", i);
         load_carta(&buffer, f);
         if(buffer.naipe != -1) {
             mesa->celulas[i] = Criar_Carta(buffer.naipe, buffer.valor);
@@ -690,7 +682,6 @@ void load_fundacao(Mesa* mesa, FILE* f){
     int i;
 
     for(i = 0; i < 4; i++){
-        printf("Carregando fundacao (%d)\n", i);
         load_pilha(mesa->fundacoes[i], f);
     }
 }
@@ -704,7 +695,6 @@ void load_coluna(Mesa* mesa, FILE* f){
     int i;
 
     for(i = 0; i < 8; i++){
-        printf("Carregando coluna (%d)\n", i);
         load_pilha(mesa->pilhas[i], f);
     }
 }
