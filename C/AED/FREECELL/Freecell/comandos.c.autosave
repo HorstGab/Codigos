@@ -390,7 +390,6 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
                         printf("ok\n");
                     }
 
-
                     if(aux){
                         carta_o = no_o->carta;
                         no_d = mesa->pilhas[indice_coluna_d]->inicio;
