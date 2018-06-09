@@ -390,9 +390,9 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
                         no_d = mesa->pilhas[indice_coluna_d]->inicio;
                         carta_d = mesa->pilhas[indice_coluna_d]->inicio->carta;
 
-                        if(!no_d || carta_o->naipe%2 != carta_d->naipe%2){
+                        if(no_d == NULL || carta_o->naipe%2 != carta_d->naipe%2){
 
-                            if(!no_d || (carta_o->valor+1) == carta_d->valor){
+                            if(no_d == NULL || (carta_o->valor+1) == carta_d->valor){
                                 pilha = criar_pilha();
 
                                 for(i = 0; i < qnt_cartas; i++){
@@ -522,7 +522,7 @@ char getValor(unsigned char str){
     return valor[str];
 }
 
-//////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * @brief salvar_jogo

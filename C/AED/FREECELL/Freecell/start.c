@@ -81,7 +81,7 @@ void iniciar_jogo(Mesa* mesa){
 
     //insere as cartas nas pilhas
     for(i = 0; i < 52; i++){
-        mesa->pilhas[i%8] = insere_carta(mesa->pilhas[i%8], cartas[i]);
+        mesa->pilhas[i%7] = insere_carta(mesa->pilhas[i%7], cartas[i]);
     }
     //inicia a quantidade de pilhas livres como zero
     mesa->qnt_pilha_livre = 0;
