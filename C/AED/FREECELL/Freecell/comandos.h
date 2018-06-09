@@ -115,7 +115,7 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
  * @param qnt_cartas
  * @return
  */
-int validacao_coluna (No* no, int qnt_cartas);
+No *validacao_coluna(No* no, int qnt_cartas);
 
 //encerrar o jogo
 /**

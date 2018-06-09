@@ -16,6 +16,7 @@ int main(void){
     }else{
         iniciar_jogo(mesa);
     }
+    system("cls");
     while(1){
         fflush(stdin);
         mostrar_mesa(mesa);

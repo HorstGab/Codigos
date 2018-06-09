@@ -362,12 +362,13 @@ void cel_fund(Mesa *mesa, char coluna_origem){
  * @param coluna_destino
  */
 void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_destino){
-    No *no_o = NULL, *no_d = NULL;
+    No *no_o = NULL, *no_d = NULL, *aux = NULL;
     Carta *carta_o = NULL, *carta_d = NULL;
     Pilha *pilha;
     int indice_coluna_o = coluna_origem - 'A';
     int indice_coluna_d = coluna_destino - 'A';
-    int i, aux = 1;
+    int i;
+
 
 
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
@@ -375,24 +376,17 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
             if(mesa->pilhas[indice_coluna_o]->inicio){
                 if(qnt_cartas <= (mesa->celula_livre+1) * pow(2, mesa->qnt_pilha_livre)){
                     no_o = mesa->pilhas[indice_coluna_o]->inicio;
+                    aux = no_o;
 
                     if(!qnt_cartas){
                         return;
                     }
                     if(qnt_cartas > 1){
                         aux = validacao_coluna(no_o, qnt_cartas);
-                        for(i = 0; i < qnt_cartas; i++){
-                            if(no_o && no_o->prox){
-                                no_o = no_o->prox;
-                            }
-                        }
-
-                        printf("ok\n");
                     }
 
-
-                    if(aux){
-                        carta_o = no_o->carta;
+                    if(aux != NULL){
+                        carta_o = aux->carta;
                         no_d = mesa->pilhas[indice_coluna_d]->inicio;
                         carta_d = mesa->pilhas[indice_coluna_d]->inicio->carta;
 
@@ -437,30 +431,31 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
  * @param qnt_cartas
  * @return
  */
-int validacao_coluna (No* no, int qnt_cartas){
-    int i;
+No* validacao_coluna (No* no, int qnt_cartas){
+    int i, vc = 0;
 
     for(i = 1; i < qnt_cartas; i++){
         if(no && no->prox){
             if(no->carta->naipe%2 != no->prox->carta->naipe%2){
                 if((no->carta->valor+1) == no->prox->carta->valor){
-                    return 1;
-                    printf("ok\n");
+                    vc = 1;
                 }else{
                     printf("As cartas nao possuem ordem valida! \n");
-                    return 0;
                 }
             }else{
                 printf("As cores das cartas precisam ser alternados! \n");
-                return 0;
             }
         }else{
             printf("Quantidade de cartas inexistente! \n");
-            return 0;
         }
         no = no->prox;
     }
-    return 0;
+
+    if(vc == 1){
+        return no;
+    }else{
+        return NULL;
+    }
 }
 
 /**
@@ -724,11 +719,6 @@ void load_pilha(Pilha* pilha, FILE* f){
  * @brief sair
  */
 void sair(){
-    int aux;
-
-    printf("Sair sem salvar? \n");
-    printf("1.Sim\t2.Cancelar\n");
-    scanf("%d", &aux);
-
-    if(aux) exit(0);
+    system("cls");
+    exit(0);
 }
