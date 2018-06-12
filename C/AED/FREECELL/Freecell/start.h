@@ -9,7 +9,10 @@
 //cria a mesa
 /**
  * @brief Criar_Mesa
- * @return
+ * @param nenhum
+ * @return nova mesa
+ * @pre-condicao nenhuma
+ * @pos-condicao mesa criada
  */
 Mesa* Criar_Mesa();
 
@@ -18,7 +21,9 @@ Mesa* Criar_Mesa();
  * @brief Criar_Carta
  * @param naipe
  * @param valor
- * @return
+ * @return nova carta
+ * @pre-condicao nenhuma
+ * @pos-condicao carta criada
  */
 Carta* Criar_Carta(int naipe, int valor);
 
@@ -26,13 +31,19 @@ Carta* Criar_Carta(int naipe, int valor);
 /**
  * @brief Criar_Baralho
  * @param cartas
+ * @return nenhuma
+ * @pre-condicao nenhuma
+ * @pos-condicao baralho com as 52 cartas criada
  */
 void Criar_Baralho(Carta* cartas[]);
 
-//chama as funcões que inicializa o jogo
+//inicializa o jogo
 /**
  * @brief iniciar_jogo
  * @param mesa
+ * @return nenhum
+ * @pre-condicao nenhuma
+ * @pos-condicao cartas inseridas na mesa
  */
 void iniciar_jogo(Mesa* mesa);
 
@@ -40,6 +51,9 @@ void iniciar_jogo(Mesa* mesa);
 /**
  * @brief Embaralhar
  * @param cartas
+ * @return nenhum
+ * @pre-condicao nenhuma
+ * @pos-condicao vetor de cartas embaralhado
  */
 void Embaralhar(Carta* cartas[]);
 

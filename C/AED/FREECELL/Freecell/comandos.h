@@ -13,24 +13,33 @@
 
 #include <conio.h>
 
-//mostra os comandos aceitos
-/**
- * @brief comandos_possiveis
- * @return
- */
-int comandos_possiveis();
-
 //le os comandos
 /**
  * @brief imput_comandos
  * @param mesa
+ * @return nenhum
+ * @pre-condicao nenhuma
+ * @pos-condicao nenhuma
  */
 void imput_comandos(Mesa* mesa);
+
+//mostra os comandos aceitos
+/**
+ * @brief comandos_possiveis
+ * @param nenhum
+ * @return tipo de comando
+ * @pre condicao nenhuma
+ * @pos condicao nenhuma
+ */
+int comandos_possiveis();
 
 //le o comando para enviar para as fundacoes
 /**
  * @brief cmd_fundacao
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le a referencia da carta
  */
 void cmd_fundacao(char *coluna_origem);
 
@@ -38,6 +47,9 @@ void cmd_fundacao(char *coluna_origem);
 /**
  * @brief cmd_insere_cel
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le a referencia da carta
  */
 void cmd_insere_cel(char* coluna_origem);
 
@@ -46,6 +58,9 @@ void cmd_insere_cel(char* coluna_origem);
  * @brief cmd_remove_cel
  * @param coluna_origem
  * @param coluna_destino
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le as referencias da carta
  */
 void cmd_remove_cel(char* coluna_origem, char* coluna_destino);
 
@@ -53,6 +68,9 @@ void cmd_remove_cel(char* coluna_origem, char* coluna_destino);
 /**
  * @brief cmd_cel_fund
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le a referencia da carta
  */
 void  cmd_cel_fund(char* coluna_origem);
 
@@ -62,6 +80,9 @@ void  cmd_cel_fund(char* coluna_origem);
  * @param coluna_origem
  * @param qnt_cartas
  * @param coluna_destino
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le as referencias da carta
  */
 void cmd_colunas(char* coluna_origem, int* qnt_cartas, char* coluna_destino);
 
@@ -70,6 +91,9 @@ void cmd_colunas(char* coluna_origem, int* qnt_cartas, char* coluna_destino);
  * @brief insere_fundacoes
  * @param mesa
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao carta inserida na fundacao
  */
 void insere_fundacoes(Mesa* mesa, char coluna_origem);
 
@@ -78,6 +102,9 @@ void insere_fundacoes(Mesa* mesa, char coluna_origem);
  * @brief insere_celulas
  * @param mesa
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao carta inserida nas celulas de reserva
  */
 void insere_celulas(Mesa* mesa, char coluna_origem);
 
@@ -87,6 +114,9 @@ void insere_celulas(Mesa* mesa, char coluna_origem);
  * @param mesa
  * @param coluna_origem
  * @param coluna_destino
+ * @return nenhum
+ * @pre condicao nenhuma
+ * @pos condicao carta removida da celula e inserida as colunas
  */
 void remove_celula(Mesa* mesa, char coluna_origem, char coluna_destino);
 
@@ -95,6 +125,9 @@ void remove_celula(Mesa* mesa, char coluna_origem, char coluna_destino);
  * @brief cel_fund
  * @param mesa
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao carta removida da celula e inserida na fundacao
  */
 void cel_fund(Mesa* mesa, char coluna_origem);
 
@@ -105,6 +138,9 @@ void cel_fund(Mesa* mesa, char coluna_origem);
  * @param coluna_origem
  * @param qnt_cartas
  * @param coluna_destino
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao carta movida de uma coluna para outra
  */
 void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_destino);
 
@@ -113,21 +149,19 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
  * @brief validacao_coluna
  * @param no
  * @param qnt_cartas
- * @return
+ * @return no se a pilha de carta for valida e null caso contrario
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 No *validacao_coluna(No* no, int qnt_cartas);
-
-//encerrar o jogo
-/**
- * @brief sair
- */
-void sair();
 
 //retorna o naipe
 /**
  * @brief getNaipe
  * @param str
- * @return
+ * @return valor do naipe da posicao do vetor global
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 char getNaipe(unsigned char str);
 
@@ -135,7 +169,9 @@ char getNaipe(unsigned char str);
 /**
  * @brief getValor
  * @param str
- * @return
+ * @return valor do valor da posicao do vetor global
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 char getValor(unsigned char str);
 
@@ -144,100 +180,160 @@ char getValor(unsigned char str);
 /**
  * @brief salvar
  * @param mesa
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void salvar(Mesa* mesa);
 
 //carrega um jogo ja salvo
 /**
- * @brief carregar
+ * @brief salvar
  * @param mesa
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
+
 void carregar(Mesa* mesa);
 
+//salva as colunas, fundacoes e celulas no arquivo
 /**
  * @brief salvar_jogo
  * @param mesa
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void salvar_jogo(Mesa* mesa);
 
+//salva a fundacao no arquivo
 /**
  * @brief save_fundacao
  * @param mesa
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void save_fundacao(Mesa* mesa, FILE* f);
 
-/**
- * @brief save_celula
- * @param mesa
- * @param f
- */
-void save_celula(Mesa* mesa, FILE* f);
-
-/**
- * @brief save_coluna
- * @param mesa
- * @param f
- */
-void save_coluna(Mesa* mesa, FILE* f);
-
-/**
- * @brief save_pilha
- * @param no
- * @param f
- */
-void save_pilha(No* no, FILE* f);
-
-/**
- * @brief carregar_jogo
- * @param mesa
- */
-void carregar_jogo(Mesa* mesa);
-
-/**
- * @brief load_celula
- * @param mesa
- * @param f
- */
-void load_celula(Mesa* mesa, FILE* f);
-
-/**
- * @brief load_fundacao
- * @param mesa
- * @param f
- */
-void load_fundacao(Mesa* mesa, FILE* f);
-
-/**
- * @brief load_coluna
- * @param mesa
- * @param f
- */
-void load_coluna(Mesa* mesa, FILE* f);
-
-/**
- * @brief load_pilha
- * @param pilha
- * @param f
- */
-void load_pilha(Pilha* pilha, FILE* f);
-
+//salva as cartas no arquivo
 /**
  * @brief save_carta
  * @param f
  * @param carta
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao salva carta no arquivo
  */
 void save_carta(FILE *f, Carta *carta);
 
+//salva as celula no arquivo
+/**
+ * @brief save_celula
+ * @param mesa
+ * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
+ */
+void save_celula(Mesa* mesa, FILE* f);
+
+//salva as colunas no arquivo
+/**
+ * @brief save_coluna
+ * @param mesa
+ * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
+ */
+void save_coluna(Mesa* mesa, FILE* f);
+
+//salva as pilhas no arquivo
+/**
+ * @brief save_pilha
+ * @param no
+ * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
+ */
+void save_pilha(No* no, FILE* f);
+
+//carrega um jogo do arquivo
+/**
+ * @brief carregar_jogo
+ * @param mesa
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
+ */
+void carregar_jogo(Mesa* mesa);
+
+//carrega as cartas do arquivo
 /**
  * @brief load_carta
  * @param buffer
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le uma carta do arquivo
  */
 void load_carta(Carta *buffer, FILE* f);
 
+//carrega as celulas do arquivo
+/**
+ * @brief load_celula
+ * @param mesa
+ * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
+ */
+void load_celula(Mesa* mesa, FILE* f);
+
+//carrega as fundacoes do arquivo
+/**
+ * @brief load_fundacao
+ * @param mesa
+ * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
+ */
+void load_fundacao(Mesa* mesa, FILE* f);
+
+//carrega as colunas do arquivo
+/**
+ * @brief load_coluna
+ * @param mesa
+ * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
+ */
+void load_coluna(Mesa* mesa, FILE* f);
+
+//carrega as pilhas do arquivo
+/**
+ * @brief load_pilha
+ * @param pilha
+ * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
+ */
+void load_pilha(Pilha* pilha, FILE* f);
+
+//sai do jogo
 /**
  * @brief sair
+ * @param nenhum
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao saiu do jogo
  */
 void sair();
 

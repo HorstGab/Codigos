@@ -1,11 +1,16 @@
 #include "comandos.h"
 
+//vetor com os valores e naipes das cartas
 char naipe[4] = {'O','E','C','P'};
 char valor[13] = {'A','2','3','4','5','6','7','8','9','1','J','Q','K'};
 
+//le os comandos
 /**
  * @brief imput_comandos
  * @param mesa
+ * @return nenhum
+ * @pre-condicao nenhuma
+ * @pos-condicao nenhuma
  */
 void imput_comandos(Mesa *mesa){
     int cmd_tipo;
@@ -56,22 +61,29 @@ void imput_comandos(Mesa *mesa){
         carregar(mesa);
         break;
     case 8:
+        //sai do jogo
         sair();
         break;
     default:
+        //caso comando for invalido
         printf("Comando invalido!\n");
         break;
     }
     getchar();
 }
 
+//mostra os comandos aceitos
 /**
  * @brief comandos_possiveis
- * @return
+ * @param nenhum
+ * @return tipo de comando
+ * @pre condicao nenhuma
+ * @pos condicao nenhuma
  */
 int comandos_possiveis(){
     int cmd_tipo;
 
+    //comandos possiveis
     printf("Comandos possiveis: \n");
     printf("1: COLUNA -> FUNDACOES\n");
     printf("2. COLUNA -> RESERVA\n");
@@ -89,9 +101,13 @@ int comandos_possiveis(){
     return cmd_tipo;
 }
 
+//le o comando para enviar para as fundacoes
 /**
  * @brief cmd_fundacao
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le a referencia da carta
  */
 void cmd_fundacao(char *coluna_origem){
     printf("Escolha a coluna: ");
@@ -101,9 +117,13 @@ void cmd_fundacao(char *coluna_origem){
     *coluna_origem = toupper(*coluna_origem);
 }
 
+//le o comando para enviar carta para as celulas
 /**
  * @brief cmd_insere_cel
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le a referencia da carta
  */
 void cmd_insere_cel(char* coluna_origem){
     printf("Escolha a coluna a ser enviada para o campo de reserva: ");
@@ -113,10 +133,14 @@ void cmd_insere_cel(char* coluna_origem){
     *coluna_origem = toupper(*coluna_origem);
 }
 
+//le o comando para retirar carta das celulas
 /**
  * @brief cmd_remove_cel
  * @param coluna_origem
  * @param coluna_destino
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le as referencias da carta
  */
 void cmd_remove_cel(char* coluna_origem, char* coluna_destino){
     printf("Escolha a celula a retirar a carta: ");
@@ -133,9 +157,13 @@ void cmd_remove_cel(char* coluna_origem, char* coluna_destino){
     *coluna_destino = toupper(*coluna_destino);
 }
 
+//le o comando para enviar das reservas para as fundações
 /**
  * @brief cmd_cel_fund
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le a referencia da carta
  */
 void cmd_cel_fund(char *coluna_origem){
     printf("Escolha a celula a retirar a carta: ");
@@ -145,11 +173,15 @@ void cmd_cel_fund(char *coluna_origem){
     *coluna_origem = toupper(*coluna_origem);
 }
 
+//le o comando que muda uma ou mais carta de uma coluna para outra
 /**
  * @brief cmd_colunas
  * @param coluna_origem
  * @param qnt_cartas
  * @param coluna_destino
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le as referencias da carta
  */
 void cmd_colunas(char* coluna_origem, int* qnt_cartas, char* coluna_destino){
     printf("Escolha a coluna inicial: ");
@@ -169,10 +201,14 @@ void cmd_colunas(char* coluna_origem, int* qnt_cartas, char* coluna_destino){
     scanf("%d", qnt_cartas);
 }
 
+//movimenta a carta para a fundacão
 /**
  * @brief insere_fundacoes
  * @param mesa
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao carta inserida na fundacao
  */
 void insere_fundacoes(Mesa *mesa, char coluna_origem){
     Carta* carta = NULL;
@@ -181,11 +217,11 @@ void insere_fundacoes(Mesa *mesa, char coluna_origem){
 
     //confere se a coluna está entre as colunas existentes
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
-        //confere se existe topo
+        //confere se o topo nao eh nulo
         if(mesa->pilhas[indice_coluna]->inicio){
             //carta recebe a carta do topo da pilha
             carta = mesa->pilhas[indice_coluna]->inicio->carta;
-            //confere se existe a pilha do respectivo naipe na fundacao
+            //confere se a pilha do respectivo naipe na fundacao nao eh nula
             if(mesa->fundacoes[carta->naipe]){
                 //no recebe o topo da pilha do respectivo naipe na fundacao
                 no = mesa->fundacoes[carta->naipe]->inicio;
@@ -211,10 +247,14 @@ void insere_fundacoes(Mesa *mesa, char coluna_origem){
     }
 }
 
+//insere cartas nas celulas livres
 /**
  * @brief insere_celulas
  * @param mesa
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao carta inserida nas celulas de reserva
  */
 void insere_celulas(Mesa *mesa, char coluna_origem){
     Carta* carta = NULL;
@@ -224,12 +264,12 @@ void insere_celulas(Mesa *mesa, char coluna_origem){
 
     //confere se a coluna esta entre as colunas validas
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
-        //confere se possui celulas livres
+        //confere se as celulas livres sao diferentes que 0
         if(mesa->celula_livre){
-            //confere se existe carta no topo da pilha de cartas
+            //confere se a carta no topo da pilha de cartas nao eh nula
             if(mesa->pilhas[indice_coluna]->inicio){
                 for(i = 0; i < 4; i++){
-                    //se a celula nao possuir celula
+                    //se a celula for nula
                     if(!mesa->celulas[i]){
                         //no recebe o topo da pilha de cartas
                         no = pop(mesa->pilhas[indice_coluna]);
@@ -258,11 +298,15 @@ void insere_celulas(Mesa *mesa, char coluna_origem){
     }
 }
 
+//retira cartas das celulas
 /**
  * @brief remove_celula
  * @param mesa
  * @param coluna_origem
  * @param coluna_destino
+ * @return nenhum
+ * @pre condicao nenhuma
+ * @pos condicao carta removida da celula e inserida as colunas
  */
 void remove_celula(Mesa *mesa, char coluna_origem, char coluna_destino){
     Carta* carta_o = NULL, *carta_d = NULL;
@@ -275,7 +319,7 @@ void remove_celula(Mesa *mesa, char coluna_origem, char coluna_destino){
     if(coluna_origem >= 'A' && coluna_origem <= 'D') {
         //confere se a coluna é valida e se esta entre as colunas validas
         if(!coluna_destino || (coluna_destino >= 'A' && coluna_destino <= 'H')){
-            //confere se existe carta para retirar da celula
+            //confere se a carta para retirar da celula nao eh nula
             if(mesa->celulas[indice_coluna_o]){
                 //carta recebe a carta da celula
                 carta_o = mesa->celulas[indice_coluna_o];
@@ -314,10 +358,14 @@ void remove_celula(Mesa *mesa, char coluna_origem, char coluna_destino){
     }
 }
 
+//retira a carta das celulas e envia para as fundações
 /**
  * @brief cel_fund
  * @param mesa
  * @param coluna_origem
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao carta removida da celula e inserida na fundacao
  */
 void cel_fund(Mesa *mesa, char coluna_origem){
     Carta* carta = NULL;
@@ -326,11 +374,11 @@ void cel_fund(Mesa *mesa, char coluna_origem){
 
     //confere se a celula esta entre as colunas validas
     if(coluna_origem >= 'A' && coluna_origem <= 'D'){
-        //confere se a celula possui carta
+        //confere se a celula nao eh nula
         if(mesa->celulas[indice_coluna]){
             //carta recebe a carta da celula
             carta = mesa->celulas[indice_coluna];
-            //confere se a pilha do vetor de fundacoes possui carta
+            //confere se a pilha do vetor de fundacoes nao eh nula
             if(mesa->fundacoes[carta->naipe]){
                 //no recebe o no do topo da fundacao
                 no = mesa->fundacoes[carta->naipe]->inicio;
@@ -354,12 +402,16 @@ void cel_fund(Mesa *mesa, char coluna_origem){
     }
 }
 
+//move uma ou mais cartas de uma coluna para outra
 /**
  * @brief move_coluna
  * @param mesa
  * @param coluna_origem
  * @param qnt_cartas
  * @param coluna_destino
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao carta movida de uma coluna para outra
  */
 void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_destino){
     No *no_o = NULL, *no_d = NULL, *aux = NULL;
@@ -370,43 +422,63 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
     int i;
 
 
-
+    //confere se as colunas estao entre as colunas validas
     if(coluna_origem >= 'A' && coluna_origem <= 'H'){
         if(coluna_destino >= 'A' && coluna_destino <= 'H'){
+            //se o topo da pilha nao for nula
             if(mesa->pilhas[indice_coluna_o]->inicio){
+                //se a quantidade de cartas for menor que a permitida para movimentacao
                 if(qnt_cartas <= (mesa->celula_livre+1) * pow(2, mesa->qnt_pilha_livre)){
+                    //no recebe o topo
                     no_o = mesa->pilhas[indice_coluna_o]->inicio;
+                    //aux recebe o no
                     aux = no_o;
 
+                    //se as cartas forem diferentes de zero
                     if(!qnt_cartas){
                         return;
                     }
+                    //se as cartas forem maiores que 1
                     if(qnt_cartas > 1){
                         aux = validacao_coluna(no_o, qnt_cartas);
                     }
 
+                    //se o aux for diferente de nulo
                     if(aux != NULL){
+                        //carta de origem recebe a carta do no auxiliar
                         carta_o = aux->carta;
+                        //no de destino recebe o topo da coluna
                         no_d = mesa->pilhas[indice_coluna_d]->inicio;
+                        //carta de destino recebe a carta do topo da coluna
                         carta_d = mesa->pilhas[indice_coluna_d]->inicio->carta;
 
+                        //se a pilha for vazia ou os naipes forem diferentes
                         if(no_d == NULL || carta_o->naipe%2 != carta_d->naipe%2){
 
+                            //se a pilha for vazia ou os valores sao uma unidade abaixo que a anterior
                             if(no_d == NULL || (carta_o->valor+1) == carta_d->valor){
+                                //cria pilha
                                 pilha = criar_pilha();
 
                                 for(i = 0; i < qnt_cartas; i++){
+                                    //remove o topo da coluna de origem
                                     no_d = pop(mesa->pilhas[indice_coluna_o]);
+                                    //insere numa pilha auxilar
                                     pilha = insere_carta(pilha, no_d->carta);
+                                    //liberta o no
                                     free(no_d);
                                 }
 
                                 for(i = 0; i < qnt_cartas; i++){
+                                    //remove o topo da pilha auxiliar
                                     no_d = pop(pilha);
+                                    //a coluna de destino recebe o topo
                                     mesa->pilhas[indice_coluna_d] = insere_carta(mesa->pilhas[indice_coluna_d], no_d->carta);
+                                    //libera o no
                                     free(no_d);
                                 }
 
+                                //libera a pilha
                                 free(pilha);
                             }else{
                                 printf("CARTA PRECISA SER UM VALOR MENOR QUE A ANTERIOR! \n");
@@ -425,18 +497,24 @@ void move_coluna(Mesa* mesa, char coluna_origem, int qnt_cartas, char coluna_des
     }
 }
 
+//valida se uma coluna de cartas está de acordo para a movimentaçáo
 /**
  * @brief validacao_coluna
  * @param no
  * @param qnt_cartas
- * @return
+ * @return no se a pilha de carta for valida e null caso contrario
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 No* validacao_coluna (No* no, int qnt_cartas){
     int i, vc = 0;
 
     for(i = 1; i < qnt_cartas; i++){
+        //se o no e o proximo nao forem nulos
         if(no && no->prox){
+            //se os naipes forem diferentes
             if(no->carta->naipe%2 != no->prox->carta->naipe%2){
+                //se os valores da carta forem uma unidade abaixo da anterior
                 if((no->carta->valor+1) == no->prox->carta->valor){
                     vc = 1;
                 }else{
@@ -448,19 +526,26 @@ No* validacao_coluna (No* no, int qnt_cartas){
         }else{
             printf("Quantidade de cartas inexistente! \n");
         }
+        //no recebe o proximo
         no = no->prox;
     }
 
+    //se for igual a 1
     if(vc == 1){
+        //retorna o no
         return no;
     }else{
         return NULL;
     }
 }
 
+//salva o jogo
 /**
  * @brief salvar
  * @param mesa
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void salvar(Mesa* mesa){
     int x;
@@ -469,6 +554,7 @@ void salvar(Mesa* mesa){
     printf("1. SIM \t2.CANCELAR\n");
 
     scanf("%d", &x);
+    //testa se o usuario quer salvar o jogo
     if(x == 1){
         salvar_jogo(mesa);
         printf("JOGO SALVO! \n");
@@ -481,9 +567,13 @@ void salvar(Mesa* mesa){
     }
 }
 
+//carrega um jogo ja salvo
 /**
  * @brief carregar
  * @param mesa
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void carregar(Mesa* mesa){
     int x;
@@ -492,6 +582,7 @@ void carregar(Mesa* mesa){
     printf("1. SIM \t2.CANCELAR\n");
 
     scanf("%d", &x);
+    //testa se o usuario quer carregar o jogo
     if(x == 1){
         carregar_jogo(mesa);
         printf("JOGO CARREGADO! \n");
@@ -504,29 +595,37 @@ void carregar(Mesa* mesa){
     }
 }
 
+//retorna o naipe
 /**
  * @brief getNaipe
  * @param str
- * @return
+ * @return valor do naipe da posicao do vetor global
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 char getNaipe(unsigned char str){
     return naipe[str];
 }
 
+//retorna o valor da carta
 /**
  * @brief getValor
  * @param str
- * @return
+ * @return valor do valor da posicao do vetor global
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 char getValor(unsigned char str){
     return valor[str];
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//salva as colunas, fundacoes e celulas no arquivo
 /**
  * @brief salvar_jogo
  * @param mesa
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void salvar_jogo(Mesa* mesa){
     FILE* f;
@@ -535,41 +634,56 @@ void salvar_jogo(Mesa* mesa){
     printf("Nome do arquivo: ");
     scanf("%s", nome_arquivo);
 
+    //se o arquivo nao abriu
     if((f = fopen(nome_arquivo, "ab")) == NULL){
         printf("Erro! Arquivo nao pode ser aberto! \n");
     }else{
+        //senao salve as informacoes
         save_celula(mesa, f);
         save_fundacao(mesa, f);
         save_coluna(mesa, f);
     }
+    //fecha o arquivo
     fclose(f);
     system("cls");
 }
 
+//salva a fundacao no arquivo
 /**
  * @brief save_fundacao
  * @param mesa
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void save_fundacao(Mesa* mesa, FILE* f){
     int i;
 
     for(i = 0; i < 4; i++){
+        //salva o topo no arquivo
         save_pilha(mesa->fundacoes[i]->inicio, f);
     }
 }
 
+//salva as cartas no arquivo
 /**
  * @brief save_carta
  * @param f
  * @param carta
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao salva carta no arquivo
  */
 void save_carta(FILE *f, Carta *carta) {
     Carta cartaNula; cartaNula.naipe = -1; cartaNula.valor = -1;
 
+    //se a carta nao for nula
     if(carta) {
+        //escreva a carta no arquivo
         fwrite(carta, sizeof(Carta), 1, f);
     } else {
+        //senao escreva carta nula
         fwrite(&cartaNula, sizeof(Carta), 1, f);
     }
 
@@ -577,55 +691,77 @@ void save_carta(FILE *f, Carta *carta) {
 
 }
 
+//salva as celula no arquivo
 /**
  * @brief save_celula
  * @param mesa
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void save_celula(Mesa* mesa, FILE* f){
     int i;
     Carta* carta = NULL;
 
     for(i = 0; i < 4; i++){
+        //salva a carta das celulas
         carta = mesa->celulas[i];
         save_carta(f, carta);
     }
 }
 
+//salva as colunas no arquivo
 /**
  * @brief save_coluna
  * @param mesa
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void save_coluna(Mesa* mesa, FILE* f){
     int i;
     int andares;
     No* pilha_reversa[8] = {NULL};
 
+    //inverte a pilha
     inverte_pilha(mesa->pilhas, pilha_reversa, &andares);
     for(i = 0; i < 8; i++){
+        //salva as pilhas em arquivo
         save_pilha(pilha_reversa[i], f);
     }
 }
 
+//salva as pilhas no arquivo
 /**
  * @brief save_pilha
  * @param no
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void save_pilha(No* no, FILE* f){
 
+    //enquanto o no nao for nulo
     while(no != NULL){
+        //salva as cartas da pilha no arquivo
         save_carta(f, no->carta);
         no = no->prox;
     }
 
+    //salve uma carta nula
     save_carta(f, NULL);
 }
 
+//carrega um jogo do arquivo
 /**
  * @brief carregar_jogo
  * @param mesa
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void carregar_jogo(Mesa* mesa){
     FILE* f;
@@ -635,90 +771,128 @@ void carregar_jogo(Mesa* mesa){
     getchar();
     scanf("%[^\n]%*c", nome_arquivo);
 
+    //se o arquivo nao abrir
     if((f = fopen(nome_arquivo, "rb+")) == NULL){
         printf("Erro! Arquivo nao pode ser aberto! \n");
     }else{
+        //senao salve as informacoes
         load_celula(mesa, f);
         load_fundacao(mesa, f);
         load_coluna(mesa, f);
     }
+    //fecha o arquivo
     fclose(f);
     system("cls");
 }
 
+//carrega as cartas do arquivo
 /**
  * @brief load_carta
  * @param buffer
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao le uma carta do arquivo
  */
 void load_carta(Carta *buffer, FILE* f) {
+    //le a carta do arquivo
     fread(buffer, sizeof(Carta), 1, f);
 }
 
+//carrega as celulas do arquivo
 /**
  * @brief load_celula
  * @param mesa
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void load_celula(Mesa* mesa, FILE* f){
     Carta buffer;
     int i;
 
     for(i = 0; i < 4; i++){
+        //carrega a carta do arquivo
         load_carta(&buffer, f);
         if(buffer.naipe != -1) {
+            //celula recebe a carta
             mesa->celulas[i] = Criar_Carta(buffer.naipe, buffer.valor);
         }
     }
 }
 
+//carrega as fundacoes do arquivo
 /**
  * @brief load_fundacao
  * @param mesa
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void load_fundacao(Mesa* mesa, FILE* f){
     int i;
 
     for(i = 0; i < 4; i++){
+        //carrega a pilha do arquivo
         load_pilha(mesa->fundacoes[i], f);
     }
 }
 
+//carrega as colunas do arquivo
 /**
  * @brief load_coluna
  * @param mesa
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void load_coluna(Mesa* mesa, FILE* f){
     int i;
 
     for(i = 0; i < 8; i++){
+        //carrega a pilha do arquivo
         load_pilha(mesa->pilhas[i], f);
     }
 }
 
+//carrega as pilhas do arquivo
 /**
  * @brief load_pilha
  * @param pilha
  * @param f
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao nenhum
  */
 void load_pilha(Pilha* pilha, FILE* f){
     Carta buffer;
 
+    //carrega a carta do arquivo
     load_carta(&buffer, f);
+    //enquanto nao for fim de arquivo
     while(!feof(f)){
         if(buffer.naipe == -1) {
             return;
         }
+        //insere a carta na pilha
         insere_carta(pilha, Criar_Carta(buffer.naipe, buffer.valor));
         load_carta(&buffer, f);
     }
 }
+
+//sai do jogo
 /**
  * @brief sair
+ * @param nenhum
+ * @return nenhum
+ * @pre condicao nenhum
+ * @pos condicao saiu do jogo
  */
 void sair(){
     system("cls");
+    //sair do jogo
     exit(0);
 }

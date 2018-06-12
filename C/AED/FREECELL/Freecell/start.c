@@ -1,5 +1,6 @@
 #include "start.h"
 
+//cria a mesa
 /**
  * @brief Criar_Mesa
  * @param nenhum
@@ -23,10 +24,12 @@ Mesa* Criar_Mesa(){
         nova_mesa->fundacoes[i] = criar_pilha();
         nova_mesa->celulas[i] = NULL;
     }
+
     //retorna a nova mesa
     return nova_mesa;
 }
 
+//cria cada carta do baralho
 /**
  * @brief Criar_Carta
  * @param naipe
@@ -46,12 +49,13 @@ Carta* Criar_Carta(int naipe, int valor){
     return nova_carta;
 }
 
+//cria o vetor com todas as cartas
 /**
  * @brief Criar_Baralho
  * @param cartas
  * @return nenhuma
  * @pre-condicao nenhuma
- * @pos-condicao baralfo com as 52 cartas criada
+ * @pos-condicao baralho com as 52 cartas criada
  */
 void Criar_Baralho(Carta* cartas[]){
     int naipe, valor;
@@ -64,12 +68,13 @@ void Criar_Baralho(Carta* cartas[]){
     }
 }
 
+//inicializa o jogo
 /**
  * @brief iniciar_jogo
  * @param mesa
  * @return nenhum
  * @pre-condicao nenhuma
- * @pos-condicao baralho criado, embaralhado e atribuido a mesa
+ * @pos-condicao cartas inseridas na mesa
  */
 void iniciar_jogo(Mesa* mesa){
     Carta* cartas[52];
@@ -81,12 +86,13 @@ void iniciar_jogo(Mesa* mesa){
 
     //insere as cartas nas pilhas
     for(i = 0; i < 52; i++){
-        mesa->pilhas[i%7] = insere_carta(mesa->pilhas[i%7], cartas[i]);
+        mesa->pilhas[i%8] = insere_carta(mesa->pilhas[i%8], cartas[i]);
     }
     //inicia a quantidade de pilhas livres como zero
     mesa->qnt_pilha_livre = 0;
 }
 
+//embaralha as cartas de posicões dentro do vetor
 /**
  * @brief Embaralhar
  * @param cartas

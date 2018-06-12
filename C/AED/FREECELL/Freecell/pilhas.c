@@ -1,9 +1,10 @@
 #include "pilhas.h"
 
+//cria uma pilha vazia
 /**
  * @brief criar_pilha
  * @param nenhuma
- * @return uma nova pilha
+ * @return nova pilha
  * @pre-condicao nenhuma
  * @pos-condicao pilha criada
  */
@@ -19,6 +20,7 @@ Pilha* criar_pilha(){
     return nova_pilha;
 }
 
+//insere as cartas na mesa
 /**
  * @brief insere_carta 
  * @param pilha
@@ -30,9 +32,9 @@ Pilha* criar_pilha(){
 Pilha* insere_carta(Pilha* pilha, Carta* carta){
     No* aux = NULL;
 
-    //se a carta não for valida retorna a pilha
+    //se a carta for nula retorna a pilha
     if(!carta) return pilha;
-    //se há pilha não for valida
+    //se a pilha for nula
     if(!pilha){
         //aloca uma nova pilha
         Pilha* nova_pilha = criar_pilha();
@@ -59,12 +61,13 @@ Pilha* insere_carta(Pilha* pilha, Carta* carta){
     return pilha;
 }
 
+// cria um novo no
 /**
  * @brief criar_no
  * @param carta
  * @return novo no
  * @pre-condicao nenhuma
- * @pos-condicao cria um novo no
+ * @pos-condicao cria um novo no da carta
  */
 No* criar_no(Carta *carta){
     //aloca um novo no
@@ -78,17 +81,18 @@ No* criar_no(Carta *carta){
     return novo_no;
 }
 
+//remove um elemento da pilha
 /**
  * @brief pop
  * @param pilha
  * @return retorna o topo da pilha
  * @pre-condicao nenhuma
- * @pos-condicao o topo e removida da pilha
+ * @pos-condicao o topo eh removida da pilha
  */
 No* pop(Pilha *pilha){
     No* aux;
 
-    //se a pilha ou o topo for valido
+    //se a pilha ou o topo nao forem nulos
     if(pilha || pilha->inicio){
         //no recebe o topo
         aux = pilha->inicio;
@@ -110,6 +114,7 @@ No* pop(Pilha *pilha){
     return aux;
 }
 
+//inverte as pilha
 /**
  * @brief inverte_pilha
  * @param pilha
@@ -117,14 +122,14 @@ No* pop(Pilha *pilha){
  * @param andares
  * @return nenhum
  * @pre-condicao nenhuma
- * @pos-condicao a pilha e invertida
+ * @pos-condicao a pilha eh invertida
  */
 void inverte_pilha(Pilha* pilha[], No* pilha_reversa[], int *andares){
     int i;
 
     //enquanto o i for menor que o numero de pilhas do vetor
     for(i = *andares = 0; i < 8; i++){
-        //se a pilha na posicao i do vetor for valida
+        //se a pilha na posicao i do vetor nao for nula
         if(pilha[i]){
             //se o tamanho da pilha na posicao i do vetor for maior q o numero de elementos da pilha
             if(pilha[i]->tamanho > *andares){
@@ -137,36 +142,38 @@ void inverte_pilha(Pilha* pilha[], No* pilha_reversa[], int *andares){
     }
 }
 
+//inverte uma pilha
 /**
  * @brief inverte_lista
  * @param no
- * @return
+ * @return cabeça de uma cópia da lista invertida
  * @pre-condicao nenhuma
  * @pos-condicao nenhuma
  */
 No* inverte_lista(No* no){
-    //se o no n existir retorna nulo
+    //se o no for nulo retorna nulo
     if(!no)return NULL;
 
     //retorna a chamada da funcao para inserir no na cauda
     return insere_no_cauda(inverte_lista(no->prox), no->carta);
 }
 
+//insere um no na cauda
 /**
  * @brief insere_no_cauda
  * @param lista
  * @param carta
- * @return no
+ * @return lista alterada
  * @pre-condicao nenhuma
- * @pos-condicao nenhuma
+ * @pos-condicao no inserido na cauda
  */
-No* insere_no_cauda(No* lista, Carta* carta){
-    //se o no n for valido crie uma nova
-    if(!lista) return criar_no(carta);
-    //recursivamente atribua o proximo no no anterior
-    lista->prox = insere_no_cauda(lista->prox, carta);
+No* insere_no_cauda(No* no, Carta* carta){
+    //se o no for nulo crie uma nova
+    if(!no) return criar_no(carta);
+    //recursivamente atribua o proximo No no anterior
+    no->prox = insere_no_cauda(no->prox, carta);
 
     //retorna o no
-    return lista;
+    return no;
 }
 
