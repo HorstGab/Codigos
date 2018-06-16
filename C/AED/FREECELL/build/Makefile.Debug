@@ -130,7 +130,8 @@ debug/start.o: ../Freecell/start.c ../Freecell/start.h \
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\start.o ..\Freecell\start.c
 
 debug/comandos.o: ../Freecell/comandos.c ../Freecell/comandos.h \
-		../Freecell/pilhas.h
+		../Freecell/pilhas.h \
+		../Freecell/start.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o debug\comandos.o ..\Freecell\comandos.c
 
 debug/pilhas.o: ../Freecell/pilhas.c ../Freecell/pilhas.h

@@ -130,7 +130,8 @@ release/start.o: ../Freecell/start.c ../Freecell/start.h \
 	$(CC) -c $(CFLAGS) $(INCPATH) -o release\start.o ..\Freecell\start.c
 
 release/comandos.o: ../Freecell/comandos.c ../Freecell/comandos.h \
-		../Freecell/pilhas.h
+		../Freecell/pilhas.h \
+		../Freecell/start.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o release\comandos.o ..\Freecell\comandos.c
 
 release/pilhas.o: ../Freecell/pilhas.c ../Freecell/pilhas.h

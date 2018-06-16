@@ -686,9 +686,6 @@ void save_carta(FILE *f, Carta *carta) {
         //senao escreva carta nula
         fwrite(&cartaNula, sizeof(Carta), 1, f);
     }
-
-    getch();
-
 }
 
 //salva as celula no arquivo
