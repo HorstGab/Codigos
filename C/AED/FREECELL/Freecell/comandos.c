@@ -56,11 +56,6 @@ void imput_comandos(Mesa *mesa){
         salvar(mesa);
         break;
     case 7:
-        //carrega um jogo salvo
-        system("cls");
-        carregar(mesa);
-        break;
-    case 8:
         //sai do jogo
         sair();
         break;
@@ -91,8 +86,7 @@ int comandos_possiveis(){
     printf("4. RESERVA -> FUNDACOES\n");
     printf("5. COLUNA -> COLUNA\n");
     printf("6. SALVAR JOGO\n");
-    printf("7. CARREGAR JOGO\n");
-    printf("8. SAIR \n");
+    printf("7. SAIR \n");
 
     printf("Escolha a operacao: ");
     scanf("%d", &cmd_tipo);
