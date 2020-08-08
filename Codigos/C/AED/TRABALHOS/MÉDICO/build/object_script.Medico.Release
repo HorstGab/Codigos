@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\modelarvore.o
+./release\modelmedico.o
+./release\modelarquivo.o
+./release\modelfila.o
+./release\Btree.o
+./release\menus.o
+./release\queue.o
+./release\entrymanipulation.o
+);

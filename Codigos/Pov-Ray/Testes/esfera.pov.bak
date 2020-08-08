@@ -1,0 +1,13 @@
+#include "colors.inc"         //cores
+#include "stones.inc"         //textura de pedra
+
+#include "texture.inc"        //extura
+#include "shapes.inc"         //formas
+#include "glass.inc"          //vidro
+#include "metals.inc"         //metal
+#include "woods.inc"          //madeira
+
+camera{
+    location<0,2,-3>
+    look_at<0,1,2>
+}

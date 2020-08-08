@@ -1,0 +1,10 @@
+Marca: vectra
+Cor: vermelho
+Ano: 2008
+IPVA: R$: 657.50
+
+Marca: omega
+Cor: cinza
+Ano: 2001
+IPVA: R$: 217.50
+
