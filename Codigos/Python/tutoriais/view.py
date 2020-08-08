@@ -2,8 +2,8 @@ import PySimpleGUI as sg
 
 class ViewPython:
     def __init__(self):
-      #alterar o layout da view  
-        sg.change_look_and_feel('DarkBrown4')
+      
+        sg.change_look_and_feel('DarkBrown4') #alterar o layout da view  
         #layout
         layout = [
             [sg.Text('Nome', size=(5,0)), sg.Input(size=(15,0),key='nome')],
