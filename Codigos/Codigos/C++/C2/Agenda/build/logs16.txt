@@ -1,0 +1,16 @@
+16/08/2018 12:18:34.834 [Debug] recebido sinal consultarPessoa
+16/08/2018 12:18:34.842 [Debug] Consultar pessoa
+16/08/2018 12:18:36.622 [Debug] Encerrar aplica??o
+16/08/2018 13:38:47.254 [Debug] Encerrar aplica??o
+16/08/2018 13:49:13.405 [Debug] recebido sinal consultarPessoa
+16/08/2018 13:49:13.414 [Debug] Consultar pessoa
+16/08/2018 13:49:16.389 [Debug] recebido sinal consultarPessoa
+16/08/2018 13:49:16.390 [Debug] Consultar pessoa
+16/08/2018 13:49:19.467 [Debug] Encerrar aplica??o
+16/08/2018 14:02:15.515 [Debug] Encerrar aplica??o
+16/08/2018 14:02:15.527 [Debug] Encerrar aplica??o
+16/08/2018 14:03:02.766 [Debug] Encerrar aplica??o
+16/08/2018 14:03:41.954 [Debug] Encerrar aplica??o
+16/08/2018 14:06:12.744 [Debug] Encerrar aplica??o
+16/08/2018 14:09:18.356 [Debug] Encerrar aplica??o
+16/08/2018 14:12:34.335 [Debug] Encerrar aplica??o

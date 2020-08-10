@@ -1,0 +1,4 @@
+SENHA			INDICE
+senha123        60
+a*^~            40
+<Comp12>        100

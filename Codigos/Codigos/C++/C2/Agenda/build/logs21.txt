@@ -1,0 +1,72 @@
+21/08/2018 13:38:10.671 [Debug] Encerrar aplica??o
+21/08/2018 13:43:05.227 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:43:05.235 [Debug] Consultar pessoa
+21/08/2018 13:43:07.418 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:43:07.419 [Debug] Consultar pessoa
+21/08/2018 13:43:17.505 [Debug] Encerrar aplica??o
+21/08/2018 13:48:46.337 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:48:46.587 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:48:46.589 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:48:46.879 [Debug] Consultar pessoa
+21/08/2018 13:49:05.441 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:05.502 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:05.502 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:05.583 [Debug] Consultar pessoa
+21/08/2018 13:49:06.340 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:06.396 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:06.400 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:06.486 [Debug] Consultar pessoa
+21/08/2018 13:49:06.951 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:07.011 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:07.015 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:07.099 [Debug] Consultar pessoa
+21/08/2018 13:49:07.742 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:07.800 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:07.800 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:07.900 [Debug] Consultar pessoa
+21/08/2018 13:49:08.185 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:08.242 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:08.242 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:08.320 [Debug] Consultar pessoa
+21/08/2018 13:49:08.417 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:08.461 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:08.462 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:08.508 [Debug] Consultar pessoa
+21/08/2018 13:49:08.766 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:08.820 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:08.820 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:08.910 [Debug] Consultar pessoa
+21/08/2018 13:49:09.009 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:09.061 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:09.061 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:09.147 [Debug] Consultar pessoa
+21/08/2018 13:49:09.480 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:09.539 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:09.539 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:09.625 [Debug] Consultar pessoa
+21/08/2018 13:49:09.985 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:10.044 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:10.048 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:10.135 [Debug] Consultar pessoa
+21/08/2018 13:49:10.583 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:10.642 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:10.642 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:10.731 [Debug] Consultar pessoa
+21/08/2018 13:49:11.053 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:49:11.108 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:49:11.108 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:49:11.200 [Debug] Consultar pessoa
+21/08/2018 13:51:29.745 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:51:29.812 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:51:29.814 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:51:29.910 [Debug] Consultar pessoa
+21/08/2018 13:51:47.268 [Debug] recebido sinal consultarPessoa
+21/08/2018 13:51:47.338 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 13:51:47.339 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 13:51:47.432 [Debug] Consultar pessoa
+21/08/2018 13:51:51.709 [Debug] Encerrar aplica??o
+21/08/2018 15:15:47.060 [Debug] recebido sinal consultarPessoa
+21/08/2018 15:15:47.162 [Warning] QObject::connect: No such signal ViewConsultarPessoa::finished(int) in ..\src\controller\controllermain.cpp:30
+21/08/2018 15:15:47.166 [Warning] QObject::connect:  (sender name:   'ViewConsultarPessoa')
+21/08/2018 15:15:47.249 [Debug] Consultar pessoa
+21/08/2018 15:15:51.505 [Debug] Encerrar aplica??o

@@ -1,0 +1,8 @@
+C:\Users\Gabriel\Documents\GitHub\Codigos\C\AED\TRABALHOS\ARQUIVO INVERTIDO\build\musica\elisregina.txt
+C:\Users\Gabriel\Documents\GitHub\Codigos\C\AED\TRABALHOS\ARQUIVO INVERTIDO\build\musica\milton.txt
+C:\Users\Gabriel\Documents\GitHub\Codigos\C\AED\TRABALHOS\ARQUIVO INVERTIDO\build\literatura\ferreiragullar.txt
+C:\Users\Gabriel\Documents\GitHub\Codigos\C\AED\TRABALHOS\ARQUIVO INVERTIDO\build\literatura\rubemalves.txt
+C:\Users\Gabriel\Documents\GitHub\Codigos\C\AED\TRABALHOS\ARQUIVO INVERTIDO\build\objaprend\oa.txt
+C:\Users\Gabriel\Documents\GitHub\Codigos\C\AED\TRABALHOS\ARQUIVO INVERTIDO\build\objaprend\oa2.txt
+C:\Users\Gabriel\Documents\GitHub\Codigos\C\AED\TRABALHOS\ARQUIVO INVERTIDO\build\objaprend\oa3.txt
+C:\Users\Gabriel\Documents\GitHub\Codigos\C\AED\TRABALHOS\ARQUIVO INVERTIDO\build\sti\sti1.txt
