@@ -1,0 +1,43 @@
+
+fatorial
+
+	fat(0,1).
+	fat(N,F):- 
+		N > 0, % condicão do passo
+		M is N-1, %simplifica
+		fat(M,R), %instancia menor
+		F is N*R. %constroi solucão
+
+----//-----//----//-----//-----//-------//------//-----//-----//-----
+
+		?- [X | Y] = [terra, sol, lua]
+		X = [terra]
+		Y = [sol, lua]
+
+		?- [X | y] [estrela]
+		X = [estrela]
+		Y = [ ]
+
+		?- [X | Y] = [ ]
+		no
+
+
+		?- [_,_,x | _] = [a, b, c, d, e].
+		X = c
+		yes
+
+
+		?- membro (c,[a, b, c, d]).
+		yes
+		?- membro(e, [a, b, c, d]).
+		no
+		?- membro(x, [a, b, c, d]).
+		x = a;
+		x = b;
+		x = c;
+		x = d;
+
+		membro(x, [x|_]).
+		membro(x, [_|y]):- membro(x,y).
+
+---------------//-----------------//-------------------//---------------

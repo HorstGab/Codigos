@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="15" version="2.0">
+<workbenchAdvisor/>
+<window height="612" maximized="true" width="812" x="26" y="26">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout locked="0">
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="97" y="22"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="127" y="22"/>
+<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="97" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="59" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="59" y="22"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="188" y="22"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page focus="true" label="Workspace - Java">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UCManterProdutoManager.java" partName="UCManterProdutoManager.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/manager/UCManterProdutoManager.java" title="UCManterProdutoManager.java" tooltip="ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/manager/UCManterProdutoManager.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/manager/UCManterProdutoManager.java"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ColProduto.java" partName="ColProduto.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/produto/ColProduto.java" title="ColProduto.java" tooltip="ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/produto/ColProduto.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/produto/ColProduto.java"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Fornecedor.java" partName="Fornecedor.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_CadProduto_BO/unioeste/gestao/estoque/fornecedor/Fornecedor.java" title="Fornecedor.java" tooltip="ESI_CadProduto_BO/unioeste/gestao/estoque/fornecedor/Fornecedor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_CadProduto_BO/unioeste/gestao/estoque/fornecedor/Fornecedor.java"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ConexaoBD.java" partName="ConexaoBD.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_InfraEstrutura/src/esI/geral/infra/ConexaoBD.java" title="ConexaoBD.java" tooltip="ESI_InfraEstrutura/src/esI/geral/infra/ConexaoBD.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_InfraEstrutura/src/esI/geral/infra/ConexaoBD.java"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UsuarioBD.java" partName="UsuarioBD.java" path="C:/Roberto/AULAS/Engenharia Software I/Projeto Exemplo 2 Bimestre/ProjetosEclipse/ESI_InfraEstrutura/src/esI/geral/infra/UsuarioBD.java" title="UsuarioBD.java" tooltip="ESI_InfraEstrutura/src/esI/geral/infra/UsuarioBD.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_InfraEstrutura/src/esI/geral/infra/UsuarioBD.java"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Produto.java" partName="Produto.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_CadProduto_BO/unioeste/gestao/estoque/produto/Produto.java" title="Produto.java" tooltip="ESI_CadProduto_BO/unioeste/gestao/estoque/produto/Produto.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_CadProduto_BO/unioeste/gestao/estoque/produto/Produto.java"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PessoaJuridica.java" partName="PessoaJuridica.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_BO_Geral/unioeste/geral/pessoa/PessoaJuridica.java" title="PessoaJuridica.java" tooltip="ESI_BO_Geral/unioeste/geral/pessoa/PessoaJuridica.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_BO_Geral/unioeste/geral/pessoa/PessoaJuridica.java"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Pessoa.java" partName="Pessoa.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_BO_Geral/unioeste/geral/pessoa/Pessoa.java" title="Pessoa.java" tooltip="ESI_BO_Geral/unioeste/geral/pessoa/Pessoa.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_BO_Geral/unioeste/geral/pessoa/Pessoa.java"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ColFornecedor.java" partName="ColFornecedor.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/fornecedor/ColFornecedor.java" title="ColFornecedor.java" tooltip="ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/fornecedor/ColFornecedor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/fornecedor/ColFornecedor.java"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Endereco.java" partName="Endereco.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_BO_Geral/unioeste/geral/endereco/Endereco.java" title="Endereco.java" tooltip="ESI_BO_Geral/unioeste/geral/endereco/Endereco.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_BO_Geral/unioeste/geral/endereco/Endereco.java"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TesteUCManterProduto.java" partName="TesteUCManterProduto.java" path="C:/Roberto/AULAS/Engenharia Software I/ProjetoExemplo2Bimestre/ProjetosEclipse/ESI_CadProduto_Teste/src/teste/TesteUCManterProduto.java" title="TesteUCManterProduto.java" tooltip="ESI_CadProduto_Teste/src/teste/TesteUCManterProduto.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ESI_CadProduto_Teste/src/teste/TesteUCManterProduto.java"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.search.ui.views.SearchView" partName="Search">
+<viewState>
+<view IMemento.internal.id=""/>
+</viewState>
+</view>
+<view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
+<view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
+<view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
+<viewState layout="2" org.eclipse.jdt.ui.packages.linktoeditor="0" rootMode="1" workingSetName="">
+<customFilters userDefinedPatternsEnabled="false">
+<xmlDefinedFilters>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.FieldsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.LocalTypesFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer_patternFilterId_*$*.class" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.NonPublicFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.internal.ui.PackageExplorer.EmptyPackageFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.LibraryFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.NonJavaProjectsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.ImportDeclarationFilter" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.StaticsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.NonSharedProjectsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.internal.ui.PackageExplorer.EmptyInnerPackageFilter" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.SyntheticMembersFilter" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.NonJavaElementFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.ClosedProjectsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.CuAndClassFileFilter" isEnabled="false"/>
+<child filterId="org.eclipse.pde.ui.BinaryProjectFilter1" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.PackageDeclarationFilter" isEnabled="true"/>
+</xmlDefinedFilters>
+</customFilters>
+</viewState>
+</view>
+<view id="org.eclipse.jdt.ui.TypeHierarchy" partName="Hierarchy"/>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems"/>
+</views>
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspective editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.openExternalFile"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.update.ui.softwareUpdates"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.ui.JavaActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.ui.JavaElementCreationActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.debug.ui.JDTDebugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.junit.JUnitActionSet"/>
+<show_view_action id="org.eclipse.jdt.ui.PackageExplorer"/>
+<show_view_action id="org.eclipse.jdt.ui.TypeHierarchy"/>
+<show_view_action id="org.eclipse.jdt.ui.SourceView"/>
+<show_view_action id="org.eclipse.jdt.ui.JavadocView"/>
+<show_view_action id="org.eclipse.search.ui.views.SearchView"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.ResourceNavigator"/>
+<show_view_action id="org.eclipse.ant.ui.views.AntView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewPackageCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewClassCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewInterfaceCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewEnumCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewAnnotationCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewSourceFolderCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewSnippetFileCreationWizard"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<new_wizard_action id="org.eclipse.jdt.junit.wizards.NewTestCaseCreationWizard"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaPerspective"/>
+<perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
+<view id="org.eclipse.jdt.ui.PackageExplorer"/>
+<view id="org.eclipse.jdt.ui.TypeHierarchy"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.jdt.ui.JavadocView"/>
+<view id="org.eclipse.jdt.ui.SourceView"/>
+<view id="org.eclipse.search.ui.views.SearchView"/>
+<layout>
+<mainWindow>
+<info folder="true" part="left">
+<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
+<page content="org.eclipse.jdt.ui.TypeHierarchy" label="Hierarchy"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.junit.ResultView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.749499" ratioLeft="748" ratioRight="250" relationship="2" relative="left">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.21092758" ratioLeft="166" ratioRight="621" relationship="2" relative="left"/>
+<info folder="true" part="bottom" ratio="0.93363845" ratioLeft="408" ratioRight="29" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.search.ui.views.SearchView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
+<page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="Search"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@8a2023" ratio="0.7196262" ratioLeft="385" ratioRight="150" relationship="2" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/manager/UCManterProdutoManager.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/produto/ColProduto.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/fornecedor/Fornecedor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_InfraEstrutura/src/esI/geral/infra/ConexaoBD.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_InfraEstrutura/src/esI/geral/infra/UsuarioBD.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_BO/Fornecedor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_BO/unioeste/gestao/estoque/fornecedor/Fornecedor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_BO/unioeste/gestao/estoque/produto/Produto.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_BO_Geral/unioeste/geral/pessoa/PessoaJuridica.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_BO_Geral/unioeste/geral/pessoa/Pessoa.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/fornecedor/ColFornecedor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/manager/UCManterProdutoManager.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_BO/unioeste/gestao/estoque/fornecedor/Fornecedor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_BO_Geral/unioeste/geral/pessoa/PessoaJuridica.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_BO_Geral/unioeste/geral/endereco/Endereco.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/manager/UCManterProdutoManager.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_BO_Geral/unioeste/geral/pessoa/PessoaJuridica.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_BO_Geral/unioeste/geral/pessoa/Pessoa.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_BO/unioeste/gestao/estoque/produto/Produto.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_BO/unioeste/gestao/estoque/fornecedor/Fornecedor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_Teste/src/teste/TesteUCManterProduto.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/produto/ColProduto.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_InfraEstrutura/src/esI/geral/infra/ConexaoBD.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/fornecedor/ColFornecedor.java"/>
+</editors>
+<item historyLabel="UCManterProdutoManager.java" index="0">
+<position/>
+</item>
+<item historyLabel="ColProduto.java" index="1">
+<position/>
+</item>
+<item historyLabel="Fornecedor.java" index="2">
+<position/>
+</item>
+<item historyLabel="ConexaoBD.java" index="3">
+<position/>
+</item>
+<item historyLabel="UsuarioBD.java" index="4">
+<position/>
+</item>
+<item historyLabel="Fornecedor.java" index="5">
+<position/>
+</item>
+<item historyLabel="Fornecedor.java" index="6">
+<position/>
+</item>
+<item historyLabel="Produto.java" index="7">
+<position/>
+</item>
+<item historyLabel="Fornecedor.java" index="6">
+<position/>
+</item>
+<item historyLabel="PessoaJuridica.java" index="8">
+<position/>
+</item>
+<item historyLabel="Pessoa.java" index="9">
+<position/>
+</item>
+<item historyLabel="Fornecedor.java" index="6">
+<position info="not_deleted" x="49" y="0"/>
+</item>
+<item historyLabel="ColFornecedor.java" index="10">
+<position/>
+</item>
+<item historyLabel="UCManterProdutoManager.java" index="11">
+<position/>
+</item>
+<item historyLabel="Fornecedor.java" index="12">
+<position/>
+</item>
+<item historyLabel="PessoaJuridica.java" index="13">
+<position/>
+</item>
+<item historyLabel="Endereco.java" index="14">
+<position/>
+</item>
+<item historyLabel="Fornecedor.java" index="12">
+<position info="not_deleted" x="131" y="0"/>
+</item>
+<item historyLabel="Fornecedor.java" index="12">
+<position info="not_deleted" x="144" y="10"/>
+</item>
+<item historyLabel="ColFornecedor.java" index="10">
+<position/>
+</item>
+<item historyLabel="UCManterProdutoManager.java" index="15">
+<position/>
+</item>
+<item historyLabel="PessoaJuridica.java" index="16">
+<position/>
+</item>
+<item historyLabel="Pessoa.java" index="17">
+<position info="not_deleted" x="402" y="0"/>
+</item>
+<item historyLabel="Pessoa.java" index="17">
+<position info="not_deleted" x="449" y="0"/>
+</item>
+<item historyLabel="Produto.java" index="18">
+<position/>
+</item>
+<item historyLabel="Fornecedor.java" index="19">
+<position/>
+</item>
+<item historyLabel="PessoaJuridica.java" index="16">
+<position/>
+</item>
+<item historyLabel="Produto.java" index="18">
+<position/>
+</item>
+<item historyLabel="TesteUCManterProduto.java" index="20">
+<position/>
+</item>
+<item historyLabel="UCManterProdutoManager.java" index="15">
+<position info="not_deleted" x="406" y="16"/>
+</item>
+<item historyLabel="UCManterProdutoManager.java" index="15">
+<position info="not_deleted" x="597" y="6"/>
+</item>
+<item historyLabel="ColProduto.java" index="21">
+<position info="not_deleted" x="264" y="12"/>
+</item>
+<item historyLabel="ColProduto.java" index="21">
+<position info="not_deleted" x="1569" y="0"/>
+</item>
+<item historyLabel="UCManterProdutoManager.java" index="15">
+<position info="not_deleted" x="873" y="5"/>
+</item>
+<item historyLabel="ColFornecedor.java" index="10">
+<position/>
+</item>
+<item historyLabel="UCManterProdutoManager.java" index="15">
+<position info="not_deleted" x="1028" y="12"/>
+</item>
+<item historyLabel="ColProduto.java" index="21">
+<position info="not_deleted" x="606" y="0"/>
+</item>
+<item historyLabel="TesteUCManterProduto.java" index="20">
+<position info="not_deleted" x="690" y="31"/>
+</item>
+<item historyLabel="ColProduto.java" index="21">
+<position info="not_deleted" x="889" y="7"/>
+</item>
+<item historyLabel="ConexaoBD.java" index="22">
+<position/>
+</item>
+<item active="true" historyLabel="ColFornecedor.java" index="23">
+<position info="not_deleted" x="503" y="20"/>
+</item>
+</navigationHistory>
+<stickyState/>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TesteUCManterProduto.java" tooltip="ESI_CadProduto_Teste/src/teste/TesteUCManterProduto.java">
+<persistable path="/ESI_CadProduto_Teste/src/teste/TesteUCManterProduto.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Endereco.java" tooltip="ESI_BO_Geral/unioeste/geral/endereco/Endereco.java">
+<persistable path="/ESI_BO_Geral/unioeste/geral/endereco/Endereco.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ColFornecedor.java" tooltip="ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/fornecedor/ColFornecedor.java">
+<persistable path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/fornecedor/ColFornecedor.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Pessoa.java" tooltip="ESI_BO_Geral/unioeste/geral/pessoa/Pessoa.java">
+<persistable path="/ESI_BO_Geral/unioeste/geral/pessoa/Pessoa.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PessoaJuridica.java" tooltip="ESI_BO_Geral/unioeste/geral/pessoa/PessoaJuridica.java">
+<persistable path="/ESI_BO_Geral/unioeste/geral/pessoa/PessoaJuridica.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Produto.java" tooltip="ESI_CadProduto_BO/unioeste/gestao/estoque/produto/Produto.java">
+<persistable path="/ESI_CadProduto_BO/unioeste/gestao/estoque/produto/Produto.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UsuarioBD.java" tooltip="ESI_InfraEstrutura/src/esI/geral/infra/UsuarioBD.java">
+<persistable path="/ESI_InfraEstrutura/src/esI/geral/infra/UsuarioBD.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ConexaoBD.java" tooltip="ESI_InfraEstrutura/src/esI/geral/infra/ConexaoBD.java">
+<persistable path="/ESI_InfraEstrutura/src/esI/geral/infra/ConexaoBD.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ColProduto.java" tooltip="ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/produto/ColProduto.java">
+<persistable path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/produto/ColProduto.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UCManterProdutoManager.java" tooltip="ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/manager/UCManterProdutoManager.java">
+<persistable path="/ESI_CadProduto_Negocio/src/unioeste/gestao/estoque/manager/UCManterProdutoManager.java"/>
+</file>
+</mruList>
+</workbench>

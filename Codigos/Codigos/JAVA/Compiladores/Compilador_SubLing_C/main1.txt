@@ -1,0 +1,17 @@
+int main ()
+{
+	int n;
+	int i;
+	
+	if(i == 2){
+		n = 4;
+	}
+	for( i = 0; i < n; i += 1){
+		if(n < 0){
+			int a;
+			a *= 10;
+		}
+	}
+	
+	return 0;
+}

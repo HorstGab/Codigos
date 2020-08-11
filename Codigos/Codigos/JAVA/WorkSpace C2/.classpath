@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Agenda/src"/>
+	<classpathentry kind="src" path="ExpressaoMatematica/src"/>
+	<classpathentry kind="src" path="HelloWorld/src"/>
+	<classpathentry kind="src" path="Purple Rain/src/Rain/Drop/application.windows32/source"/>
+	<classpathentry kind="src" path="Purple Rain/src/Rain/Drop/application.windows64/source"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows32/lib/core.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows32/lib/Drop.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows32/lib/gluegen-rt-natives-windows-i586.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows32/lib/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows32/lib/jogl-all-natives-windows-i586.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows32/lib/jogl-all.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/charsets.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/deploy.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/access-bridge-64.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/cldrdata.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/jaccess.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/jfxrt.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/localedata.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/nashorn.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/sunec.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/sunjce_provider.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/sunmscapi.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/sunpkcs11.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/ext/zipfs.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/jce.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/jfr.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/jfxswt.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/jsse.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/management-agent.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/plugin.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/resources.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/rt.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/security/policy/limited/local_policy.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/security/policy/limited/US_export_policy.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/security/policy/unlimited/local_policy.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/java/lib/security/policy/unlimited/US_export_policy.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/lib/core.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/lib/Drop.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/lib/gluegen-rt-natives-windows-amd64.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/lib/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/lib/jogl-all-natives-windows-amd64.jar"/>
+	<classpathentry kind="lib" path="Purple Rain/src/Rain/Drop/application.windows64/lib/jogl-all.jar"/>
+	<classpathentry kind="output" path="Agenda/bin"/>
+</classpath>

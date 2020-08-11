@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>about.png</file>
+        <file>botaoGravar.png</file>
+        <file>clear.png</file>
+        <file>edit.png</file>
+        <file>fechar.bmp</file>
+        <file>groups.bmp</file>
+        <file>language.bmp</file>
+        <file>login.bmp</file>
+        <file>login.png</file>
+        <file>logout.bmp</file>
+        <file>logout.png</file>
+        <file>LOGS.bmp</file>
+        <file>me.png</file>
+        <file>NRC.bmp</file>
+        <file>objects.bmp</file>
+        <file>plus.png</file>
+        <file>PRINT.bmp</file>
+        <file>REMOVER.bmp</file>
+        <file>run.png</file>
+        <file>SCA.ico</file>
+        <file>sca_pt.ts</file>
+        <file>search.png</file>
+        <file>system.png</file>
+        <file>test.png</file>
+        <file>translate.bmp</file>
+        <file>user.bmp</file>
+        <file>XML.bmp</file>
+    </qresource>
+</RCC>
