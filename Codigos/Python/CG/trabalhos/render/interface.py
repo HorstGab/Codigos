@@ -1,9 +1,9 @@
 import PySimpleGUI as sg
 
 
-class Interface:
+class ViewPython:
     def __init__(self):
-        #sg.change_look_and_feel('DarkBrown4')  # alterar o layout da view
+        sg.change_look_and_feel('DarkBrown4')  # alterar o layout da view
         # layout
         layout = [
             [sg.Text('Nome', size=(5, 0)), sg.Input(size=(15, 0), key='nome')],
@@ -27,16 +27,17 @@ class Interface:
         aceita_gmail = self.values['gmail']
         aceita_hotlook = self.values['outlook']
         aceita_yahoo = self.values['yahoo']
-        aceita_cartão = self.values['aceitacartao']
-        nao_aceita_cartão = self.values['naoaceitacartao']
+        aceita_cartao = self.values['aceitacartao']
+        nao_aceita_cartao = self.values['naoaceitacartao']
 
         print(f'nome: {nome}')
         print(f'idade: {idade}')
         print(f'aceita gmail: {aceita_gmail}')
         print(f'aceita outlook: {aceita_hotlook}')
         print(f'aceita yahoo: {aceita_yahoo}')
-        print(f'aceita cartão: {aceita_cartão}')
-        print(f'não aceita cartão: {nao_aceita_cartão}')
+        print(f'aceita cartão: {aceita_cartao}')
+        print(f'não aceita cartão: {nao_aceita_cartao}')
 
-view = Interface()
+
+view = ViewPython()
 view.Iniciar()
