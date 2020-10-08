@@ -21,11 +21,11 @@ global_settings{ assumed_gamma 1.0 }
 //--------------------------------------------------------------------------
 // camera ------------------------------------------------------------------
 #declare Camera_0 = camera {/*ultra_wide_angle*/ angle 90      // front view
-                            location  <-2.0 , 5.0 ,-4.0>
+                            location  <-7.0 , 5.0 ,-3.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
 #declare Camera_1 = camera {/*ultra_wide_angle*/ angle 80   // diagonal view
-                            location  <6.0 , 8.5 ,-15.0>
+                            location  <0.0 , 8.5 ,-17.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
 #declare Camera_2 = camera {/*ultra_wide_angle*/ angle 90 // right side view
@@ -33,10 +33,10 @@ global_settings{ assumed_gamma 1.0 }
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.5 , 0.0>}
 #declare Camera_3 = camera {/*ultra_wide_angle*/ angle 90        // top view
-                            location  <0.0 , 10.0 ,-0.001>
+                            location  <0.0 , 10.0 ,0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
-camera{Camera_1}
+camera{Camera_0}
 // sun ---------------------------------------------------------------------
 light_source{<-1000,10000,-2000> color White}
 // sky ---------------------------------------------------------------------
@@ -467,6 +467,72 @@ union{
 //end poste    
 
 
+//folhagem--------------------------------------------
+#declare folhagem = 
+
+    //------------------------------------------------------------- 
+    //------------------------------------------------------------- 
+    #declare Random_1 = seed (23484);
+    #declare Random_2 = seed (35271);
+    #declare Blade_Radius = 0.01;
+    #declare Blade_Height = 1.00; 
+    
+    //-------------------------------------------------------------
+    union{ //------------------------------------------------------
+    
+     #local Nr = 0;   // start
+     #local End = 70; // end
+     #while (Nr< End) 
+         cone{ <0,0,0>,Blade_Radius,
+               <0,Blade_Height+0.50*rand(Random_1),0>,0.00
+               texture { pigment{ color rgb< 0.5, 1.0, 0.0> } 
+                         normal { bumps 0.5 scale 0.05 }
+                         finish { phong 1 reflection 0.00}
+                       } // end of texture 
+               rotate<0,0,Nr*70/End> 
+               translate<0,0,0> 
+               rotate<0,Nr * 360/End+360*rand(Random_2),0>
+             } //---------------------------
+    
+     #local Nr = Nr + 1;    // next Nr
+     #end // ---------------  end of loop 
+    
+    rotate<0,0,0>
+    translate<-5,1.5,2>
+    } // end of union ---------------------------------------------
+    //------------------------------------------------------------- 
+    //------------------------------------------------------------- 
+    
+    //------------------------------------------ 
+
+union{ //-----------------------------------
+ #local Nr = 0;     // start
+ #local EndNr = 9; // end
+ #while (Nr< EndNr) 
+
+   object{ folhagem translate<Nr*1,0,0>} 
+
+ #local Nr = Nr + 1;  // next Nr
+ #end // --------------- end of loop 
+
+rotate<0,0,0> 
+translate<-8.2,0,0>
+} // end of union --------------------------
+
+union{ //-----------------------------------
+ #local Nr = 0;     // start
+ #local EndNr = 9; // end
+ #while (Nr< EndNr) 
+
+   object{ folhagem translate<Nr*1,0,0>} 
+
+ #local Nr = Nr + 1;  // next Nr
+ #end // --------------- end of loop 
+
+rotate<0,0,0> 
+translate<10,0,0>
+} // end of union --------------------------
+//end folhagem-----------------------------------
 
 
                                        
