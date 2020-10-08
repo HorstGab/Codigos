@@ -36,7 +36,7 @@ global_settings{ assumed_gamma 1.0 }
                             location  <0.0 , 10.0 ,0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
-camera{Camera_0}
+camera{Camera_1}
 // sun ---------------------------------------------------------------------
 light_source{<-1000,10000,-2000> color White}
 // sky ---------------------------------------------------------------------
