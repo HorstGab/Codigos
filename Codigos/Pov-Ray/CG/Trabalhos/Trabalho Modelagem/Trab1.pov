@@ -25,18 +25,18 @@ global_settings{ assumed_gamma 1.0 }
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
 #declare Camera_1 = camera {/*ultra_wide_angle*/ angle 80   // diagonal view
-                            location  <0.0 , 2.5 ,-5.0>
+                            location  <6.0 , 8.5 ,-15.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
 #declare Camera_2 = camera {/*ultra_wide_angle*/ angle 90 // right side view
-                            location  <4.2 , 5.0 , 0.0>
+                            location  <4.2 , 5.5 , 0.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.5 , 0.0>}
 #declare Camera_3 = camera {/*ultra_wide_angle*/ angle 90        // top view
                             location  <0.0 , 10.0 ,-0.001>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
-camera{Camera_2}
+camera{Camera_1}
 // sun ---------------------------------------------------------------------
 light_source{<-1000,10000,-2000> color White}
 // sky ---------------------------------------------------------------------
@@ -149,7 +149,7 @@ union{
     rotate<0,0,0> 
     translate<-14,0,0>
     } // end of union --------------------------
-
+                                                    
 
     
 }  
@@ -387,49 +387,94 @@ union{
       
     
     difference{   
+        difference{
+            box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+              scale <0.3,0.4,0.3> rotate<0,0,0> translate<0,2,0> 
+            } // end of box --------------------------------------     
+            
+            box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>       
+              scale <0.5,1,0.5> rotate<10,0,0> translate<0,1,0.5> 
+            } // end of box -------------------------------------- 
+            
+            box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+              scale <0.5,1,0.5> rotate<-10,0,0> translate<0,1,-0.5> 
+            } // end of box --------------------------------------  
+            
+            box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+              scale <0.5,1,0.5> rotate<10,90,0> translate<0.5,1,0> 
+            } // end of box --------------------------------------
+            
+            box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+              scale <0.5,1,0.5> rotate<-10,90,0> translate<-0.5,1,0> 
+            } // end of box --------------------------------------      
+            
+            translate<2.6,2.4,1>  
+             texture { T_Chrome_1A
+                       //normal { bumps 0.5 scale 0.15} 
+                       finish { phong 0}
+                 } // end of texture 
+        }           
+        union{  
+            box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+              scale <0.3,0.3,0.2> rotate<0,0,0> translate<0,0,0> 
+             } 
+              
+            box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+              scale <0.2,0.3,0.3> rotate<0,0,0> translate<0,0,0> 
+            }
+            translate<2.6, 4.6, 1>   
+            texture { T_Chrome_1A
+                       //normal { bumps 0.5 scale 0.15} 
+                       finish { phong 0}
+                 } // end of texture  
+        }                                          
+        
+    }
+
+    union{  
+        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+           scale <0.2,0.29,0.2> rotate<0,0,0> translate<0,0,0> 
+        } 
+              
+        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+           scale <0.2,0.29,0.2> rotate<0,0,0> translate<0,0,0> 
+        }
+        translate<2.6, 4.6, 1>   
+            texture { pigment{ color rgb <0,0,1>  }
+                   normal { bumps 0.5 scale 0.05 }
+                  finish { phong 1 reflection 0.00}
+        } // end of texture 
+            
+    }    
     
-        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
-          scale <0.3,0.4,0.3> rotate<0,0,0> translate<0,2,0> 
-        } // end of box --------------------------------------     
-        
-        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>       
-          scale <0.5,1,0.5> rotate<10,0,0> translate<0,1,0.5> 
-        } // end of box -------------------------------------- 
-        
-        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
-          scale <0.5,1,0.5> rotate<-10,0,0> translate<0,1,-0.5> 
-        } // end of box --------------------------------------  
-        
-        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
-          scale <0.5,1,0.5> rotate<10,90,0> translate<0.5,1,0> 
+    
+    difference{
+         sphere { <0,0,0>, 0.3
+         scale<1,1,1>  rotate<0,0,0>  translate<0,0.5,0>  
+           }  // end of sphere -----------------------------------   
+           
+          box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+          scale <1,1,1> rotate<0,0,0> translate<0,-1.3,0> 
         } // end of box --------------------------------------
-        
-        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
-          scale <0.5,1,0.5> rotate<-10,90,0> translate<-0.5,1,0> 
-        } // end of box --------------------------------------      
-        
-        translate<2.6,2.4,1>  
+ 
+        translate<2.6,4.5,1>  
          texture { T_Chrome_1A
                    //normal { bumps 0.5 scale 0.15} 
                    finish { phong 0}
-             } // end of texture   
-        
-    }
-        
-  
-               
-  
-                       
-
+             } // end of texture         
+    } //end difference          
 } //end union
-//end poste
+//end poste    
+
+
+
+
                                        
-                                       
+
+
+       
       
 
-                                                                  
-                                                            
-
-                                                                  
+                                                               
 
        

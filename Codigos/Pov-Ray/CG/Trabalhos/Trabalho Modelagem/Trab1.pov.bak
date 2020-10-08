@@ -21,17 +21,17 @@ global_settings{ assumed_gamma 1.0 }
 //--------------------------------------------------------------------------
 // camera ------------------------------------------------------------------
 #declare Camera_0 = camera {/*ultra_wide_angle*/ angle 90      // front view
-                            location  <-2.0 , 2.0 ,-3.0>
+                            location  <-2.0 , 5.0 ,-4.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
 #declare Camera_1 = camera {/*ultra_wide_angle*/ angle 80   // diagonal view
-                            location  <6.0 , 8.5 ,-15.0>
+                            location  <0.0 , 2.5 ,-5.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
 #declare Camera_2 = camera {/*ultra_wide_angle*/ angle 90 // right side view
                             location  <4.2 , 5.0 , 0.0>
                             right     x*image_width/image_height
-                            look_at   <0.0 , 1.0 , 0.0>}
+                            look_at   <0.0 , 1.5 , 0.0>}
 #declare Camera_3 = camera {/*ultra_wide_angle*/ angle 90        // top view
                             location  <0.0 , 10.0 ,-0.001>
                             right     x*image_width/image_height
@@ -385,31 +385,37 @@ union{
              } // end of texture         
     } //end difference  
       
-      
-         //------------------------------------------ 
-        #declare argola = 
-         torus { 0.06,0.01 
-            texture { T_Chrome_1A
-                       //normal { bumps 0.5 scale 0.15} 
-                       finish { phong 0}
-                 } // end of texture
-        scale <1,1,1> rotate<0,0,0> translate<2.6,4.5,1>   
-      } // end of torus  -------------------------------   
+    
+    difference{   
+    
+        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+          scale <0.3,0.4,0.3> rotate<0,0,0> translate<0,2,0> 
+        } // end of box --------------------------------------     
         
-        union{ //-----------------------------------
-         #local Nr = 0;     // start
-         #local EndNr = 1; // end
-         #while (Nr< EndNr) 
+        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>       
+          scale <0.5,1,0.5> rotate<10,0,0> translate<0,1,0.5> 
+        } // end of box -------------------------------------- 
         
-           object{ argola translate<0,Nr*0.1,0>} 
+        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+          scale <0.5,1,0.5> rotate<-10,0,0> translate<0,1,-0.5> 
+        } // end of box --------------------------------------  
         
-         #local Nr = Nr + 1;  // next Nr
-         #end // --------------- end of loop 
+        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+          scale <0.5,1,0.5> rotate<10,90,0> translate<0.5,1,0> 
+        } // end of box --------------------------------------
         
-        rotate<0,0,0> 
-        translate<0,0,0>
-        } // end of union --------------------------
-
+        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+          scale <0.5,1,0.5> rotate<-10,90,0> translate<-0.5,1,0> 
+        } // end of box --------------------------------------      
+        
+        translate<2.6,2.4,1>  
+         texture { T_Chrome_1A
+                   //normal { bumps 0.5 scale 0.15} 
+                   finish { phong 0}
+             } // end of texture   
+        
+    }
+        
   
                
   
