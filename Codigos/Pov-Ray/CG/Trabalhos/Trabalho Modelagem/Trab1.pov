@@ -20,11 +20,11 @@ global_settings{ assumed_gamma 1.0 }
 #include "transforms.inc"
 //--------------------------------------------------------------------------
 // camera ------------------------------------------------------------------
-#declare Camera_0 = camera {/*ultra_wide_angle*/ angle 90      // front view
+#declare Camera_0 = camera {/*ultra_wide_angle*/ angle 90      // diagonal view
                             location  <-7.0 , 5.0 ,-3.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
-#declare Camera_1 = camera {/*ultra_wide_angle*/ angle 80   // diagonal view
+#declare Camera_1 = camera {/*ultra_wide_angle*/ angle 80   // front view
                             location  <0.0 , 8.5 ,-17.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
@@ -535,7 +535,42 @@ translate<10,0,0>
 //end folhagem-----------------------------------
 
 
-                                       
+//vaso-----------------------------
+union{
+    object{ folhagem translate<2,2.2,0.5>}
+    union{
+    
+        box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>       
+              scale <0.7,0.7,0.01> rotate<0,0,0> translate<0,1,0> 
+            } // end of box -------------------------------------- 
+        difference{
+             sphere { <0,0,0>, 0.5 
+                  scale<1,1,1>  rotate<0,0,0>  translate<0,1.5,0>  
+               }  // end of sphere ----------------------------------- 
+               
+              box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>      
+              scale <0.5,0.5,0.5> rotate<0,0,0> translate<0,1,0.5> 
+            } // end of box --------------------------------------
+          
+              box { <-1.00, 0.00, -1.00>,< 1.00, 2.00, 1.00>   
+              scale <0.5,0.5,0.5> rotate<0,0,0> translate<0,1.5,0> 
+            } // end of box --------------------------------------    
+            
+            sphere { <0,0,0>, 0.5 
+              scale<0.8,0.8,0.8>  rotate<0,0,0>  translate<0,1.5,0>  
+           }  // end of sphere ----------------------------------- 
+        }
+        translate <-3,2.5,2.4>
+        texture{ T_Wood9     
+                    normal { wood 0.5 scale 0.05 turbulence 0.1 rotate<0,0,0> }
+                    finish { phong 1 } 
+                    rotate<0,0,0> scale 0.5 translate<0,0,0>
+        } // end of texture        
+    
+    }//end union   
+    translate <0.5,0,0>
+}    
+//end vaso ---------------------                                       
 
 
        
