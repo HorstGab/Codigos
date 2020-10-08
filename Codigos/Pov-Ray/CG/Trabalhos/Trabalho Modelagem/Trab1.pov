@@ -20,23 +20,27 @@ global_settings{ assumed_gamma 1.0 }
 #include "transforms.inc"
 //--------------------------------------------------------------------------
 // camera ------------------------------------------------------------------
-#declare Camera_0 = camera {/*ultra_wide_angle*/ angle 90      // diagonal view
+#declare Camera_0 = camera {/*ultra_wide_angle*/ angle 90      // left diagonal view
                             location  <-7.0 , 5.0 ,-3.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
-#declare Camera_1 = camera {/*ultra_wide_angle*/ angle 80   // front view
+#declare Camera_1 = camera {/*ultra_wide_angle*/ angle 80   // front view       
                             location  <0.0 , 8.5 ,-17.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.0 , 0.0>}
-#declare Camera_2 = camera {/*ultra_wide_angle*/ angle 90 // right side view
+#declare Camera_2 = camera {/*ultra_wide_angle*/ angle 90 // right diagonal view
                             location  <4.2 , 5.5 , 0.0>
                             right     x*image_width/image_height
                             look_at   <0.0 , 1.5 , 0.0>}
-#declare Camera_3 = camera {/*ultra_wide_angle*/ angle 90        // top view
-                            location  <0.0 , 10.0 ,0>
+#declare Camera_3 = camera {/*ultra_wide_angle*/ angle 90      // left view
+                            location  <-12.0 , 2.0 ,0.0>
                             right     x*image_width/image_height
-                            look_at   <0.0 , 1.0 , 0.0>}
-camera{Camera_1}
+                            look_at   <0.0 , 1.0 , 0.0>}     
+#declare Camera_4 = camera {/*ultra_wide_angle*/ angle 90 // right view   
+                            location  <12.2 , 2.5 , 0.0>
+                            right     x*image_width/image_height
+                            look_at   <0.0 , 1.5 , 0.0>}                            
+camera{Camera_0}
 // sun ---------------------------------------------------------------------
 light_source{<-1000,10000,-2000> color White}
 // sky ---------------------------------------------------------------------
