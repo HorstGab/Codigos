@@ -1,0 +1,4 @@
+#Wed Oct 14 19:39:49 BRT 2020
+base.0=/home/gabriel/GitHub/Codigos/Codigos/Unity/RA/Vuforia/Demo/Vuforia_Demo/Temp/gradleOut/launcher/build/intermediates/transforms/dexMerger/release/0
+path.0=classes.dex
+renamed.0=classes.dex
