@@ -1,5 +1,0 @@
-*ideias para o projeto de playlist
-
--criar musica (ok);
--pilha estatica(estrutura);
--

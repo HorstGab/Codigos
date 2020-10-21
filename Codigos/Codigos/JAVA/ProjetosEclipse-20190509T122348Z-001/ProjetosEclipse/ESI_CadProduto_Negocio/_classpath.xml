@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="bin"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ESI_InfraEstrutura"/>
-	<classpathentry kind="lib" path="C:/ProjetosEclipse/lib/mysql-connector-java-3.1.10-bin.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
