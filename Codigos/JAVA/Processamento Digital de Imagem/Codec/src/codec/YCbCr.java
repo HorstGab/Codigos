@@ -1,4 +1,4 @@
-package Codec;
+package codec;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -13,8 +13,6 @@ public class YCbCr {
 		this.Cb = cb;
 		this.Cr = cr;
 	}
-	
-	
 	
 	public YCbCr[][] RGBtoYCbCr(BufferedImage img) {
 		YCbCr[][] ycbcrimg = new YCbCr[img.getWidth()][img.getHeight()];
@@ -34,7 +32,6 @@ public class YCbCr {
             	ycbcrimg[i][j] = new YCbCr(Integer.parseInt(""+yd), 
             							   Integer.parseInt(""+Cbd), 
             							   Integer.parseInt(""+Crd));
-            	
             }
 		}
 		return ycbcrimg;
@@ -42,7 +39,6 @@ public class YCbCr {
 	
 	
 	public void printYCbCr(YCbCr[][] ycbcrimg) {
-		
 		for(int i = 0; i < ycbcrimg.length; i++){
             for(int j = 0; j < ycbcrimg[0].length; j++){
             	System.out.println("Y = " + ycbcrimg[i][j].Y + 
