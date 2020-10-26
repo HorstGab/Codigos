@@ -40,8 +40,8 @@ public class YCbCr {
             	ycbcrimg[i][j] = new YCbCr(y,Cb,Cr);
             }
 		}
-		printYCbCr(ycbcrimg);
-		convertYinImg(ycbcrimg);
+		//printYCbCr(ycbcrimg);
+		//convertYinImg(ycbcrimg);
 		return ycbcrimg;
 	}
 	
@@ -61,7 +61,7 @@ public class YCbCr {
 		PrintWriter gravarArq = new PrintWriter(f);
 
 		for(int i = 0; i < ycbcrimg.length; i++){
-			gravarArq.printf(String.valueOf(ycbcrimg[i][0]));
+			gravarArq.printf("%d %n", ycbcrimg[i][0].Y);
 		}
 		f.close();
 
