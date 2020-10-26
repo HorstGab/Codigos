@@ -1,20 +1,28 @@
 package codec;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class YCbCr {
 
 	private int Y;
 	private int Cb;
 	private int Cr;
+	public YCbCr(){
+		this.Y = 0;
+		this.Cb = 0;
+		this.Cr = 0;
+	}
 	public YCbCr(int y, int cb, int cr) {
 		this.Y = y;
 		this.Cb = cb;
 		this.Cr = cr;
 	}
 	
-	public YCbCr[][] RGBtoYCbCr(BufferedImage img) {
+	public YCbCr[][] RGBtoYCbCr(BufferedImage img) throws IOException {
 		YCbCr[][] ycbcrimg = new YCbCr[img.getWidth()][img.getHeight()];
 		
 		for(int i = 0; i < img.getWidth(); i++){
@@ -25,15 +33,15 @@ public class YCbCr {
             	int g = pixel.getGreen();
             	int b = pixel.getBlue();
             	
-            	double yd =  (0.299		*r) + (0.587	*g) + (0.114 	*b);
-            	double Cbd = (-0.169	*r) + (-0.331 	*g) + (0.5 		*b);
-            	double Crd = (0.5		*r) + (-0.419 	*g) + (-0.091	*b);
+            	int y = (int) ((int) (0.299		*r) + (0.587	*g) + (0.114 	*b));
+            	int Cb = (int) ((int)(-0.169	*r) + (-0.331 	*g) + (0.5 		*b));
+            	int Cr = (int) ((int)(0.5		*r) + (-0.419 	*g) + (-0.091	*b));
             	
-            	ycbcrimg[i][j] = new YCbCr(Integer.parseInt(""+yd), 
-            							   Integer.parseInt(""+Cbd), 
-            							   Integer.parseInt(""+Crd));
+            	ycbcrimg[i][j] = new YCbCr(y,Cb,Cr);
             }
 		}
+		printYCbCr(ycbcrimg);
+		convertYinImg(ycbcrimg);
 		return ycbcrimg;
 	}
 	
@@ -46,5 +54,16 @@ public class YCbCr {
             					   " Cr = " + ycbcrimg[i][j].Cr);
             }
 		}
+	}
+
+	public void convertYinImg(YCbCr[][] ycbcrimg) throws IOException {
+		FileWriter f = new FileWriter("Y.txt");
+		PrintWriter gravarArq = new PrintWriter(f);
+
+		for(int i = 0; i < ycbcrimg.length; i++){
+			gravarArq.printf(String.valueOf(ycbcrimg[i][0]));
+		}
+		f.close();
+
 	}
 }
