@@ -40,8 +40,7 @@ public class YCbCr {
             	ycbcrimg[i][j] = new YCbCr(y,Cb,Cr);
             }
 		}
-		//printYCbCr(ycbcrimg);
-		//convertYinImg(ycbcrimg);
+
 		return ycbcrimg;
 	}
 	

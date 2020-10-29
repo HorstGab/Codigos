@@ -19,6 +19,7 @@ public class Codec {
 
 		YCbCr cvt = new YCbCr();
 		YCbCr[][] CVT1 = cvt.RGBtoYCbCr(img);
+		cvt.printYCbCr(CVT1);
 	}
 
 }
