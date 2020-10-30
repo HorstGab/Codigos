@@ -2,9 +2,7 @@ package codec;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class YCbCr {
 
@@ -40,29 +38,6 @@ public class YCbCr {
             	ycbcrimg[i][j] = new YCbCr(y,Cb,Cr);
             }
 		}
-
 		return ycbcrimg;
-	}
-	
-	
-	public void printYCbCr(YCbCr[][] ycbcrimg) {
-		for(int i = 0; i < ycbcrimg.length; i++){
-            for(int j = 0; j < ycbcrimg[0].length; j++){
-            	System.out.println("Y = " + ycbcrimg[i][j].Y + 
-            					   " Cb = " + ycbcrimg[i][j].Cb + 
-            					   " Cr = " + ycbcrimg[i][j].Cr);
-            }
-		}
-	}
-
-	public void convertYinImg(YCbCr[][] ycbcrimg) throws IOException {
-		FileWriter f = new FileWriter("Y.txt");
-		PrintWriter gravarArq = new PrintWriter(f);
-
-		for(int i = 0; i < ycbcrimg.length; i++){
-			gravarArq.printf("%d %n", ycbcrimg[i][0].Y);
-		}
-		f.close();
-
 	}
 }
