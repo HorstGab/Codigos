@@ -19,10 +19,10 @@ public class Codec {
 		System.out.println("w - " + img.getWidth() + " h - " + img.getHeight());
 		YCbCr cvt = new YCbCr();
 		Downsampling dwn = new Downsampling();
-		cvt = cvt.RGBtoYCbCr(img);
-				//dwn.downsample(cvt.RGBtoYCbCr(img), img.getHeight(), img.getHeight(), 4);
+		cvt = dwn.downsample(cvt.RGBtoYCbCr(img), img.getHeight(), img.getHeight(), 4);
+
 		//printY(cvt);
-		//printCr(cvt);
+		printCr(cvt);
 		//printCr(cvt);
 	}
 
