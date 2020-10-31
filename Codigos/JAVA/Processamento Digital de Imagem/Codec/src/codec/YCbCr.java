@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+
 public class YCbCr {
 
 	private int Y;
@@ -19,7 +20,31 @@ public class YCbCr {
 		this.Cb = cb;
 		this.Cr = cr;
 	}
-	
+
+	public int getY() {
+		return Y;
+	}
+
+	public void setY(int y) {
+		Y = y;
+	}
+
+	public int getCb() {
+		return Cb;
+	}
+
+	public void setCb(int cb) {
+		Cb = cb;
+	}
+
+	public int getCr() {
+		return Cr;
+	}
+
+	public void setCr(int cr) {
+		Cr = cr;
+	}
+
 	public YCbCr[][] RGBtoYCbCr(BufferedImage img) throws IOException {
 		YCbCr[][] ycbcrimg = new YCbCr[img.getWidth()][img.getHeight()];
 		
@@ -38,6 +63,16 @@ public class YCbCr {
             	ycbcrimg[i][j] = new YCbCr(y,Cb,Cr);
             }
 		}
+		//printYCbCr(ycbcrimg, img.getWidth(), img.getHeight());
 		return ycbcrimg;
+	}
+
+	public void printYCbCr (YCbCr[][] img, int w, int h){
+		System.out.println("Cb");
+		for(int i = 0; i < w; i++) {
+			for (int j = 1; j < h; j++) {
+				System.out.println(img[i][j].getCb());
+			}
+		}
 	}
 }
