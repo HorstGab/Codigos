@@ -4,12 +4,11 @@ import java.io.IOException;
 
 public class Downsampling {
 
-    public YCbCr[][] downsample (YCbCr[][] img, int w, int h, int n) throws IOException {
+    public YCbCr downsample (YCbCr img, int w, int h, int n) throws IOException {
 
         if(img == null)return null;
-        YCbCr[][] vec = new YCbCr[w][h];
 
-        int aux = 0;
+        /*int aux = 0;
         vec[0][0] = new YCbCr();
         vec[0][0].setY(img[0][0].getY());
         vec[0][0].setCb(img[0][0].getCb());
@@ -29,8 +28,8 @@ public class Downsampling {
                 }
                 aux++;
             }
-        }
-        return vec;
+        }*/
+        return img;
     }
 
 }
