@@ -19,14 +19,33 @@ public class Codec {
 		System.out.println("w - " + img.getWidth() + " h - " + img.getHeight());
 		YCbCr cvt = new YCbCr();
 		Downsampling dwn = new Downsampling();
-		YCbCr[][] CVT1 = dwn.downsample(cvt.RGBtoYCbCr(img), img.getHeight(), img.getHeight(), 4);
-		printY(CVT1);
+		cvt = cvt.RGBtoYCbCr(img);
+				//dwn.downsample(cvt.RGBtoYCbCr(img), img.getHeight(), img.getHeight(), 4);
+		//printY(cvt);
+		//printCr(cvt);
+		//printCr(cvt);
 	}
 
-	public static void printY (YCbCr[][] y){
-		for (int i = 0; i < y.length; i++){
-			for (int j = 0; j < y[0].length; j++){
-				System.out.println(y[i][j].getCb());
+	public static void printY (YCbCr y){
+		for (int i = 0; i < y.getY().length; i++){
+			for (int j = 0; j < y.getY()[0].length; j++){
+				System.out.println(y.getY()[i][j].getY());
+			}
+		}
+	}
+
+	public static void printCb (YCbCr cb){
+		for (int i = 0; i < cb.getCb().length; i++){
+			for (int j = 0; j < cb.getCb()[0].length; j++){
+				System.out.println(cb.getCb()[i][j].getCb());
+			}
+		}
+	}
+
+	public static void printCr (YCbCr cr){
+		for (int i = 0; i < cr.getCr().length; i++){
+			for (int j = 0; j < cr.getCr()[0].length; j++){
+				System.out.println(cr.getCr()[i][j].getCr());
 			}
 		}
 	}
