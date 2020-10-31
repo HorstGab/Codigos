@@ -42,13 +42,9 @@ public class YCbCr {
 	}
 
 	public YCbCr RGBtoYCbCr(BufferedImage img) throws IOException {
-		Y[][] y = new Y[img.getWidth()][img.getHeight()];
-		Cb[][] cb = new Cb[img.getWidth()][img.getHeight()];
-		Cr[][] cr = new Cr[img.getWidth()][img.getHeight()];
-
-		y = rgbtoY(img);
-		cb = rgbtoCb(img);
-		cr = rgbtoCr(img);
+		Y[][] y = rgbtoY(img);
+		Cb[][] cb = rgbtoCb(img);
+		Cr[][] cr = rgbtoCr(img);
 
 		YCbCr ycbcr = new YCbCr(y, cb, cr);
 		return ycbcr;
