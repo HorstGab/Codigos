@@ -1,4 +1,4 @@
-package codec;
+package codec.transformada;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

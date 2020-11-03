@@ -1,4 +1,4 @@
-package codec;
+package codec.transformada;
 
 public class Y {
     private int y;

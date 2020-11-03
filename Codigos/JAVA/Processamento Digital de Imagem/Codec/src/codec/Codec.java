@@ -1,5 +1,7 @@
 package codec;
 
+import codec.transformada.Downsampling;
+import codec.transformada.YCbCr;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
@@ -21,9 +23,9 @@ public class Codec {
 		Downsampling dwn = new Downsampling();
 		cvt = dwn.downsample(cvt.RGBtoYCbCr(img), img.getWidth(), img.getHeight(), 4);
 
-//		printY(cvt);
-//		printCb(cvt);
-//		printCr(cvt);
+
+
+
 	}
 
 	public static void printY (@NotNull YCbCr y){
