@@ -46,13 +46,6 @@ public class DCT {
             }
         }
 
-        for (i = 0; i < m; i++)
-        {
-            for (j = 0; j < n; j++)
-                System.out.printf("%f\t", dct[i][j]);
-            System.out.println();
-        }
-
         return img;
     }
 
