@@ -22,7 +22,7 @@ public class Codec {
 		cvt = dwn.downsample(cvt.RGBtoYCbCr(img), img.getWidth(), img.getHeight(), 4);
 
 //		printY(cvt);
-		printCb(cvt);
+//		printCb(cvt);
 //		printCr(cvt);
 	}
 
