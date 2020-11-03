@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import static codec.transformada.DCT.dctTransformY;
+
+
 
 public class Codec {
 
@@ -23,7 +26,7 @@ public class Codec {
 		Downsampling dwn = new Downsampling();
 		cvt = dwn.downsample(cvt.RGBtoYCbCr(img), img.getWidth(), img.getHeight(), 4);
 
-
+		cvt.setY(dctTransformY(cvt.getY()));
 
 
 	}
