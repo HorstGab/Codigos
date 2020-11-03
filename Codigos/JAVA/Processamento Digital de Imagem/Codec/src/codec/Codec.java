@@ -9,8 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import static codec.transformada.DCT.dctTransformY;
-
+import static codec.transformada.DCT.*;
 
 
 public class Codec {
@@ -27,6 +26,8 @@ public class Codec {
 		cvt = dwn.downsample(cvt.RGBtoYCbCr(img), img.getWidth(), img.getHeight(), 4);
 
 		cvt.setY(dctTransformY(cvt.getY()));
+		cvt.setCb(dctTransformCb(cvt.getCb()));
+		cvt.setCr(dctTransformCr(cvt.getCr()));
 
 
 	}
