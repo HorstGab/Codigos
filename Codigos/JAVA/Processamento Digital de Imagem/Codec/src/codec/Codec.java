@@ -85,30 +85,16 @@ public class Codec {
 		ArrayList<YCbCr> sub = new ArrayList<>();
 
 		int aux = 0;
-
 		int w = img.getY().length, h = img.getY()[0].length;
 
 //		percorre toda a imagem
 		for(int i = 0; i < w; i+=aux){
 			for(int j = 0; j < h; j+=aux){
 
-				//matriz do subconjunto
-				Y[][] suby = new Y[chunksize][chunksize];
-				Cb[][] subcb = new Cb[chunksize][chunksize];
-				Cr[][] subcr = new Cr[chunksize][chunksize];
-
-				//percorre a sub matriz
-				for(int i1 = 0; i1 < chunksize; i1++) {
-					for(int j1 = 0; j1 < chunksize; j1++){
-
-						suby[i1][j1] = img.getY()[i1][j1];
-						subcb[i1][j1] = img.getCb()[i1][j1];
-						subcr[i1][j1] = img.getCr()[i1][j1];
-
-					}
-				}
 				//add a sub matriz na lista
-				sub.add(new YCbCr(suby,subcb,subcr));
+				sub.add(new YCbCr(	divideArrayY(img.getY(),  chunksize),
+									divideArrayCb(img.getCb(),chunksize),
+									divideArrayCr(img.getCr(),chunksize)));
 				aux = 0;
 			}
 		}
@@ -116,4 +102,40 @@ public class Codec {
 		return sub;
 	}
 
+	public static Y[][] divideArrayY(Y[][]img, int chunksize){
+		//matriz do subconjunto
+		Y[][] suby = new Y[chunksize][chunksize];
+
+		//percorre a sub matriz
+		for(int i1 = 0; i1 < chunksize; i1++) {
+			for(int j1 = 0; j1 < chunksize; j1++){
+				suby[i1][j1] = img[i1][j1];
+			}
+		}
+		return suby;
+	}
+	public static Cb[][] divideArrayCb(Cb[][]img, int chunksize){
+		//matriz do subconjunto
+		 Cb[][] subcb = new Cb[chunksize][chunksize];
+
+		//percorre a sub matriz
+		for(int i1 = 0; i1 < chunksize; i1++) {
+			for(int j1 = 0; j1 < chunksize; j1++){
+				 subcb[i1][j1] = img[i1][j1];
+			}
+		}
+		return subcb;
+	}
+	public static Cr[][] divideArrayCr(Cr[][]img, int chunksize){
+		//matriz do subconjunto
+		 Cr[][] subcr = new Cr[chunksize][chunksize];
+
+		//percorre a sub matriz
+		for(int i1 = 0; i1 < chunksize; i1++) {
+			for(int j1 = 0; j1 < chunksize; j1++){
+				 subcr[i1][j1] = img[i1][j1];
+			}
+		}
+		return img;
+	}
 }
