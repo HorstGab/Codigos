@@ -1,8 +1,6 @@
 package codec;
 
-import codec.transformada.Cb;
-import codec.transformada.Cr;
-import codec.transformada.Y;
+import codec.transformada.Downsampling;
 import codec.transformada.YCbCr;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,8 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
+import static codec.transformada.DCT.dctTransformY;
 
 
 public class Codec {
@@ -24,16 +22,33 @@ public class Codec {
 		BufferedImage img = ImageIO.read(new File("/home/gabriel/Downloads/image.jpeg"));
 //		BufferedImage img = ImageIO.read(new File("/home/milena/Downloads/image.jpeg")); //ler imagem
 		System.out.println("w - " + img.getWidth() + " h - " + img.getHeight());
-		YCbCr cvt = new YCbCr();
-		ArrayList<YCbCr> list;
 
-		cvt = cvt.RGBtoYCbCr(img);
+		int chunksize = 8;
+		int w = chunksize;
+		int h = chunksize;
+		BufferedImage[] imgs = divideArray(img, chunksize);
+		Downsampling dwn = new Downsampling();
 
-		list = divideArray(cvt, 8);
-		System.out.println(list.size());
 
-//		Downsampling dwn = new Downsampling();
-//		cvt = dwn.downsample(cvt.RGBtoYCbCr(img), img.getWidth(), img.getHeight(), 4);
+		System.out.println(imgs.length);
+		YCbCr[] cvt = new YCbCr[imgs.length];
+		for(int i = 0; i < imgs.length; i++){
+			cvt[i] = new YCbCr();
+			cvt[i] = dwn.downsample(cvt[i].RGBtoYCbCr(imgs[i]), w, h, 4);
+
+			//O metodo dctTransformY já retorna uma matriz double, então dá pra guardar direto
+			//na variavel
+			double[][] DCT = dctTransformY(cvt[i].getY());
+//			for(int index = 0; index < img.getWidth(); index++){
+//				for(int j=0; j<img.getHeight(); j++){
+//					DCT[i][j] = dctTransformY(cvt.getY());
+//				}
+//			}
+//		Quantizacao q = new Quantizacao();
+//		q = q.quantiza(DCT, imgs[i].getWidth(), img[i].getHeight());
+			//cvt[i] = q.quantiza(cvt[i].getY(), img[i].getWidth(), img[i].getHeight());
+		}
+
 
 		/*cvt.setY(dctTransformY(cvt.getY()));
 		cvt.setCb(dctTransformCb(cvt.getCb()));
@@ -41,18 +56,9 @@ public class Codec {
 
 //		double [][]DCT = new double[0][0];
 
-		//O metodo dctTransformY já retorna uma matriz double, então dá pra guardar direto
-		//na variavel
-//		double[][] DCT = dctTransformY(cvt.getY());
-//		for(int i = 0, i < img.getWidth(); i++){
-//			for(int j=0; j<img.getHeight(); j++){
-//				DCT[i][j] = dctTransformY(cvt.getY());
-//			}
-//		}
-//		Quantizacao q = new Quantizacao();
-//		q = q.quantiza(DCT, img.getWidth(), img.getHeight());
-		//cvt = q.quantiza(cvt.getY(), img.getWidth(), img.getHeight());
 
+
+		System.out.println("Done");
 
 	}
 
@@ -78,34 +84,36 @@ public class Codec {
 		}
 	}
 
-	public static ArrayList<YCbCr> divideArray(YCbCr img, int chunksize) {
-		ArrayList<YCbCr> sub = new ArrayList<>();
+	public static BufferedImage[] divideArray(BufferedImage img, int chunksize) throws IOException {
 
-		int w = img.getY().length, h = img.getY()[0].length;
+		int chunkWidth = img.getWidth() / chunksize;
+		int chunkHeight = img.getHeight() / chunksize;
+		int count = 0;
 
-//		percorre toda a imagem
-		for(int i = 0; i < w; i++){
-			for(int j = 0; j < h; j++){
+		BufferedImage imgs[] = new BufferedImage[chunksize*chunksize];
+		for(int i = 0; i < chunksize; i++){
+			for(int j = 0; j < chunksize; j++){
 
-				//matriz do subconjunto
-				Y[][] suby = new Y[chunksize][chunksize];
-				Cb[][] subcb = new Cb[chunksize][chunksize];
-				Cr[][] subcr = new Cr[chunksize][chunksize];
+				imgs[count] = new BufferedImage(chunkWidth, chunkHeight, img.getType());
+				count++;
 
-				
-				//percorre a sub matriz
-				for(int i1 = 0; i1 < chunksize; i1++) {
-					for(int j1 = 0; j1 < chunksize; j1++){
-						suby[i1][j1] = img.getY()[i1+chunksize][j1+j];
-						subcb[i1][j1] = img.getCb()[i1+chunksize][j1+j];
-						subcr[i1][j1] = img.getCr()[i1+chunksize][j1+j];
-					}
-				}
-				//add a sub matriz na lista
-				sub.add(new YCbCr());
+				// draws the image chunk
+//				Graphics2D gr = imgs[count++].createGraphics();
+//				gr.drawImage(img, 0, 0, chunkWidth, chunkHeight, chunkWidth * j, chunkHeight * i, chunkWidth * j + chunkWidth, chunkHeight * i + chunkHeight, null);
+//				gr.dispose();
+//
 			}
 		}
 
-		return sub;
+		System.out.println("Splitting done");
+
+		//writing mini images into image files
+//		for (int i = 0; i < imgs.length; i++) {
+//			ImageIO.write(imgs[i], "jpg", new File("img" + i + ".jpg"));
+//		}
+//		System.out.println("Mini images created");
+
+
+		return imgs;
 	}
 }
