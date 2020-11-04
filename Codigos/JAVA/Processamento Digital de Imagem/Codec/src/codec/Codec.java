@@ -30,10 +30,7 @@ public class Codec {
 		cvt = cvt.RGBtoYCbCr(img);
 
 		list = divideArray(cvt, 8);
-
-		for (YCbCr yCbCr : list) {
-			System.out.println(yCbCr);
-		}
+		System.out.println(list.size());
 
 //		Downsampling dwn = new Downsampling();
 //		cvt = dwn.downsample(cvt.RGBtoYCbCr(img), img.getWidth(), img.getHeight(), 4);
@@ -95,7 +92,7 @@ public class Codec {
 				sub.add(new YCbCr(	divideArrayY(img.getY(),  chunksize),
 									divideArrayCb(img.getCb(),chunksize),
 									divideArrayCr(img.getCr(),chunksize)));
-				aux = 0;
+				aux += chunksize;
 			}
 		}
 
@@ -114,7 +111,7 @@ public class Codec {
 		}
 		return suby;
 	}
-	
+
 	public static Cb[][] divideArrayCb(Cb[][]img, int chunksize){
 		//matriz do subconjunto
 		 Cb[][] subcb = new Cb[chunksize][chunksize];
