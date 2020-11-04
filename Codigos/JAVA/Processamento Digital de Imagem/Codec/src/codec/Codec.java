@@ -25,14 +25,14 @@ public class Codec {
 //		BufferedImage img = ImageIO.read(new File("/home/milena/Downloads/image.jpeg")); //ler imagem
 		System.out.println("w - " + img.getWidth() + " h - " + img.getHeight());
 		YCbCr cvt = new YCbCr();
-		ArrayList<YCbCr> list = new ArrayList<>();
+		ArrayList<YCbCr> list;
 
 		cvt = cvt.RGBtoYCbCr(img);
 
 		list = divideArray(cvt, 8);
 
-		for(int index = 0; index < list.size(); index++){
-			System.out.println(list.get(index));
+		for (YCbCr yCbCr : list) {
+			System.out.println(yCbCr);
 		}
 
 //		Downsampling dwn = new Downsampling();
@@ -114,6 +114,7 @@ public class Codec {
 		}
 		return suby;
 	}
+	
 	public static Cb[][] divideArrayCb(Cb[][]img, int chunksize){
 		//matriz do subconjunto
 		 Cb[][] subcb = new Cb[chunksize][chunksize];
@@ -126,6 +127,7 @@ public class Codec {
 		}
 		return subcb;
 	}
+
 	public static Cr[][] divideArrayCr(Cr[][]img, int chunksize){
 		//matriz do subconjunto
 		 Cr[][] subcr = new Cr[chunksize][chunksize];
@@ -136,6 +138,6 @@ public class Codec {
 				 subcr[i1][j1] = img[i1][j1];
 			}
 		}
-		return img;
+		return subcr;
 	}
 }
