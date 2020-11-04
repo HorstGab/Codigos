@@ -21,7 +21,7 @@ public class Codec {
 
 		System.out.println("Insert Image");
 
-		BufferedImage img = ImageIO.read(new File("/home/gabriel/Área de Trabalho/imagem.jpeg"));
+		BufferedImage img = ImageIO.read(new File("/home/gabriel/Downloads/image.jpeg"));
 //		BufferedImage img = ImageIO.read(new File("/home/milena/Downloads/image.jpeg")); //ler imagem
 		System.out.println("w - " + img.getWidth() + " h - " + img.getHeight());
 		YCbCr cvt = new YCbCr();
@@ -81,60 +81,31 @@ public class Codec {
 	public static ArrayList<YCbCr> divideArray(YCbCr img, int chunksize) {
 		ArrayList<YCbCr> sub = new ArrayList<>();
 
-		int aux = 0;
 		int w = img.getY().length, h = img.getY()[0].length;
 
 //		percorre toda a imagem
-		for(int i = 0; i < w; i+=aux){
-			for(int j = 0; j < h; j+=aux){
+		for(int i = 0; i < w; i++){
+			for(int j = 0; j < h; j++){
 
+				//matriz do subconjunto
+				Y[][] suby = new Y[chunksize][chunksize];
+				Cb[][] subcb = new Cb[chunksize][chunksize];
+				Cr[][] subcr = new Cr[chunksize][chunksize];
+
+				
+				//percorre a sub matriz
+				for(int i1 = 0; i1 < chunksize; i1++) {
+					for(int j1 = 0; j1 < chunksize; j1++){
+						suby[i1][j1] = img.getY()[i1+chunksize][j1+j];
+						subcb[i1][j1] = img.getCb()[i1+chunksize][j1+j];
+						subcr[i1][j1] = img.getCr()[i1+chunksize][j1+j];
+					}
+				}
 				//add a sub matriz na lista
-				sub.add(new YCbCr(	divideArrayY(img.getY(),  chunksize),
-									divideArrayCb(img.getCb(),chunksize),
-									divideArrayCr(img.getCr(),chunksize)));
-				aux += chunksize;
+				sub.add(new YCbCr());
 			}
 		}
 
 		return sub;
-	}
-
-	public static Y[][] divideArrayY(Y[][]img, int chunksize){
-		//matriz do subconjunto
-		Y[][] suby = new Y[chunksize][chunksize];
-
-		//percorre a sub matriz
-		for(int i1 = 0; i1 < chunksize; i1++) {
-			for(int j1 = 0; j1 < chunksize; j1++){
-				suby[i1][j1] = img[i1][j1];
-			}
-		}
-		return suby;
-	}
-
-	public static Cb[][] divideArrayCb(Cb[][]img, int chunksize){
-		//matriz do subconjunto
-		 Cb[][] subcb = new Cb[chunksize][chunksize];
-
-		//percorre a sub matriz
-		for(int i1 = 0; i1 < chunksize; i1++) {
-			for(int j1 = 0; j1 < chunksize; j1++){
-				 subcb[i1][j1] = img[i1][j1];
-			}
-		}
-		return subcb;
-	}
-
-	public static Cr[][] divideArrayCr(Cr[][]img, int chunksize){
-		//matriz do subconjunto
-		 Cr[][] subcr = new Cr[chunksize][chunksize];
-
-		//percorre a sub matriz
-		for(int i1 = 0; i1 < chunksize; i1++) {
-			for(int j1 = 0; j1 < chunksize; j1++){
-				 subcr[i1][j1] = img[i1][j1];
-			}
-		}
-		return subcr;
 	}
 }
