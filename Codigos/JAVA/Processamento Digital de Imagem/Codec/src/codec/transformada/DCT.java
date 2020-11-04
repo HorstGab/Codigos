@@ -4,7 +4,7 @@ public class DCT {
 
     public static double pi = 3.142857;
 
-    public static Y[][] dctTransformY(Y[][] img){
+    public static double[][] dctTransformY(Y[][] img){
         int i, j, k, l;
         double ci, cj, dct1, sum;
         int m = img.length, n = img[0].length;
@@ -44,10 +44,10 @@ public class DCT {
             }
         }
 
-        return img;
+        return dct;
     }
 
-    public static Cb[][] dctTransformCb (Cb[][] img){
+    public static double[][] dctTransformCb (Cb[][] img){
         int i, j, k, l;
         double ci, cj, dct1, sum;
         int m = img.length, n = img[0].length;
@@ -87,10 +87,10 @@ public class DCT {
             }
         }
 
-        return img;
+        return dct;
     }
 
-    public static Cr[][] dctTransformCr(Cr[][] img){
+    public static double[][] dctTransformCr(Cr[][] img){
         int i, j, k, l;
         double ci, cj, dct1, sum;
         int m = img.length, n = img[0].length;
@@ -130,6 +130,6 @@ public class DCT {
             }
         }
 
-        return img;
+        return dct;
     }
 }

@@ -1,6 +1,7 @@
 package codec;
 
 import codec.transformada.Downsampling;
+import codec.transformada.Quantizacao;
 import codec.transformada.YCbCr;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,6 +13,7 @@ import java.io.IOException;
 import static codec.transformada.DCT.*;
 
 
+
 public class Codec {
 
 	public static void main(String[] args) throws IOException {
@@ -19,15 +21,24 @@ public class Codec {
 
 		System.out.println("Insert Image");
 
-		BufferedImage img = ImageIO.read(new File("/home/gabriel/Área de Trabalho/imagem.jpeg")); //ler imagem
+		BufferedImage img = ImageIO.read(new File("/home/milena/Downloads/image.jpeg")); //ler imagem
 		System.out.println("w - " + img.getWidth() + " h - " + img.getHeight());
 		YCbCr cvt = new YCbCr();
 		Downsampling dwn = new Downsampling();
 		cvt = dwn.downsample(cvt.RGBtoYCbCr(img), img.getWidth(), img.getHeight(), 4);
 
-		cvt.setY(dctTransformY(cvt.getY()));
+		/*cvt.setY(dctTransformY(cvt.getY()));
 		cvt.setCb(dctTransformCb(cvt.getCb()));
-		cvt.setCr(dctTransformCr(cvt.getCr()));
+		cvt.setCr(dctTransformCr(cvt.getCr()));*/
+		double [][]DCT = new double[0][0];
+		for(int i=0, i<img.getWidth(); i++){
+			for(int j=0; j<img.getHeight(); j++){
+				DCT[i][j] = dctTransformY(cvt.getY());
+			}
+		}
+		Quantizacao q = new Quantizacao();
+		q = q.quantiza(DCT, img.getWidth(), img.getHeight());
+		//cvt = q.quantiza(cvt.getY(), img.getWidth(), img.getHeight());
 
 
 	}

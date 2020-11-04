@@ -14,7 +14,8 @@ public class Downsampling {
         int i, j, x, y;
         for(i = 0; i < w-1; i += n/2) {
             for(j = 0; j < h-1; j += n/2) {
-                x = i/(n/2); y = j/(n/2);
+                x = i/(n/2);
+                y = j/(n/2);
 
                 cb[x][y] = new Cb(img.getCb()[i][j].getCb());
                 cr[x][y] = new Cr(img.getCr()[i][j].getCr());
