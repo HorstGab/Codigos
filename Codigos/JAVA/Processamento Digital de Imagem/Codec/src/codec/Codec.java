@@ -35,7 +35,7 @@ public class Codec {
 			cvt[i] = new YCbCr();
 			cvt[i] = dwn.downsample(cvt[i].RGBtoYCbCr(imgs[i]), w, h, 4);
 
-			printY(cvt[i]);
+//			printY(cvt[i]);
 			//O metodo dctTransformY já retorna uma matriz double, então dá pra guardar direto
 			//na variavel
 //			double[][] DCT = dctTransformY(cvt[i].getY());
