@@ -5,11 +5,10 @@ import codec.transformada.YCbCr;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
-import static codec.transformada.DCT.dctTransformY;
 
 
 public class Codec {
@@ -36,9 +35,10 @@ public class Codec {
 			cvt[i] = new YCbCr();
 			cvt[i] = dwn.downsample(cvt[i].RGBtoYCbCr(imgs[i]), w, h, 4);
 
+			printY(cvt[i]);
 			//O metodo dctTransformY já retorna uma matriz double, então dá pra guardar direto
 			//na variavel
-			double[][] DCT = dctTransformY(cvt[i].getY());
+//			double[][] DCT = dctTransformY(cvt[i].getY());
 //			for(int index = 0; index < img.getWidth(); index++){
 //				for(int j=0; j<img.getHeight(); j++){
 //					DCT[i][j] = dctTransformY(cvt.getY());
@@ -55,7 +55,6 @@ public class Codec {
 		cvt.setCr(dctTransformCr(cvt.getCr()));*/
 
 //		double [][]DCT = new double[0][0];
-
 
 
 		System.out.println("Done");
@@ -95,13 +94,13 @@ public class Codec {
 			for(int j = 0; j < chunksize; j++){
 
 				imgs[count] = new BufferedImage(chunkWidth, chunkHeight, img.getType());
-				count++;
+//				count++;
 
 				// draws the image chunk
-//				Graphics2D gr = imgs[count++].createGraphics();
-//				gr.drawImage(img, 0, 0, chunkWidth, chunkHeight, chunkWidth * j, chunkHeight * i, chunkWidth * j + chunkWidth, chunkHeight * i + chunkHeight, null);
-//				gr.dispose();
-//
+				Graphics2D gr = imgs[count++].createGraphics();
+				gr.drawImage(img, 0, 0, chunkWidth, chunkHeight, chunkWidth * j, chunkHeight * i, chunkWidth * j + chunkWidth, chunkHeight * i + chunkHeight, null);
+				gr.dispose();
+
 			}
 		}
 
