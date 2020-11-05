@@ -62,6 +62,11 @@ public class Codec {
 		r3 = q.quantiza(DCT3, w, h);
 		hff.compress();*/
 		System.out.println("Done");
+		//writing mini images into image files
+		for (int i = 0; i < imgs.length; i++) {
+			ImageIO.write(imgs[i], "jpg", new File("img.jpeg"));
+		}
+		System.out.println("Mini images created");
 
 	}
 
@@ -110,12 +115,16 @@ public class Codec {
 
 		System.out.println("Splitting done");
 
+<<<<<<< HEAD
 		//writing mini images into image files
 
 		for (int i = 0; i < imgs.length; i++) {
 			ImageIO.write(imgs[i], "jpg", new File("img" + i + ".jpg"));
 		}
 		System.out.println("Mini images created");
+=======
+
+>>>>>>> bab5bb594342e6f1a39c7abbb769fc93b6d50aad
 
 
 		return imgs;
