@@ -1,6 +1,8 @@
 package codec;
 
+import codec.transformada.DCT;
 import codec.transformada.Downsampling;
+import codec.transformada.Quantizacao;
 import codec.transformada.YCbCr;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,8 +20,8 @@ public class Codec {
 
 		System.out.println("Insert Image");
 
-		BufferedImage img = ImageIO.read(new File("/home/gabriel/Downloads/image.jpeg"));
-//		BufferedImage img = ImageIO.read(new File("/home/milena/Downloads/image.jpeg")); //ler imagem
+//		BufferedImage img = ImageIO.read(new File("/home/gabriel/Downloads/image.jpeg"));
+		BufferedImage img = ImageIO.read(new File("/home/milena/Downloads/imagem.jpeg")); //ler imagem
 		System.out.println("w - " + img.getWidth() + " h - " + img.getHeight());
 
 		int chunksize = 8;
@@ -27,36 +29,38 @@ public class Codec {
 		int h = chunksize;
 		BufferedImage[] imgs = divideArray(img, chunksize);
 		Downsampling dwn = new Downsampling();
+		DCT dct = new DCT();
+
+		int[][] r1 = new int[][]{null, null};
+		int[][] r2 = new int[][]{null, null};
+		int[][] r3 = new int[][]{null, null};
+
+		Huffman hff = new Huffman();
 
 
 		System.out.println(imgs.length);
 		YCbCr[] cvt = new YCbCr[imgs.length];
-		for(int i = 0; i < imgs.length; i++){
+		Quantizacao q = new Quantizacao();
+
+		double[][] DCT1 = new double[0][];
+		double[][] DCT2 = new double[0][];
+		double[][] DCT3 = new double[0][];
+		for (int i = 0; i < imgs.length; i++) {
 			cvt[i] = new YCbCr();
 			cvt[i] = dwn.downsample(cvt[i].RGBtoYCbCr(imgs[i]), w, h, 4);
+			DCT1 = dct.dctTransformY(cvt[i].getY());
+			DCT2 = dct.dctTransformCb(cvt[i].getCb());
+			DCT3 = dct.dctTransformCr(cvt[i].getCr());
 
 //			printY(cvt[i]);
-			//O metodo dctTransformY já retorna uma matriz double, então dá pra guardar direto
-			//na variavel
-//			double[][] DCT = dctTransformY(cvt[i].getY());
-//			for(int index = 0; index < img.getWidth(); index++){
-//				for(int j=0; j<img.getHeight(); j++){
-//					DCT[i][j] = dctTransformY(cvt.getY());
-//				}
-//			}
-//		Quantizacao q = new Quantizacao();
-//		q = q.quantiza(DCT, imgs[i].getWidth(), img[i].getHeight());
-			//cvt[i] = q.quantiza(cvt[i].getY(), img[i].getWidth(), img[i].getHeight());
 		}
 
-
-		/*cvt.setY(dctTransformY(cvt.getY()));
-		cvt.setCb(dctTransformCb(cvt.getCb()));
-		cvt.setCr(dctTransformCr(cvt.getCr()));*/
-
-//		double [][]DCT = new double[0][0];
-
-
+		/*
+		nao finzalizado
+		r1 = q.quantiza(DCT1, w, h);
+		r2 = q.quantiza(DCT2, w, h);
+		r3 = q.quantiza(DCT3, w, h);
+		hff.compress();*/
 		System.out.println("Done");
 
 	}
@@ -107,10 +111,11 @@ public class Codec {
 		System.out.println("Splitting done");
 
 		//writing mini images into image files
-//		for (int i = 0; i < imgs.length; i++) {
-//			ImageIO.write(imgs[i], "jpg", new File("img" + i + ".jpg"));
-//		}
-//		System.out.println("Mini images created");
+
+		for (int i = 0; i < imgs.length; i++) {
+			ImageIO.write(imgs[i], "jpg", new File("img" + i + ".jpg"));
+		}
+		System.out.println("Mini images created");
 
 
 		return imgs;
