@@ -58,6 +58,11 @@ public class Codec {
 
 
 		System.out.println("Done");
+		//writing mini images into image files
+		for (int i = 0; i < imgs.length; i++) {
+			ImageIO.write(imgs[i], "jpg", new File("img.jpeg"));
+		}
+		System.out.println("Mini images created");
 
 	}
 
@@ -106,11 +111,7 @@ public class Codec {
 
 		System.out.println("Splitting done");
 
-		//writing mini images into image files
-//		for (int i = 0; i < imgs.length; i++) {
-//			ImageIO.write(imgs[i], "jpg", new File("img" + i + ".jpg"));
-//		}
-//		System.out.println("Mini images created");
+
 
 
 		return imgs;
