@@ -18,11 +18,11 @@ public class Codec {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("Insert Image");
+//		System.out.println("Insert Image");
 
 //		BufferedImage img = ImageIO.read(new File("/home/gabriel/Downloads/image.jpeg"));
-		BufferedImage img = ImageIO.read(new File("/home/milena/Downloads/imagem.jpeg")); //ler imagem
-		System.out.println("w - " + img.getWidth() + " h - " + img.getHeight());
+		BufferedImage img = ImageIO.read(new File("image.jpeg")); //ler imagem
+//		System.out.println("w - " + img.getWidth() + " h - " + img.getHeight());
 
 		int chunksize = 8;
 		int w = chunksize;
@@ -64,9 +64,9 @@ public class Codec {
 		System.out.println("Done");
 		//writing mini images into image files
 		for (int i = 0; i < imgs.length; i++) {
-			ImageIO.write(imgs[i], "jpg", new File("img.jpeg"));
+			ImageIO.write(imgs[i], "jpg", new File("img" + i +".jpeg"));
 		}
-		System.out.println("Mini images created");
+//		System.out.println("Mini images created");
 
 	}
 
@@ -115,16 +115,16 @@ public class Codec {
 
 		System.out.println("Splitting done");
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		//writing mini images into image files
 
-		for (int i = 0; i < imgs.length; i++) {
-			ImageIO.write(imgs[i], "jpg", new File("img" + i + ".jpg"));
-		}
-		System.out.println("Mini images created");
-=======
-
->>>>>>> bab5bb594342e6f1a39c7abbb769fc93b6d50aad
+//		for (int i = 0; i < imgs.length; i++) {
+//			ImageIO.write(imgs[i], "jpg", new File("img" + i + ".jpg"));
+//		}
+//		System.out.println("Mini images created");
+//=======
+//
+//>>>>>>> bab5bb594342e6f1a39c7abbb769fc93b6d50aad
 
 
 		return imgs;
