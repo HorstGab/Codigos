@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ParqueEstudantilBO:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ParqueEstudantilBO_jar</output-path>
+    <root id="archive" name="ParqueEstudantilBO.jar">
+      <element id="module-output" name="ParqueEstudantilBO" />
+    </root>
+  </artifact>
+</component>
