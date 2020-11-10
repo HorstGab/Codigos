@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class Curso {
 
     private int id;
-    private int ano;
-    private int serie;
+    private String nomeCurso;
 
     public int getId() {
         return id;
@@ -16,19 +15,11 @@ public class Curso {
         this.id = id;
     }
 
-    public int getAno() {
-        return ano;
+    public String getNomeCurso() {
+        return nomeCurso;
     }
 
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
-    public int getSerie() {
-        return serie;
-    }
-
-    public void setSerie(int serie) {
-        this.serie = serie;
+    public void setNomeCurso(String nomeCurso) {
+        this.nomeCurso = nomeCurso;
     }
 }

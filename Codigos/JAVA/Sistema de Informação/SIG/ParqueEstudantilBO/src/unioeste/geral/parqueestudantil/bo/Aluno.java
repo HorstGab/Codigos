@@ -7,6 +7,8 @@ public class Aluno {
     private int id;
     private String nomeCompleto;
     private int idade;
+    private int ano;
+    private int serie;
     private Curso curso;
 
     public int getId() {
@@ -31,6 +33,22 @@ public class Aluno {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public int getSerie() {
+        return serie;
+    }
+
+    public void setSerie(int serie) {
+        this.serie = serie;
     }
 
     public Curso getCurso() {
