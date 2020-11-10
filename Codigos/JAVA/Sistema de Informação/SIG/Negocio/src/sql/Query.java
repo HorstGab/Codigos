@@ -61,7 +61,7 @@ public class Query {
             Class.forName("org.postgresql.Driver").getDeclaredConstructor().newInstance();
 
             Connection conn = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/Evento", "postgres", "root");
+                    .getConnection("jdbc:postgresql://localhost:5432/ParqueEstudante", "postgres", "root");
 //			?useTimezone=true&serverTimezone=UTC
             return conn;
 
