@@ -21,13 +21,13 @@ input:focus, label:focus{
 
 body{
     padding-top: 5vh;
-    background-image: url("background.jng");
+    background-image: url("background.png");
     background-size: cover;
 }
 
 #main-container{
     width: 500px;
-    margin-left: auto;
+    margin-left: 30px;
     margin-right: auto;
     background-color: #ffffff;
     border-radius: 10px;
@@ -53,7 +53,7 @@ form{
 }
 
 .half-box{
-    flex: 1 1 50%;
+    flex: 1 1 33%;
     position: relative;
 }
 
@@ -74,11 +74,11 @@ input{
 }
 
 input:focus{
-    border-color: #E80064;
+    border-color: green;
 }
 
 input[type = "submit"]{
-    background-color: #E80064;
+    background-color: green;
     color: #ffffff;
     border: none;
     border-radius: 20px;
