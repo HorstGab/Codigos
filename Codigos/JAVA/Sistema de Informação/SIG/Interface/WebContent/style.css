@@ -97,3 +97,14 @@ input[type = "submit"]{
 .template{
     display: none;
 }
+
+#map {
+    height: 570px;
+    width: 50%;
+    margin-right: auto;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
