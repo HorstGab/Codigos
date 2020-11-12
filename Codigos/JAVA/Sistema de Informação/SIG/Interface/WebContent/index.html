@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parque dos Estudantes Unioeste</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+<!--    main: mapa, inserçao dos dados -->
+    <div id="main-container">
+        <h1>Parque dos Estudantes UNIOESTE</h1>
+        <form id="register-form">
+            <div class="half-box"> 
+                <label for="img">Selecionar imagem:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+            </div>
+            <div class="full-box">
+                <label for="name">Nome do Aluno</label>
+                <input type="text" name ="name" id="name" placeholder="Nome Completo" />
+            </div>
+            <div class="half-box">
+                <label for="idade">Idade</label>
+                <input type="number" name ="idade" id="idade" placeholder="Idade do Aluno" />
+            </div>
+            <div class="half-box">                    
+                <label for="ano">Ano:</label>
+                <input type="number" name="ano" id="ano" placeholder="Ano"/>
+            </div>
+            <div class="half-box">
+                <label for="serie">Série:</label>
+                <input type="number" name="serie" id="serie" placeholder="Série do Aluno"/>
+            </div>
+            <div class="full-box"> 
+                <label for="curso">Curso:</label>
+                <input type="text" name="curso" id="curso" placeholder="Curso Matriculado"/>
+            </div>
+            <div class="full-box">
+                <input type="submit" id="btn-submit" value="OK"/>
+            </div>
+        </form>
+    </div>
+    <p class="error-validation template"></p>
+    <script src="js/script.js"></script>
+</body>
+</html>
