@@ -13,14 +13,6 @@
                 <a href="index.html" class="logo">
                 <h1>Parque  Estudante</h1>
                 </a>
-
-                <div>
-                    <ul>
-                        <li>
-                            <a href="sobre.html">Sobre</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </nav>
     </header>
@@ -29,6 +21,11 @@
     <main>
         <div class="container">
             <form action="/pagina-processa-dados-do-form" method="post">
+                <div>
+                    <label for="img">Selecionar imagem:</label>
+                    <input type="file" id="img" name="img" accept="image/*">
+<!--                    <input type="submit">-->
+                </div>
                 <div>
                     <label for="name">Nome do Aluno:</label>
                     <input type="text" id="name" />
@@ -43,12 +40,8 @@
                     <label for="serie">Série:</label>
                     <input type="serie" id="serie" />
                 </div>
-                <div>
-                    <label for="msg">Mensagem:</label>
-                    <textarea id="msg"></textarea>
-                </div>
                 <div class="button">
-                    <button type="submit">Enviar sua mensagem</button>
+                    <button type="submit">OK</button>
                 </div>
             </form>
         </div>
