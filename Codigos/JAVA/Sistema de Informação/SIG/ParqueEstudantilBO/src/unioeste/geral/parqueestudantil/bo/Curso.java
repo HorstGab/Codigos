@@ -1,7 +1,5 @@
 package unioeste.geral.parqueestudantil.bo;
 
-import java.util.ArrayList;
-
 public class Curso {
 
     private int id;

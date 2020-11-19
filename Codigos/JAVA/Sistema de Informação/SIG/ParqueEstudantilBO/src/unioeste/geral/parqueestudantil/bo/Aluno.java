@@ -1,7 +1,5 @@
 package unioeste.geral.parqueestudantil.bo;
 
-import java.util.ArrayList;
-
 public class Aluno {
 
     private int id;
