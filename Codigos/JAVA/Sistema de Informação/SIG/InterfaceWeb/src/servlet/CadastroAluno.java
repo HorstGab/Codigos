@@ -13,7 +13,7 @@ import servico.UCManterAluno;
 import unioeste.geral.parqueestudantil.bo.Aluno;
 import unioeste.geral.parqueestudantil.bo.Curso;
 
-@WebServlet()
+@WebServlet("/index")
 public class CadastroAluno extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
@@ -42,21 +42,23 @@ public class CadastroAluno extends HttpServlet{
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	
-		UCManterAluno uca = new UCManterAluno();
 		
+		doGet(request, response);
+		
+		UCManterAluno uca = new UCManterAluno();
+
 		request.setCharacterEncoding("UTF-8");
 		
 		//todos os dados chegam no formato string
 		//String imgs[] = request.getParameter("img");
-		String nome = request.getParameter("nome");
+		String nome = request.getParameter("name");
 		String idade = request.getParameter("idade");
 		String ano = request.getParameter("ano");
 		String serie = request.getParameter("serie");
 		String curso = request.getParameter("curso");
 		
 		try {
+			System.out.println(nome + "nome");
 			Aluno a = new Aluno();
 			Curso c = new Curso();
 			c.setNomeCurso(curso);
@@ -67,6 +69,7 @@ public class CadastroAluno extends HttpServlet{
 			a.setCurso(c);
 			
 			try {
+				
 				uca.cadastrarAluno(a.getNomeCompleto(), a.getIdade(), a.getAno(), a.getSerie(), a.getCurso());
 			}catch(SQLException e2) {
 				// TODO Auto-generated catch block
@@ -77,6 +80,6 @@ public class CadastroAluno extends HttpServlet{
 		}
 		
 	//	request.setAttribute("ParqueEstudante", curso);
-		//request.getRequestDispatcher("/cadastro_aluno.jsp").forward(request, response);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 }

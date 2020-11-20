@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Negocio:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Negocio_jar</output-path>
+    <root id="archive" name="Negocio.jar">
+      <element id="module-output" name="Negocio" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../ParqueEstudantilBO/out/artifacts/ParqueEstudantilBO_jar/ParqueEstudantilBO.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../MyinfraAPI/out/artifacts/MyinfraAPI_jar/MyinfraAPI.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
