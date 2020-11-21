@@ -29,7 +29,7 @@ class aabb {
         point3 maximum;
 };
 
-inline bool aabb::hit(const ray& r, double t_min, double t_max) const {
+/*inline bool aabb::hit(const ray& r, double t_min, double t_max) const {
     for (int a = 0; a < 3; a++) {
         auto invD = 1.0f / r.direction()[a];
         auto t0 = (min()[a] - r.origin()[a]) * invD;
@@ -42,7 +42,7 @@ inline bool aabb::hit(const ray& r, double t_min, double t_max) const {
             return false;
     }
     return true;
-}
+}*/
 
 aabb surrounding_box(aabb box0, aabb box1) {
     point3 small(fmin(box0.min().x(), box1.min().x()),
