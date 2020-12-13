@@ -78,13 +78,13 @@
                         '<div id="content">' +
                         '<div id="siteNotice">' +
                         "</div>" +
-                        '<h1 id="firstHeading" class="firstHeading">Coit�</h1>' +
+                        '<h1 id="firstHeading" class="firstHeading">Coité</h1>' +
                         '<div id="bodyContent">' +
                         "<div>Aluno: Gabriel H. Montoanelli</div>" +
-                        "<div>Curso: Ci�ncia da Computa��o</div>" +
-                        "<div> Serie: 4� Ano </div>" + 
-                        "<div>Nome Popular: Coit�</div>" +
-                        "<div>Nome Cient�fico: Crescentia Cujete </div>" +
+                        "<div>Curso: Ciência da Computação</div>" +
+                        "<div> Serie: 4º Ano </div>" + 
+                        "<div>Nome Popular: Coité</div>" +
+                        "<div>Nome Cientifico: Crescentia Cujete </div>" +
                         "<div> Data do Plantio: 11/11/2020 " +
                         '<div> <img src="Coite.jpg" width=100 height=100> </div>'+
                         "</div>" +
@@ -96,10 +96,10 @@
                         '<h1 id="firstHeading" class="firstHeading">Jasmim Manga</h1>' +
                         '<div id="bodyContent">' +
                         "<div>Aluno: Gabriel H. Montoanelli</div>" +
-                        "<div>Curso: Ci�ncia da Computa��o</div>" +
-                        "<div> Serie: 4� Ano </div>" + 
+                        "<div>Curso: Ciência da Computação</div>" +
+                        "<div> Serie: 4º Ano </div>" + 
                         "<div>Nome Popular: Jasmim Manga</div>" +
-                        "<div>Nome Cient�fico: Plumeria Rubra </div>" +
+                        "<div>Nome Cientifico: Plumeria Rubra </div>" +
                         "<div> Data do Plantio: 11/11/2020 " +
                         '<div> <img src="JasmimManga.jpg" width=100 height=100> </div>'+
                         "</div>" +
@@ -112,10 +112,10 @@
                         '<h1 id="firstHeading" class="firstHeading">Jasmim do Deserto/Caribe</h1>' +
                         '<div id="bodyContent">' +
                         "<div>Aluno: Gabriel H. Montoanelli</div>" +
-                        "<div>Curso: Ci�ncia da Computa��o</div>" +
-                        "<div> Serie: 4� Ano </div>" + 
+                        "<div>Curso: Ciência da Computação</div>" +
+                        "<div> Serie: 4º Ano </div>" + 
                         "<div>Nome Popular: Jasmim do Deserto</div>" +
-                        "<div>Nome Cient�fico: Plumeria Pudica </div>" +
+                        "<div>Nome Científico: Plumeria Pudica </div>" +
                         "<div> Data do Plantio: 11/11/2020 " +
                         '<div> <img src="JasmimCaribe.jpg" width=100 height=100> </div>'+
                         "</div>" +

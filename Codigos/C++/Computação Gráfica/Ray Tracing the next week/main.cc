@@ -187,8 +187,8 @@ hittable_list cornell_smoke() {
 
 hittable_list final_scene() {
     hittable_list boxes1;
-    auto ground = make_shared<lambertian>(color(0.48, 0.83, 0.53));
 
+    auto ground = make_shared<lambertian>(color(0.48, 0.83, 0.53));
     const int boxes_per_side = 20;
     for (int i = 0; i < boxes_per_side; i++) {
         for (int j = 0; j < boxes_per_side; j++) {
@@ -228,11 +228,11 @@ hittable_list final_scene() {
     objects.add(make_shared<constant_medium>(boundary, .0001, color(1,1,1)));
 
     auto emat = make_shared<lambertian>(make_shared<image_texture>("earthmap.jpg"));
-    objects.add(make_shared<sphere>(point3(400,200,400), 100, emat));
+    //objects.add(make_shared<sphere>(point3(400,200,400), 100, emat)); //globo terrestre
     auto pertext = make_shared<noise_texture>(0.1);
-    objects.add(make_shared<sphere>(point3(220,280,300), 80, make_shared<lambertian>(pertext)));
+    //objects.add(make_shared<sphere>(point3(220,280,300), 80, make_shared<lambertian>(pertext)));
 
-    hittable_list boxes2;
+    /*hittable_list boxes2;
     auto white = make_shared<lambertian>(color(.73, .73, .73));
     int ns = 1000;
     for (int j = 0; j < ns; j++) {
@@ -244,7 +244,7 @@ hittable_list final_scene() {
             make_shared<bvh_node>(boxes2, 0.0, 1.0), 15),
             vec3(-100,270,395)
         )
-    );
+    );*/
 
     return objects;
 }
@@ -336,8 +336,8 @@ int main() {
         case 8:
             world = final_scene();
             aspect_ratio = 1.0;
-            image_width = 800;
-            samples_per_pixel = 10000;
+            image_width = 600;
+            samples_per_pixel = 100;
             background = color(0,0,0);
             lookfrom = point3(478, 278, -600);
             lookat = point3(278, 278, 0);
