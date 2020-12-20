@@ -76,30 +76,24 @@ hittable_list cornell_box() {
     shared_ptr<hittable> box1 = make_shared<box>(point3(0,0,0), point3(165,330,165), aluminum);
     box1 = make_shared<rotate_y>(box1, 35);
     box1 = make_shared<translate>(box1, vec3(265,0,295));
-    //objects.add(box1); //retangulo
+    objects.add(box1); //retangulo
 
-    //objects.add(make_shared<sphere>(point3(190,90,190), 90 , glass)); 
-    //objects.add(make_shared<sphere>(point3(350,400,150), 45, blue_metal));
-    //objects.add(make_shared<sphere>(point3(400,90,190), 45, light));
+    objects.add(make_shared<sphere>(point3(190,90,190), 90 , glass)); 
+    objects.add(make_shared<sphere>(point3(350,400,150), 45, blue_metal));
+    objects.add(make_shared<sphere>(point3(450,90,100), 45, light));
 
-    // hittable_list boxes2;
-    // int ns = 1000;
-    // for (int j = 0; j < ns; j++) {
-    //     boxes2.add(make_shared<sphere>(point3::random(0,165), 10, white));
-    // }
+    hittable_list boxes2;
+    int ns = 1000;
+    for (int j = 0; j < ns; j++) {
+        boxes2.add(make_shared<sphere>(point3::random(0,165), 10, white));
+    }
 
-    // objects.add(make_shared<translate>(
-    //     make_shared<rotate_y>(
-    //         make_shared<bvh_node>(boxes2, 0.0, 1.0), 15),
-    //         vec3(50,270,395)
-    //     )
-    // );
-
-    shared_ptr<hittable> degrau1 = make_shared<box>(point3(0,0,0), point3(100,100,100), red);
-    // box1 = make_shared<rotate_y>(box1, 35);
-    degrau1 = make_shared<translate>(box1, vec3(265,0,295));  
-    objects.add(degrau1); 
- 
+    objects.add(make_shared<translate>(
+        make_shared<rotate_y>(
+            make_shared<bvh_node>(boxes2, 0.0, 1.0), 15),
+            vec3(50,270,395)
+        )
+    );
 
     return objects;
 }
@@ -111,7 +105,7 @@ int main() {
     const auto aspect_ratio = 1.0 / 1.0;
     const int image_width = 600;
     const int image_height = static_cast<int>(image_width / aspect_ratio);
-    const int samples_per_pixel = 100;
+    const int samples_per_pixel = 1000;
     const int max_depth = 50;
 
     // World
@@ -126,7 +120,12 @@ int main() {
 
     // Camera
 
-    point3 lookfrom(278, 278, -800);
+    // point3 lookfrom(278, 278, -800);//frente
+    // point3 lookfrom(278, 0, -800);//baixo
+    // point3 lookfrom(0, 278, -800); //direita
+    // point3 lookfrom(555, 278, -800); //esquerda
+    point3 lookfrom(278, 555, -800); //cima
+
     point3 lookat(278, 278, 0);
     vec3 vup(0, 1, 0);
     auto dist_to_focus = 10.0;
