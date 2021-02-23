@@ -21,9 +21,9 @@ def threshold():
 
     return "Done!"
 
-def switch_filter(argument):
-    filter = {
-        1: threshold
-    }
+#def switch_filter(argument):
+   # filter = {
+   #     1: threshold
+   # }
 
 #Arrumar Switch-case
