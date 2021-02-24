@@ -27,3 +27,7 @@ def threshold():
    # }
 
 #Arrumar Switch-case
+
+"""
+c:\Users\gabri\OneDrive\Documentos\GitHub\Codigos\Codigos\Python\PDI\lotus.png
+"""

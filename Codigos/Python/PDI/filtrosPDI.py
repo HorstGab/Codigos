@@ -63,7 +63,7 @@ def main():
         if values['-GRAYSCALE-']:
             img = cv2.cvtColor(image_elem_Input, cv2.COLOR_BGR2LAB)[:, :, 0]
                     
-        image_elem_Output.update(img)
+        image_elem_Input.update(img)
 
 
     window.close()
