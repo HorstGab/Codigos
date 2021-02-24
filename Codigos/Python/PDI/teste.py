@@ -1,4 +1,4 @@
-import PySimpleGUIWeb as sg
+import PySimpleGUI as sg
 import os
 from PIL import Image, ImageTk
 import io
