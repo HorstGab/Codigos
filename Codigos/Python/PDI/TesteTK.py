@@ -2,10 +2,11 @@
 from tkinter import Button, Label, Radiobutton, StringVar, Tk
 from tkinter.filedialog import askopenfilename
 
+import numpy as np
 from cv2 import cv2
 from PIL import Image as Img
 from PIL import ImageTk
-import numpy as np
+from skimage import filters
 
 
 def show_img(edged):
@@ -18,28 +19,39 @@ def show_img(edged):
 		panelB.configure(image=edged)
 		panelB.image = edged
 
+def zeroCross():
+	image = imageInit
+
+	LoG = cv2.Laplacian(image, cv2.CV_16S)
+
+	minLoG = cv2.morphologyEx(LoG, cv2.MORPH_ERODE, np.ones((3,3)))
+	maxLoG = cv2.morphologyEx(LoG, cv2.MORPH_DILATE, np.ones((3,3)))
+
+	edged = (np.logical_or(np.logical_and(minLoG < 0,  LoG > 0), np.logical_and(maxLoG > 0, LoG < 0)) * 255).astype('uint8')
+	show_img(ImageTk.PhotoImage(Img.fromarray(edged)))
+
+
 def grayScale():
 	image = imageInit
 
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
-	show_img(ImageTk.PhotoImage(Img.fromarray(gray)))
+	show_img(ImageTk.PhotoImage(Img.fromarray(cv2.cvtColor(gray, cv2.COLOR_RGB2BGR))))
 	return gray
 
 def threshold():
 	image = imageInit
 
-	edged = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
-	print(edged.shape)
-	show_img(ImageTk.PhotoImage(Img.fromarray(cv2.cvtColor(edged, cv2.COLOR_RGB2BGR))))
+	ret, imthresh = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
+	show_img(ImageTk.PhotoImage(Img.fromarray(cv2.cvtColor(imthresh, cv2.COLOR_RGB2BGR))))
 
 def canny():
 	edged = cv2.Canny(grayScale(), 50, 100)
-	show_img(ImageTk.PhotoImage(Img.fromarray(edged)))
+	show_img(ImageTk.PhotoImage(Img.fromarray(cv2.cvtColor(edged, cv2.COLOR_RGB2BGR))))
 
 def sobel():
 	image = imageInit
 
-	edged = cv2.Sobel(image,cv2.CV_64F,1,0,ksize=5)
+	edged = cv2.Sobel(image, cv2.CV_8U, 0, 1, ksize=3)
 	show_img(ImageTk.PhotoImage(Img.fromarray(edged)))
 
  
@@ -102,6 +114,9 @@ panelB = None
 
 btn_canny = Button(root, text="Canny",command=canny)
 btn_canny.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
+
+btn_zeroCross = Button(root, text="Zero Cross",command=zeroCross)
+btn_zeroCross.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
 
 btn_sobel = Button(root, text="Sobel",command=sobel)
 btn_sobel.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
