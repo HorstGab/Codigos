@@ -5,8 +5,8 @@ from tkinter.filedialog import askopenfilename
 from cv2 import cv2
 from PIL import Image as Img
 from PIL import ImageTk
+import numpy as np
 
-#global panelA, panelB, imageInit
 
 def show_img(edged):
 	global panelB
@@ -21,28 +21,25 @@ def show_img(edged):
 def grayScale():
 	image = imageInit
 
-	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	edged = Img.fromarray(gray)
-	edged = ImageTk.PhotoImage(edged)
-	show_img(edged)
+	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
+	show_img(ImageTk.PhotoImage(Img.fromarray(gray)))
 	return gray
-
 
 def threshold():
 	image = imageInit
 
 	edged = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
-	edged = Img.fromarray(edged)
-	edged = ImageTk.PhotoImage(edged)
-	show_img(edged)
+	show_img(ImageTk.PhotoImage(Img.fromarray(edged)))
 
 def canny():
-	gray = grayScale()
-	edged = cv2.Canny(gray, 50, 100)
-	edged = Img.fromarray(edged)
-	edged = ImageTk.PhotoImage(edged)
-	show_img(edged)
+	edged = cv2.Canny(grayScale(), 50, 100)
+	show_img(ImageTk.PhotoImage(Img.fromarray(edged)))
 
+def sobel():
+	image = imageInit
+
+	edged = cv2.Sobel(image,cv2.CV_64F,1,0,ksize=5)
+	show_img(ImageTk.PhotoImage(Img.fromarray(edged)))
 
  
 
@@ -101,11 +98,15 @@ root.title("Filtros")
 panelA = None
 panelB = None
 
-btn_grayScale = Button(root, text="Escala de Cinza",command=grayScale)
-btn_grayScale.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
 
 btn_canny = Button(root, text="Canny",command=canny)
 btn_canny.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
+
+btn_sobel = Button(root, text="Sobel",command=sobel)
+btn_sobel.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
+
+btn_grayScale = Button(root, text="Escala de Cinza",command=grayScale)
+btn_grayScale.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
 
 btn_threshold = Button(root, text="Threshold",command=threshold)
 btn_threshold.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
