@@ -29,7 +29,8 @@ def threshold():
 	image = imageInit
 
 	edged = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
-	show_img(ImageTk.PhotoImage(Img.fromarray(edged)))
+	print(edged.shape)
+	show_img(ImageTk.PhotoImage(Img.fromarray(cv2.cvtColor(edged, cv2.COLOR_RGB2BGR))))
 
 def canny():
 	edged = cv2.Canny(grayScale(), 50, 100)
