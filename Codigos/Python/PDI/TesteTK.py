@@ -6,30 +6,45 @@ from cv2 import cv2
 from PIL import Image as Img
 from PIL import ImageTk
 
+#global panelA, panelB, imageInit
+
+def show_img(edged):
+	global panelB
+	if panelB is None:
+		panelB = Label(image=edged)
+		panelB.image = edged
+		panelB.pack(side="right", padx=10, pady=10)
+	else:
+		panelB.configure(image=edged)
+		panelB.image = edged
+
+def grayScale():
+	image = imageInit
+
+	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+	edged = Img.fromarray(gray)
+	edged = ImageTk.PhotoImage(edged)
+	show_img(edged)
+	return gray
+
 
 def threshold():
 	image = imageInit
 
-	#edged = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
 	edged = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
 	edged = Img.fromarray(edged)
 	edged = ImageTk.PhotoImage(edged)
-	
-	panelB = Label(image=edged)
-	panelB.image = edged
-	panelB.pack(side="right", padx=10, pady=10)
+	show_img(edged)
 
 def canny():
-	image = imageInit
-
-	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+	gray = grayScale()
 	edged = cv2.Canny(gray, 50, 100)
 	edged = Img.fromarray(edged)
 	edged = ImageTk.PhotoImage(edged)
+	show_img(edged)
 
-	panelB = Label(image=edged)
-	panelB.image = edged
-	panelB.pack(side="right", padx=10, pady=10)
+
+ 
 
 def select_image():
 	# grab a reference to the image panels
@@ -86,11 +101,16 @@ root.title("Filtros")
 panelA = None
 panelB = None
 
+btn_grayScale = Button(root, text="Escala de Cinza",command=grayScale)
+btn_grayScale.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
+
 btn_canny = Button(root, text="Canny",command=canny)
 btn_canny.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
 
 btn_threshold = Button(root, text="Threshold",command=threshold)
 btn_threshold.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
+
+
 
 
 # create a button, then when pressed, will trigger a file chooser
