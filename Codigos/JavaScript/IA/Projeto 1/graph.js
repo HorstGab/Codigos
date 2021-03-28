@@ -44,7 +44,7 @@ class Graph {
     }
 }
 
-(function initGraph() {
+function initGraph(algortihm = 'welsh_powell') {
     let graph = new Graph();
 
     graph.addVertex("RS")
@@ -127,11 +127,15 @@ class Graph {
     graph.addEdge("CE", "RN")
     graph.addEdge("PB", "RN")
 
-    selectAlgorithmColoring(graph, algorithm='welsh_powell');
-    //graph.print()
-    //console.log(graph.color)
+    selectAlgorithmColoring(graph, algortihm);
 
-})()
+    if(checkColor(graph)){
+        graph.print()
+        return graph;
+    }else{
+        console.log('Existe conflitos de coloração!')
+    }
+}
 
 function selectAlgorithmColoring(graph, algorithm='defaul'){
 
@@ -154,45 +158,68 @@ function welsh_powell(graph){
     let verticeordenado = ordenacaoGrau(graph);
     let vizinhos = [];
 
-    nodeI = verticeordenado[0];
-    vizinhos = graph.edges[nodeI];
-    graph.color[nodeI] = coloração;
-
-    for (let i = 1; i < verticeordenado.length; i++){
-        if(nodeI.color[verticeordenado] == TagColor.incolor){
-            recursiveWelshPowell(nodeI, verticeordenado, vizinhos, coloração)
+    
+    verticeordenado.forEach(function(node){
+        if(graph.color[node] === TagColor.incolor){
+            vizinhos = graph.edges[node];
+            recursiveWelshPowell(node, verticeordenado, coloração, vizinhos, graph);
             coloração++;
         }
-    }
-
-    graph.print()
+    })
 }
 
-function recursiveWelshPowell (node, vertices, coloração){
+function recursiveWelshPowell (node, vertices, coloração, vizinhos, graph){
     if(!vertices.length) return;
 
     let cor = Object.keys(TagColor)[coloração];
+    graph.color[node] = cor;
+    colorirEstado(node, graph.color[node]);
 
-    //node.color[node] = TagColor[cor];
+    let countiesPrime = deleteVizinhos(vertices, vizinhos, graph)
+   
+    recursiveWelshPowell(countiesPrime[0], countiesPrime, coloração, graph.edges[countiesPrime[0]],graph);
+}
 
-    let countiesPrime = vertices.filter(function (no) {
-        return !(node.hasNeighbour(no.name)) && (no.tag === TagColor.incolor);
-    });
-    
-    // recursive call
-    recursiveWelshPowell(countiesPrime[0], countiesPrime, currentColorIndex);
+function deleteVizinhos(vertices, vizinhos, graph){
+    let newVertice = [];
+    let temp = 0;
+    for(let i = 0; i < vertices.length; i++){
+        for(let j = 0; j < vizinhos.length; j++){
+            if(vertices[i] !== vizinhos[j] && graph.color[vertices[i]] === TagColor.incolor){
+                temp++;
+            }
+        }
+        if(temp == vizinhos.length) newVertice.push(vertices[i]);
+        temp = 0;
+    }
+    return newVertice;
 }
 
 
 function ordenacaoGrau (graph){
     let graphTemp = graph;
-   
     let indices = new Array(graphTemp.vertices.length);
     for (let i = 0; i < indices.length; ++i) indices[i] = graphTemp.vertices[i];
 
     indices.sort((a, b) => {
         return graphTemp.edges[a].length < graphTemp.edges[b].length ? 1 : graphTemp.edges[a].length > graphTemp.edges[b].length ? -1 : 0;
     });
-
     return indices;
 }
+
+function checkColor (graph){
+    let x = true;
+    graph.vertices.forEach(function(node){
+        vizinho = graph.edges[node];
+        vizinho.forEach(function(node1){
+            if(graph.color[node] === graph.color[node1]){
+                console.log(node, node1)
+                console.log(graph.color[node], graph.color[node1])
+                x = false;
+            }
+        });
+    });
+    return x;
+}
+
+initGraph()
