@@ -222,6 +222,10 @@ function checkColor (graph){
     return x;
 }
 
+function forcaBruta(graph){
+    
+}
+
 function start(){
     initGraph()
 }
