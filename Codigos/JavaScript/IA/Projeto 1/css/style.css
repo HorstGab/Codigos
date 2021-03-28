@@ -6,7 +6,7 @@ body {
 
 #brazilmap {
     width: 80vw;
-    height: 200vh;
+    height: 100vh;
 }
 
 #mapa path {
@@ -19,7 +19,7 @@ body {
 
 #brazilmaps path:hover{
     fill: darkolivegreen;
-    transition: 0,6s;
+    transition: 0.6s;
     cursor: pointer;
 }
 
