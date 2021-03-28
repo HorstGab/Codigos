@@ -172,9 +172,9 @@ function recursiveWelshPowell (node, vertices, coloração, vizinhos, graph){
     if(!vertices.length) return;
 
     let cor = Object.keys(TagColor)[coloração];
-    graph.color[node] = cor;
+    graph.color[node] = coloração;
     colorirEstado(node, graph.color[node]);
-
+    
     let countiesPrime = deleteVizinhos(vertices, vizinhos, graph)
    
     recursiveWelshPowell(countiesPrime[0], countiesPrime, coloração, graph.edges[countiesPrime[0]],graph);
@@ -222,4 +222,6 @@ function checkColor (graph){
     return x;
 }
 
-initGraph()
+function start(){
+    initGraph()
+}
