@@ -1,12 +1,38 @@
 body {
     padding: 0;
-    margin: 0;
+    margin: 100;
     background-color: #eeeeee;
 }
 
+h1{
+    font-family: Verdana;
+    font-size: 40px;
+    padding: 0px;
+    justify-content: center;
+    margin-inline-start: 350px;
+}
+
+h2{
+    font-family: Verdana;
+    font-size: 20px;
+    padding: 0px;
+    justify-content: center;
+    margin-inline-start: 350px;
+}
+p{
+    font-family: Verdana;
+    font-size: 15px;
+    padding: 0px;
+    justify-content: justify;
+    margin-inline-start: 350px;
+}
+header{
+    background-color: rgb(150, 165, 123);
+}
 #brazilmap {
-    width: 80vw;
+    width: 100vw;
     height: 100vh;
+    padding: 0px 70px;
 }
 
 #mapa path {
@@ -23,3 +49,35 @@ body {
     cursor: pointer;
 }
 
+button{
+    font-family: Verdana;
+    font-size: 14px;;
+    padding: 10px;
+    background: rgb(102, 124, 65);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 5px rgb(49, 61, 27);
+    display: inline;
+    border-radius: 5px;
+    justify-content: center;
+    margin: 15px 15px;
+}
+button:hover {
+    background: rgb(49, 61, 27);
+}
+
+#bt2{
+    margin-block-start: 10px;
+    margin-inline-start: 480px;
+}
+
+#conteudo-left{
+    width:500px;
+    height:300px;
+    float:left;
+    }
+#conteudo-right{
+    width:500px;
+    height:400px;
+    float:left;
+    }

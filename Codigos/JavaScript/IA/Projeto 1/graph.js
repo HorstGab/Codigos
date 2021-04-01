@@ -1,12 +1,3 @@
-
-const Cor = {
-    incolor : '#FFFFFF',
-    vermelho : '#FF0000',
-    verde : '#00FF00', 
-    azul : '#0000FF', 
-    amarelo : '#FFFF00'
-}
-
 const TagColor = {
     incolor : 0,
     vermelho : 1,
@@ -44,7 +35,7 @@ class Graph {
     }
 }
 
-function initGraph(algortihm = 'welsh_powell') {
+function initGraph(algortihm) {
     let graph = new Graph();
 
     graph.addVertex("RS")
@@ -128,56 +119,50 @@ function initGraph(algortihm = 'welsh_powell') {
     graph.addEdge("PB", "RN")
 
     selectAlgorithmColoring(graph, algortihm);
-
-    if(checkColor(graph)){
-        graph.print()
-        return graph;
-    }else{
-        console.log('Existe conflitos de coloração!')
-    }
 }
 
 function selectAlgorithmColoring(graph, algorithm='defaul'){
-
     switch(algorithm){
         default:
-        case 'algoritmo1':
+        case 'forcaBruta':
+            forcaBruta(graph)
         break;
         case 'welsh_powell':
             welsh_powell(graph)
         break; 
+        case 'reset':
+            location.reload()
+        break;
     }
 }
 
-/*
-    Considera-se que os nós do grafo já estão postos coloridos com cores nulas
-*/
-function welsh_powell(graph){
-
+async function welsh_powell(graph){
     coloração = 1;
     let verticeordenado = ordenacaoGrau(graph);
     let vizinhos = [];
-
     
-    verticeordenado.forEach(function(node){
+    for(let node of verticeordenado){
         if(graph.color[node] === TagColor.incolor){
             vizinhos = graph.edges[node];
-            recursiveWelshPowell(node, verticeordenado, coloração, vizinhos, graph);
+            await recursiveWelshPowell(node, verticeordenado, coloração, vizinhos, graph);
             coloração++;
         }
-    })
+    }
 }
 
 function recursiveWelshPowell (node, vertices, coloração, vizinhos, graph){
     if(!vertices.length) return;
-
-    let cor = Object.keys(TagColor)[coloração];
-    graph.color[node] = coloração;
-    colorirEstado(node, graph.color[node]);
-    
-    let countiesPrime = deleteVizinhos(vertices, vizinhos, graph)
-   
-    recursiveWelshPowell(countiesPrime[0], countiesPrime, coloração, graph.edges[countiesPrime[0]],graph);
+    return new Promise((resolve, reject) => {
+            let cor = Object.keys(TagColor)[coloração];
+            graph.color[node] = coloração;
+            colorirEstado(node, graph.color[node]);
+            
+            let countiesPrime = deleteVizinhos(vertices, vizinhos, graph)
+            timeoutNum = setTimeout(() => {
+                let value = recursiveWelshPowell(countiesPrime[0], countiesPrime, coloração, graph.edges[countiesPrime[0]],graph);
+                resolve(value);
+            }, 150);
+    });
 }
 
 function deleteVizinhos(vertices, vizinhos, graph){
@@ -195,37 +180,58 @@ function deleteVizinhos(vertices, vizinhos, graph){
     return newVertice;
 }
 
-
-function ordenacaoGrau (graph){
-    let graphTemp = graph;
-    let indices = new Array(graphTemp.vertices.length);
-    for (let i = 0; i < indices.length; ++i) indices[i] = graphTemp.vertices[i];
-
+function ordenacaoGrau (graphTemp){
+    let indices = graphTemp.vertices;
     indices.sort((a, b) => {
         return graphTemp.edges[a].length < graphTemp.edges[b].length ? 1 : graphTemp.edges[a].length > graphTemp.edges[b].length ? -1 : 0;
     });
     return indices;
 }
 
+
 function checkColor (graph){
-    let x = true;
+    let x = true; 
     graph.vertices.forEach(function(node){
-        vizinho = graph.edges[node];
+        vizinho = graph.edges[node]; 
         vizinho.forEach(function(node1){
-            if(graph.color[node] === graph.color[node1]){
-                console.log(node, node1)
-                console.log(graph.color[node], graph.color[node1])
-                x = false;
+            if(graph.color[node] === graph.color[node1]){ 
+                x = false; 
             }
         });
     });
     return x;
 }
 
-function forcaBruta(graph){
-    
+async function forcaBruta(graph, maxColors=4){
+    let isSolucao = false;
+    do{
+        isSolucao = await forcaBrutaIteracao(graph, maxColors);
+    }while(!isSolucao);
+    return graph;
 }
 
-function start(){
-    initGraph()
+function forcaBrutaIteracao(graph, maxColors){
+    return new Promise((resolve, reject) => {
+        timeoutNum = setTimeout(() => {
+            let indexes = Object.keys(graph.color);
+            let rest = ((graph.color[indexes[0]]+1) % maxColors === 0)? 1:0;
+            graph.color[indexes[0]] += 1;
+            graph.color[indexes[0]] %= maxColors;
+
+            for(let i = 1; rest && i < graph.vertices.length; i++){
+                graph.color[indexes[i]] = rest;
+                rest =+ ((graph.color[indexes[i]] + rest) % maxColors === 0);
+                graph.color[indexes[i]] %= maxColors;
+            }
+            
+            graph.vertices.forEach((node) => {
+                colorirEstado(node, graph.color[node]);
+            });
+            resolve(checkColor(graph));
+        }, 150);
+    });
+}
+
+function start(alg){
+    initGraph(alg)
 }
