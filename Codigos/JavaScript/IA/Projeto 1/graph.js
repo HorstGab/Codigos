@@ -202,6 +202,10 @@ function checkColor (graph){
     return x;
 }
 
+
+/* function forcaBruta(graph){
+    for(let c = 1; c < )
+} */
 async function forcaBruta(graph, maxColors=4){
     let isSolucao = false;
     do{

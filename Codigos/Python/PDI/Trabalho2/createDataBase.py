@@ -25,12 +25,10 @@ def faceDetection (self, count):
         #guarda apenas as informações classificadas como face
         crop = img[y:y+h, x: x+w]
 
-        # try:
-            #salva a imagem da região detectada
+        #salva a imagem da região detectada
         cv2.imwrite(arg[1] + "/facetoframe%d.jpg" %count, crop)
         print("facetoframe%d.jpg salvo!" %count)
-        # except OSError:
-            # print ("Erro ao salvar imagem")
+      
         
     
 def extractFrames(self):
