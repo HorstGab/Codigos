@@ -1,0 +1,6 @@
+javac *.java
+start /min rmiregistry
+rmic HelloImpl
+start java HelloImpl
+pause
+appletviewer cliente.html
