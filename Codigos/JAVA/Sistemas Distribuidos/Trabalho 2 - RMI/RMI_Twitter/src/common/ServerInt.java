@@ -9,5 +9,6 @@ public interface ServerInt extends Remote{
 	public boolean login (ClientInt c) throws RemoteException;
 	public void publish (String s) throws RemoteException;
 	public Vector getConnected() throws RemoteException;
+	
 
 }

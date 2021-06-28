@@ -20,16 +20,14 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import common.ClientInt;
-import common.ServerInt;
 import server.ServerImp;
-
 public class ChatUI {
 
 	private ClientImp client;
 	private ServerImp server;
 	
 	public void doConnect() {
-		if(connect.getText().equals("connect")) {
+		if(connect.getText().equals("Connect")) {
 			if(name.getText().length()<2) {
 				JOptionPane.showMessageDialog(frame, "You need to type a name."); 
 				return;
