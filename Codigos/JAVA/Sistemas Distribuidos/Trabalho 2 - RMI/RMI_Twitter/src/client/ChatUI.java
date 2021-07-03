@@ -20,11 +20,11 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import common.ClientInt;
-import server.ServerImp;
+import common.ServerInt;
 public class ChatUI {
 
 	private ClientImp client;
-	private ServerImp server;
+	private ServerInt server;
 	
 	public void doConnect() {
 		if(connect.getText().equals("Connect")) {
@@ -39,7 +39,7 @@ public class ChatUI {
 	    	try {
 	    		client = new ClientImp(name.getText());
 	    		client.setGUI(this);
-				server=(ServerImp)Naming.lookup("rmi://"+ip.getText()+"/twitter");
+				server=(ServerInt)Naming.lookup("rmi://"+ip.getText()+"/twitter");
 				server.login(client);
 				updateUsers(server.getConnected());
 			    connect.setText("Disconnect");			    

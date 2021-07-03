@@ -7,10 +7,12 @@ import common.ICliente;
 
 public class Cliente extends UnicastRemoteObject implements ICliente{
 	
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String pass;
-	private String[] posts;
+	//private String[] posts;
 	private GUI ui;
+
 	
 	public Cliente (String user, String pass)throws RemoteException{
 		this.name = user;
@@ -20,15 +22,19 @@ public class Cliente extends UnicastRemoteObject implements ICliente{
 
 	public void tell (String name) throws RemoteException{}
 
-	public void setGUI(GUI t) {
-		ui =t;
+	public void setUi(GUI ui) {
+		this.ui =ui;
 	}
 	
-	public String getName() {
+	public GUI getUi() {
+		return this.ui;
+	}
+	
+	public String getName() throws RemoteException{
 		return this.name;
 	}
 	
-	public String getPass() {
+	public String getPass() throws RemoteException{
 		return this.pass;
 	}
 }

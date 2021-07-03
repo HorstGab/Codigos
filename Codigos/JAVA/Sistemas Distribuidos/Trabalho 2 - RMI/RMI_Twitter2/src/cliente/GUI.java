@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -21,13 +21,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import servidor.Servidor;
+import common.IServidor;
 
 
 public class GUI {
 
 	private Cliente client;
-	private Servidor server;
+	private IServidor server;
 	
 	public void doConnect() throws SQLException, MalformedURLException, NotBoundException {
 		if(login.getText().equals("Login")) {
@@ -41,22 +41,69 @@ public class GUI {
 			}
 			try {
 				client = new Cliente(user.getText(), pass.getText());
-				client.setGUI(this);
-				server = (Servidor)Naming.lookup("rmi://localhost/twitter");
-				server.login(client);
+				client.setUi(this);
+				server = (IServidor)Naming.lookup("rmi://localhost/twitter");
+				
+				int status = server.login(client);
+				
+				if(status == 1) {
+					JOptionPane.showMessageDialog(frame, "Login efetuado com sucesso!");
+					u.setText(user.getText());
+					login.setText("Logout");
+					user.setText(null);
+					pass.setText(null);
+				}else {
+					if(status == -1)JOptionPane.showMessageDialog(frame, "Usuario ou senha Incorreto!");
+					if(status == -2)JOptionPane.showMessageDialog(frame, "Usuario j· logado!");
+				}
+				
 			}catch(java.rmi.RemoteException e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(frame, "ERROR, n√£o foi possivel conectar....");
+				JOptionPane.showMessageDialog(frame, "ERROR, n„o foi possivel conectar....");
+			}
+		}else {
+			try {
+				if(login.getText().equals("Logout")) {
+					u.setText(null);
+					if(server.Desconnected(client.getName())) {
+						JOptionPane.showMessageDialog(frame, "Usuario Deslogado!");
+						login.setText("Login");
+					}else {
+						System.out.println("Erro para deslogar");
+					}
+				}
+			}catch(java.rmi.RemoteException e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(frame, "ERROR, n„o foi possivel desconectar....");
 			}
 		}
 		
-		JOptionPane.showMessageDialog(frame, "OK");
+		//JOptionPane.showMessageDialog(frame, "OK");
+	}
+	
+	public void twittar() throws RemoteException, SQLException {
+		if (login.getText().equals("Connect")){
+	    	JOptionPane.showMessageDialog(frame, "… necess·rio conectar primeiro."); 
+	    	return;	
+	    }
+	    String st=tf.getText();
+	    String sttl="["+client.getName()+"]: "+st;
+	    tf.setText("");
+	    //Remove if you are going to implement for remote invocation
+	    //try {
+	    	tx.setText(tx.getText()+"\n"+sttl);
+		    //server.twittar(st, client.getName());
+	    //}catch(java.rmi.RemoteException e) {
+	    	//e.printStackTrace();
+	    	//JOptionPane.showMessageDialog(frame, "Erro: N„o foi possivel Twittar."); 
+	    //}
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		GUI c=new GUI();
+		new GUI();
 	}
+	
 	public GUI() {
 		frame = new JFrame("Twitter");
 		
@@ -68,23 +115,24 @@ public class GUI {
 		user = new JTextField();
 		pass = new JPasswordField();
 		login = new JButton("Login");
+		u = new JLabel();
 		
 		tf = new JTextField();
 		tx = new JTextArea();
 		JButton bt = new JButton("Twittar");
-		lst = new JList();
 		
 		main.setLayout(new BorderLayout(5,5));
 		
 		top.setLayout(new GridLayout(1,0,5,5));
 		top.add(new JLabel("Username"));top.add(user);
 		top.add(new JLabel("Password")); top.add(pass);
+		top.add(u);
 		top.add(login);
 		main.add(top, BorderLayout.NORTH);
 		
 		cn.setLayout(new BorderLayout(5,5));
 		cn.add(new JScrollPane(tx), BorderLayout.CENTER);        
-	    cn.add(lst, BorderLayout.EAST);  
+	    //cn.add(lst, BorderLayout.EAST);  
 	    main.add(cn, BorderLayout.CENTER);
 	    
 	    bottom.setLayout(new BorderLayout(5,5));
@@ -94,7 +142,6 @@ public class GUI {
 	    
 	    main.setBorder(new EmptyBorder(10, 10, 10, 10) );
 	    
-	    //eventos
 	    
 	    login.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
@@ -106,6 +153,34 @@ public class GUI {
 				}
 	    	}
 	    });
+	    
+	    bt.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e){ 
+	    		try {
+					twittar();
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}   
+	    	}  
+	    });
+		
+	    tf.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent e){ 
+	    		try {
+					twittar();
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}  
+	    	}  
+	    });
 		
 		frame.setContentPane(main);
 	    frame.setSize(600,600);
@@ -115,8 +190,9 @@ public class GUI {
 	JTextArea tx;
 	JTextField tf,pass, user;
 	JButton login;
-	JList lst;
+	//JList<String> lst;
 	JFrame frame;
+	JLabel u;
 	
 }
 
