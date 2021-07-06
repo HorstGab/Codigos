@@ -6,7 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import common.ICliente;
@@ -14,7 +15,7 @@ import common.IServidor;
 
 public class Servidor extends UnicastRemoteObject implements IServidor{
 
-	private String[] postsGlobal;
+	//private String[] postsGlobal;
 	private Vector<String> v = new Vector<String>();
 	
 	private static final long serialVersionUID = 1L;
@@ -48,12 +49,47 @@ public class Servidor extends UnicastRemoteObject implements IServidor{
 		return -2;
 	}
 	
-	public void timeLine() {
+	public List<String> timeLine() throws RemoteException, SQLException{
 		
+		Connection con = Query.getConnection();
+		List<String> tl = new ArrayList<>();
 		
+		String sql = "SELECT \"timeLine\", \"user\"\r\n"
+				+ "	FROM public.\"timeLine\", public.\"user\"\r\n"
+				+ "	where \"timeLine\".\"iduser\" = \"user\".\"idUser\";";
+		
+		PreparedStatement stt = con.prepareStatement(sql);
+		ResultSet res = stt.executeQuery();
+		
+		while(res.next()) {
+			String tt = res.getString("timeLine");
+			String user = res.getString("user");
+			tl.add(tt);
+			tl.add(user);
+		}
+		return tl;
 	}
 	
-	
+	public List<String> User(String user)throws RemoteException, SQLException{
+		
+		Connection con = Query.getConnection();
+		int iduser = buscaID(user, con);
+		List<String> tw = new ArrayList<>();
+		
+		String sql = "SELECT \"timeLine\"\r\n"
+				+ "	FROM public.\"timeLine\"\r\n"
+				+ "	where idUser = ?;";
+		
+		PreparedStatement stt = con.prepareStatement(sql);
+		stt.setInt(1, iduser);
+		ResultSet res = stt.executeQuery();
+		
+		while(res.next()) {
+			String tt = res.getString("timeLine");
+			tw.add(tt);
+		}
+		return tw;	
+	}
 	public boolean twittar(String t, String user)throws RemoteException, SQLException{
 		
 		Connection con = Query.getConnection();
